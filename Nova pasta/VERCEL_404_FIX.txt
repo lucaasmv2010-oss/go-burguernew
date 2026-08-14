@@ -1,0 +1,13 @@
+GO BURGER P701 - VERCEL 404 FIX
+
+Este pacote força a Vercel a tratar o projeto como site estático:
+- framework: Other
+- installCommand: desativado
+- buildCommand: apenas echo (nenhuma compilacao)
+- outputDirectory: . (raiz do projeto)
+- / reescrito explicitamente para /index.html
+- public: false
+- noindex/nofollow mantidos
+- financeiro real permanece desligado
+
+Depois de substituir os arquivos no GitHub, faça um novo deployment/redeploy na Vercel.

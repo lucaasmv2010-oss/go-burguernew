@@ -1,0 +1,25 @@
+/* =========================================================
+   GO BURGER · P604 · MODAL LAYER HOTFIX
+   Corrige backdrop acima do conteúdo do modal (blur + cliques bloqueados).
+========================================================= */
+:where(.modal,.sa-modal){
+  z-index:1000!important;
+  isolation:isolate!important;
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+}
+
+:where(.modal-backdrop){
+  z-index:0!important;
+}
+
+:where(.modal-card,.auth-modal-card,.sa-modal-card,.store-create-modal,.driver-modal-card){
+  position:relative!important;
+  z-index:2!important;
+  filter:none!important;
+}
+
+:where(.modal-close,.sa-modal-close){
+  position:absolute;
+  z-index:3!important;
+}

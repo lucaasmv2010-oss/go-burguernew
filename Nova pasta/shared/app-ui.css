@@ -1,0 +1,951 @@
+
+/* =========================================================
+   GO-BURGER — SHARED APP UI v1
+   Tipografia, selects inteligentes, navegação e consentimento
+========================================================= */
+:root {
+  --gb-font: "Plus Jakarta Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --gb-ui-primary: #ff6500;
+  --gb-ui-primary-soft: rgba(255, 101, 0, .10);
+  --gb-ui-ink: #21150f;
+  --gb-ui-muted: #796b63;
+  --gb-ui-surface: #ffffff;
+  --gb-ui-surface-2: #faf7f4;
+  --gb-ui-border: #e9ded7;
+  --gb-ui-shadow: 0 16px 42px rgba(54, 27, 13, .10);
+}
+
+html, body, button, input, select, textarea {
+  font-family: var(--gb-font) !important;
+}
+
+:focus-visible {
+  outline: 3px solid rgba(255, 101, 0, .28) !important;
+  outline-offset: 2px !important;
+}
+
+.gb-skip-link {
+  position: fixed;
+  top: 8px;
+  left: 8px;
+  z-index: 99999;
+  transform: translateY(-140%);
+  padding: 10px 13px;
+  border-radius: 10px;
+  background: #17100c;
+  color: #fff;
+  text-decoration: none;
+  font-size: 11px;
+  font-weight: 800;
+  transition: transform .18s ease;
+}
+.gb-skip-link:focus { transform: none; }
+
+/* Select nativo com aparência de aplicativo */
+.gb-select-shell {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+}
+.gb-select-shell::after {
+  content: "";
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  color: var(--gb-ui-muted);
+  transform: translateY(-68%) rotate(45deg);
+  pointer-events: none;
+}
+.gb-select-shell select {
+  width: 100% !important;
+  min-height: 48px !important;
+  padding: 0 42px 0 14px !important;
+  border: 1px solid var(--gb-ui-border) !important;
+  border-radius: 14px !important;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  background: var(--gb-ui-surface) !important;
+  color: var(--gb-ui-ink) !important;
+  font: 700 12px/1 var(--gb-font) !important;
+  box-shadow: 0 4px 14px rgba(54,27,13,.025);
+  transition: border-color .18s ease, box-shadow .18s ease, transform .18s ease;
+}
+.gb-select-shell select:hover { border-color: rgba(255,101,0,.38) !important; }
+.gb-select-shell select:focus {
+  border-color: var(--gb-ui-primary) !important;
+  box-shadow: 0 0 0 4px var(--gb-ui-primary-soft) !important;
+  outline: 0 !important;
+}
+.gb-select-shell select:disabled { opacity: .58; cursor: not-allowed; }
+.gb-select-shell.gb-select-compact select { min-height: 38px !important; border-radius: 11px !important; font-size: 10px !important; }
+
+/* Barra de navegação usada quando uma página é aberta fora do shell */
+.gb-standalone-dock {
+  position: fixed;
+  left: 50%;
+  bottom: max(12px, env(safe-area-inset-bottom));
+  z-index: 9000;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  max-width: calc(100vw - 24px);
+  padding: 5px;
+  border: 1px solid rgba(255,255,255,.10);
+  border-radius: 18px;
+  background: rgba(23, 16, 12, .94);
+  box-shadow: 0 20px 48px rgba(0,0,0,.28);
+  backdrop-filter: blur(18px);
+  transform: translateX(-50%);
+}
+.gb-standalone-dock a {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 40px;
+  padding: 0 12px;
+  border-radius: 13px;
+  color: #cdbfb6;
+  text-decoration: none;
+  font-size: 10px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+.gb-standalone-dock a:hover,
+.gb-standalone-dock a.active { background: #ff6500; color: #fff; }
+.gb-standalone-dock svg { width: 14px; height: 14px; fill: currentColor; }
+
+/* Status de conectividade e atualização */
+.gb-global-status {
+  position: fixed;
+  left: 50%;
+  top: 10px;
+  z-index: 9500;
+  display: none;
+  max-width: calc(100vw - 24px);
+  padding: 9px 13px;
+  border-radius: 999px;
+  background: #17100c;
+  color: #fff;
+  box-shadow: var(--gb-ui-shadow);
+  transform: translateX(-50%);
+  font-size: 10px;
+  font-weight: 800;
+}
+.gb-global-status.show { display: block; }
+.gb-global-status.offline { background: #9a3412; }
+
+/* Consentimento LGPD */
+.gb-consent {
+  position: fixed;
+  right: 16px;
+  bottom: max(16px, env(safe-area-inset-bottom));
+  z-index: 9800;
+  width: min(430px, calc(100vw - 32px));
+  padding: 18px;
+  border: 1px solid var(--gb-ui-border);
+  border-radius: 21px;
+  background: rgba(255,255,255,.98);
+  color: var(--gb-ui-ink);
+  box-shadow: 0 26px 70px rgba(34,17,9,.22);
+  backdrop-filter: blur(18px);
+}
+.gb-consent h3 { margin: 0 0 7px; font-size: 15px; }
+.gb-consent p { margin: 0; color: var(--gb-ui-muted); font-size: 10px; line-height: 1.65; }
+.gb-consent-actions { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+.gb-consent button {
+  min-height: 38px;
+  padding: 0 12px;
+  border: 1px solid var(--gb-ui-border);
+  border-radius: 11px;
+  background: #fff;
+  color: var(--gb-ui-ink);
+  font-size: 10px;
+  font-weight: 800;
+  cursor: pointer;
+}
+.gb-consent button.primary { border-color: var(--gb-ui-primary); background: var(--gb-ui-primary); color: #fff; }
+.gb-consent a { color: var(--gb-ui-primary); font-weight: 800; }
+.gb-consent-details { display: grid; gap: 8px; margin-top: 12px; }
+.gb-consent-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px;
+  border-radius: 12px;
+  background: var(--gb-ui-surface-2);
+}
+.gb-consent-row strong,.gb-consent-row small { display: block; }
+.gb-consent-row small { margin-top: 2px; color: var(--gb-ui-muted); font-size: 9px; }
+.gb-consent-row input { accent-color: var(--gb-ui-primary); }
+
+.gb-install-chip {
+  position: fixed;
+  right: 14px;
+  top: 14px;
+  z-index: 9100;
+  display: none;
+  align-items: center;
+  gap: 7px;
+  min-height: 38px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 12px;
+  background: #17100c;
+  color: #fff;
+  box-shadow: var(--gb-ui-shadow);
+  font-size: 10px;
+  font-weight: 800;
+  cursor: pointer;
+}
+.gb-install-chip.show { display: flex; }
+
+@media (max-width: 720px) {
+  .gb-standalone-dock { width: calc(100vw - 20px); justify-content: space-between; }
+  .gb-standalone-dock a { flex: 1; justify-content: center; padding: 0 7px; }
+  .gb-standalone-dock a span { display: none; }
+  body.gb-has-standalone-dock { padding-bottom: 72px !important; }
+  .gb-install-chip { top: auto; bottom: 78px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+}
+
+/* Contextos compactos para não esticar menus em barras de ação */
+.table-actions > .gb-select-shell,
+.toolbar-actions > .gb-select-shell,
+.header-actions > .gb-select-shell,
+.filter-row > .gb-select-shell,
+.filters > .gb-select-shell,
+.market-toolbar > .gb-select-shell,
+.page-toolbar > .gb-select-shell {
+  width: auto;
+  min-width: 120px;
+  flex: 0 1 auto;
+}
+.table-actions > .gb-select-shell select,
+.toolbar-actions > .gb-select-shell select {
+  min-height: 36px !important;
+  border-radius: 10px !important;
+  font-size: 10px !important;
+}
+
+body.dark .gb-select-shell select,
+html[data-theme="dark"] .gb-select-shell select,
+body[data-theme="dark"] .gb-select-shell select {
+  background: #1d1815 !important;
+  color: #fff8f2 !important;
+  border-color: rgba(255,255,255,.10) !important;
+}
+body.dark .gb-select-shell::after,
+html[data-theme="dark"] .gb-select-shell::after,
+body[data-theme="dark"] .gb-select-shell::after {
+  color: #b9aaa0;
+}
+
+/* =========================================================
+   GO-BURGER — ATUALIZAÇÃO DO PWA
+========================================================= */
+.gb-update-chip {
+  position: fixed;
+  right: 14px;
+  bottom: 68px;
+  z-index: 2147483000;
+  display: none;
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 0 14px;
+  border: 0;
+  border-radius: 999px;
+  background: #17100c;
+  color: #fff;
+  box-shadow: 0 12px 36px rgba(23,16,12,.22);
+  font-family: var(--gb-font, "Plus Jakarta Sans", system-ui, sans-serif);
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: .02em;
+}
+.gb-update-chip.show { display: inline-flex; }
+.gb-update-chip i { color: #ff7a1a; }
+@media (display-mode: standalone) {
+  .gb-update-chip { bottom: calc(76px + env(safe-area-inset-bottom)); }
+}
+
+/* =========================================================
+   GO-BURGER — SMART CHOICE SHEET
+   Menus de opções com comportamento visual de aplicativo
+========================================================= */
+.gb-select-smart::after { display: none; }
+.gb-native-select-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  clip-path: inset(50%) !important;
+  border: 0 !important;
+  white-space: nowrap !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+.gb-smart-select-trigger {
+  width: 100%;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 0 14px;
+  border: 1px solid var(--gb-ui-border);
+  border-radius: 15px;
+  background: var(--gb-ui-surface);
+  color: var(--gb-ui-ink);
+  box-shadow: 0 5px 16px rgba(54,27,13,.035);
+  text-align: left;
+  font: 800 11px/1.25 var(--gb-font) !important;
+  transition: border-color .18s ease, box-shadow .18s ease, transform .18s ease;
+}
+.gb-smart-select-trigger:hover {
+  border-color: rgba(255,101,0,.42);
+  transform: translateY(-1px);
+}
+.gb-smart-select-trigger:focus-visible {
+  border-color: var(--gb-ui-primary);
+  box-shadow: 0 0 0 4px var(--gb-ui-primary-soft);
+}
+.gb-smart-select-trigger.placeholder { color: var(--gb-ui-muted); }
+.gb-smart-select-trigger:disabled { opacity: .55; cursor: not-allowed; transform: none; }
+.gb-smart-select-main { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.gb-smart-select-main > i {
+  width: 30px;
+  height: 30px;
+  flex: 0 0 30px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  background: var(--gb-ui-primary-soft);
+  color: var(--gb-ui-primary);
+}
+.gb-smart-select-main > span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.gb-smart-select-chevron { color: var(--gb-ui-muted); font-size: 10px; }
+
+.gb-choice-lock { overflow: hidden; }
+.gb-choice-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(20,12,8,.56);
+  backdrop-filter: blur(7px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .2s ease, visibility .2s ease;
+}
+.gb-choice-overlay.open { opacity: 1; visibility: visible; }
+.gb-choice-sheet {
+  width: min(560px, 100%);
+  max-height: min(78vh, 720px);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.55);
+  border-radius: 26px;
+  background: var(--gb-ui-surface);
+  color: var(--gb-ui-ink);
+  box-shadow: 0 34px 80px rgba(0,0,0,.26);
+  transform: translateY(28px) scale(.985);
+  transition: transform .22s cubic-bezier(.2,.8,.2,1);
+}
+.gb-choice-overlay.open .gb-choice-sheet { transform: none; }
+.gb-choice-grabber {
+  width: 42px;
+  height: 4px;
+  margin: 9px auto 0;
+  border-radius: 999px;
+  background: var(--gb-ui-border);
+}
+.gb-choice-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 18px 12px;
+  border-bottom: 1px solid var(--gb-ui-border);
+}
+.gb-choice-head small { color: var(--gb-ui-primary); font-size: 8px; font-weight: 900; letter-spacing: .15em; }
+.gb-choice-head h2 { margin: 3px 0 0; font: 900 18px/1.1 var(--gb-font) !important; }
+.gb-choice-close {
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--gb-ui-border);
+  border-radius: 12px;
+  background: var(--gb-ui-surface-2);
+  color: var(--gb-ui-ink);
+  font-size: 22px;
+  line-height: 1;
+}
+.gb-choice-list { display: grid; gap: 8px; padding: 12px; overflow: auto; overscroll-behavior: contain; }
+.gb-choice-option {
+  width: 100%;
+  min-height: 60px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border: 1px solid var(--gb-ui-border);
+  border-radius: 16px;
+  background: var(--gb-ui-surface-2);
+  color: var(--gb-ui-ink);
+  text-align: left;
+  transition: border-color .16s ease, background .16s ease, transform .16s ease;
+}
+.gb-choice-option:hover { border-color: rgba(255,101,0,.38); transform: translateY(-1px); }
+.gb-choice-option.selected { border-color: var(--gb-ui-primary); background: var(--gb-ui-primary-soft); }
+.gb-choice-option:disabled { opacity: .45; cursor: not-allowed; transform: none; }
+.gb-choice-option-icon {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 13px;
+  background: #fff;
+  color: var(--gb-ui-primary);
+  box-shadow: 0 5px 15px rgba(54,27,13,.06);
+}
+.gb-choice-option-copy strong, .gb-choice-option-copy small { display: block; }
+.gb-choice-option-copy strong { font: 850 11px/1.35 var(--gb-font) !important; }
+.gb-choice-option-copy small { margin-top: 3px; color: var(--gb-ui-muted); font-size: 9px; line-height: 1.4; }
+.gb-choice-option-check {
+  width: 24px;
+  height: 24px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 1px solid var(--gb-ui-border);
+  color: transparent;
+}
+.gb-choice-option.selected .gb-choice-option-check { border-color: var(--gb-ui-primary); background: var(--gb-ui-primary); color: #fff; }
+
+html[data-theme="dark"] .gb-smart-select-trigger,
+body.dark .gb-smart-select-trigger,
+html[data-theme="dark"] .gb-choice-sheet,
+body.dark .gb-choice-sheet,
+html[data-theme="dark"] .gb-choice-option,
+body.dark .gb-choice-option {
+  --gb-ui-surface: #1c1714;
+  --gb-ui-surface-2: #241d19;
+  --gb-ui-ink: #fff8f3;
+  --gb-ui-muted: #b9aaa1;
+  --gb-ui-border: #3c312b;
+}
+
+@media (min-width: 760px) {
+  .gb-choice-overlay { align-items: center; }
+  .gb-choice-grabber { display: none; }
+  .gb-choice-sheet { border-radius: 24px; }
+}
+
+/* =========================================================
+   GO-BURGER — NAVEGAÇÃO GLOBAL ENTRE TODOS OS HTML
+========================================================= */
+html.gb-navigation-lock,
+html.gb-navigation-lock body {
+  overflow: hidden !important;
+}
+
+.gb-standalone-dock button.gb-more-nav-trigger {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 40px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 13px;
+  background: transparent;
+  color: #cdbfb6;
+  font: 800 10px/1 var(--gb-font) !important;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.gb-standalone-dock button.gb-more-nav-trigger:hover,
+.gb-standalone-dock button.gb-more-nav-trigger.active {
+  background: #ff6500;
+  color: #fff;
+}
+.gb-standalone-dock a i,
+.gb-standalone-dock button i {
+  width: 15px;
+  text-align: center;
+}
+
+.gb-navigation-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483300;
+  display: grid;
+  align-items: end;
+  justify-items: center;
+  padding: 18px;
+  background: rgba(20, 12, 8, .46);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  backdrop-filter: blur(8px);
+  transition: opacity .2s ease, visibility .2s ease;
+}
+.gb-navigation-overlay.open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+.gb-navigation-panel {
+  width: min(760px, 100%);
+  max-height: min(82vh, 780px);
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 28px;
+  background: #fff;
+  color: #21150f;
+  box-shadow: 0 34px 100px rgba(24,12,6,.34);
+  transform: translateY(22px) scale(.985);
+  transition: transform .22s ease;
+}
+.gb-navigation-overlay.open .gb-navigation-panel {
+  transform: translateY(0) scale(1);
+}
+.gb-navigation-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 18px 14px;
+  border-bottom: 1px solid #eee4de;
+  background: linear-gradient(180deg, #fff, #fffaf6);
+}
+.gb-navigation-brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+.gb-navigation-brand > span {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 15px;
+  background: linear-gradient(135deg, #ff6500, #ff9b59);
+  box-shadow: 0 10px 24px rgba(255,101,0,.22);
+  font-size: 23px;
+}
+.gb-navigation-brand small,
+.gb-navigation-brand h2 {
+  display: block;
+  margin: 0;
+}
+.gb-navigation-brand small {
+  color: #a06847;
+  font-size: 8px;
+  font-weight: 900;
+  letter-spacing: .14em;
+}
+.gb-navigation-brand h2 {
+  margin-top: 2px;
+  font-size: 18px;
+  line-height: 1.1;
+}
+.gb-navigation-close {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #eadfd9;
+  border-radius: 13px;
+  background: #fff;
+  color: #21150f;
+  cursor: pointer;
+}
+.gb-navigation-groups {
+  display: grid;
+  gap: 18px;
+  max-height: calc(min(82vh, 780px) - 74px);
+  overflow: auto;
+  padding: 18px;
+  overscroll-behavior: contain;
+}
+.gb-navigation-group h3 {
+  margin: 0 0 9px;
+  color: #8c7568;
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: .10em;
+  text-transform: uppercase;
+}
+.gb-navigation-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+.gb-navigation-grid a {
+  display: grid;
+  grid-template-columns: 42px 1fr auto;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  padding: 11px;
+  border: 1px solid #eee4de;
+  border-radius: 16px;
+  background: #fff;
+  color: #21150f;
+  text-decoration: none;
+  transition: border-color .16s ease, background .16s ease, transform .16s ease;
+}
+.gb-navigation-grid a:hover {
+  border-color: rgba(255,101,0,.38);
+  background: #fffaf6;
+  transform: translateY(-1px);
+}
+.gb-navigation-grid a.active {
+  border-color: rgba(255,101,0,.48);
+  background: rgba(255,101,0,.075);
+}
+.gb-navigation-icon {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 13px;
+  background: #f7f2ee;
+  color: #6d5648;
+}
+.gb-navigation-grid a.active .gb-navigation-icon {
+  background: #ff6500;
+  color: #fff;
+}
+.gb-navigation-copy {
+  min-width: 0;
+}
+.gb-navigation-copy strong,
+.gb-navigation-copy small {
+  display: block;
+}
+.gb-navigation-copy strong {
+  overflow: hidden;
+  font-size: 11px;
+  font-weight: 900;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.gb-navigation-copy small {
+  margin-top: 3px;
+  overflow: hidden;
+  color: #8a7569;
+  font-size: 8.5px;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.gb-navigation-arrow {
+  color: #c1afa5;
+  font-size: 9px;
+}
+
+/* Links adicionados ao menu “Mais” do shell principal */
+.gb-shell-menu-separator {
+  height: 1px;
+  margin: 5px 7px;
+  background: rgba(128,96,78,.14);
+}
+#gbMoreMenu .gb-shell-menu-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 48px;
+  padding: 8px 10px;
+  border-radius: 11px;
+  color: inherit;
+  text-decoration: none;
+}
+#gbMoreMenu .gb-shell-menu-link:hover {
+  background: rgba(255,101,0,.08);
+}
+#gbMoreMenu .gb-shell-menu-link > i {
+  width: 18px;
+  text-align: center;
+  color: #ff6500;
+}
+#gbMoreMenu .gb-shell-menu-link span,
+#gbMoreMenu .gb-shell-menu-link strong,
+#gbMoreMenu .gb-shell-menu-link small {
+  display: block;
+}
+#gbMoreMenu .gb-shell-menu-link strong {
+  font-size: 10px;
+}
+#gbMoreMenu .gb-shell-menu-link small {
+  margin-top: 2px;
+  opacity: .66;
+  font-size: 8px;
+}
+#gbMoreMenu .gb-shell-global-nav {
+  margin-top: 3px;
+}
+
+body.dark .gb-navigation-panel,
+html[data-theme="dark"] .gb-navigation-panel,
+body[data-theme="dark"] .gb-navigation-panel {
+  border-color: rgba(255,255,255,.10);
+  background: #1b1512;
+  color: #fff8f2;
+}
+body.dark .gb-navigation-head,
+html[data-theme="dark"] .gb-navigation-head,
+body[data-theme="dark"] .gb-navigation-head {
+  border-color: rgba(255,255,255,.08);
+  background: #1b1512;
+}
+body.dark .gb-navigation-grid a,
+html[data-theme="dark"] .gb-navigation-grid a,
+body[data-theme="dark"] .gb-navigation-grid a {
+  border-color: rgba(255,255,255,.08);
+  background: #241d19;
+  color: #fff8f2;
+}
+body.dark .gb-navigation-grid a:hover,
+html[data-theme="dark"] .gb-navigation-grid a:hover,
+body[data-theme="dark"] .gb-navigation-grid a:hover {
+  background: #2c211b;
+}
+body.dark .gb-navigation-icon,
+html[data-theme="dark"] .gb-navigation-icon,
+body[data-theme="dark"] .gb-navigation-icon {
+  background: rgba(255,255,255,.07);
+  color: #d8c8be;
+}
+body.dark .gb-navigation-close,
+html[data-theme="dark"] .gb-navigation-close,
+body[data-theme="dark"] .gb-navigation-close {
+  border-color: rgba(255,255,255,.10);
+  background: #241d19;
+  color: #fff;
+}
+
+@media (max-width: 720px) {
+  .gb-standalone-dock button.gb-more-nav-trigger {
+    flex: 1;
+    justify-content: center;
+    padding: 0 7px;
+  }
+  .gb-standalone-dock button.gb-more-nav-trigger span {
+    display: none;
+  }
+  .gb-navigation-overlay {
+    padding: 0;
+  }
+  .gb-navigation-panel {
+    width: 100%;
+    max-height: 88vh;
+    border-right: 0;
+    border-bottom: 0;
+    border-left: 0;
+    border-radius: 26px 26px 0 0;
+  }
+  .gb-navigation-groups {
+    max-height: calc(88vh - 74px);
+    padding-bottom: calc(24px + env(safe-area-inset-bottom));
+  }
+  .gb-navigation-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================================================
+   GO-BURGER 2026 — NOVA IDENTIDADE GLOBAL / PACOTE 44
+   Motion system, superfícies premium e microinterações
+========================================================= */
+:root{
+  --gb-brand:#ff6500;
+  --gb-brand-2:#ff8f3d;
+  --gb-brand-3:#ffbd75;
+  --gb-brand-deep:#b83b00;
+  --gb-night:#120b08;
+  --gb-night-2:#1d120d;
+  --gb-cream:#fff8f2;
+  --gb-glow:0 0 0 1px rgba(255,101,0,.08),0 18px 55px rgba(255,101,0,.14);
+  --gb-ease-spring:cubic-bezier(.2,.9,.2,1.08);
+  --gb-ease:cubic-bezier(.22,1,.36,1);
+  --gb-pointer-x:50vw;
+  --gb-pointer-y:20vh;
+}
+
+html{scrollbar-color:rgba(255,101,0,.42) transparent;scrollbar-width:thin}
+*::-webkit-scrollbar{width:9px;height:9px}
+*::-webkit-scrollbar-track{background:transparent}
+*::-webkit-scrollbar-thumb{border:2px solid transparent;border-radius:999px;background:linear-gradient(#ff8f3d,#ff6500);background-clip:padding-box}
+
+button,a,input,select,textarea,[role="button"]{-webkit-tap-highlight-color:transparent}
+button,a,[role="button"]{transition:transform .24s var(--gb-ease),box-shadow .24s var(--gb-ease),background .24s ease,border-color .24s ease,color .24s ease,opacity .24s ease}
+button:active:not(:disabled),a:active{transform:scale(.975)}
+
+html.gb-motion-js .gb-reveal{opacity:0;transform:translateY(18px) scale(.988);filter:blur(3px)}
+html.gb-motion-js .gb-reveal.gb-inview{opacity:1;transform:none;filter:none;transition:opacity .58s var(--gb-ease),transform .7s var(--gb-ease),filter .5s ease;transition-delay:var(--gb-reveal-delay,0ms)}
+.gb-press{animation:gbPress .28s var(--gb-ease)}
+
+.gb-motion-accent{position:relative;isolation:isolate}
+.gb-motion-accent::after{content:"";position:absolute;inset:-1px;z-index:-1;border-radius:inherit;background:linear-gradient(115deg,transparent 15%,rgba(255,255,255,.22) 44%,transparent 72%);background-size:240% 100%;opacity:0;pointer-events:none}
+.gb-motion-accent:hover::after{opacity:1;animation:gbSheen 1.05s ease}
+
+input:focus,select:focus,textarea:focus{transition:border-color .2s ease,box-shadow .2s ease,background .2s ease}
+
+.gb-brand-pulse{animation:gbBrandPulse 3.2s ease-in-out infinite}
+
+@keyframes gbPress{50%{transform:scale(.955)}}
+@keyframes gbSheen{from{background-position:180% 0}to{background-position:-80% 0}}
+@keyframes gbBrandPulse{0%,100%{filter:drop-shadow(0 0 0 rgba(255,101,0,0))}50%{filter:drop-shadow(0 8px 18px rgba(255,101,0,.32))}}
+@keyframes gbFloatSoft{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(0,-8px,0)}}
+@keyframes gbGlowBreath{0%,100%{opacity:.45;transform:scale(.96)}50%{opacity:.9;transform:scale(1.05)}}
+@keyframes gbGradientMove{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+
+@media (prefers-reduced-motion:reduce){
+  html.gb-motion-js .gb-reveal,html.gb-motion-js .gb-reveal.gb-inview{opacity:1!important;transform:none!important;filter:none!important;transition:none!important}
+  .gb-brand-pulse,.gb-motion-accent:hover::after{animation:none!important}
+  *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+}
+
+/* =========================================================
+   GO-BURGER WEB 1.0 · VISUAL 57 · MOTION DESIGN SYSTEM
+   Camada global de acabamento, interação e acessibilidade.
+========================================================= */
+:root{
+  --gb-glow-orange:rgba(255,101,0,.24);
+  --gb-glow-warm:rgba(255,174,94,.16);
+  --gb-glass:rgba(255,255,255,.72);
+  --gb-motion-spring:cubic-bezier(.16,1,.3,1);
+}
+::selection{background:rgba(255,101,0,.22);color:inherit}
+:where(button,a,input,select,textarea,[role="button"]):focus-visible{outline:3px solid rgba(255,101,0,.32)!important;outline-offset:3px!important;box-shadow:0 0 0 6px rgba(255,101,0,.08)!important}
+:where(button,a,[role="button"]){transition:transform .28s var(--gb-motion-spring),box-shadow .28s ease,border-color .28s ease,background .28s ease,color .28s ease}
+:where(.panel,.sa-panel,.card,.glass-card,.product-card,.store-card,.order-card,.delivery-card,.driver-form-card,.driver-auth-card,.legal-card,.help-card){transform:translateZ(0)}
+.gb-motion-accent{overflow:hidden}
+.gb-motion-accent::before{content:"";position:absolute;inset:auto -35% -80%;height:130%;border-radius:50%;background:radial-gradient(circle,rgba(255,101,0,.18),transparent 67%);opacity:0;transform:translateY(22%);transition:.42s var(--gb-motion-spring);pointer-events:none;z-index:-1}
+.gb-motion-accent:hover::before{opacity:1;transform:translateY(0)}
+.gb-reveal{will-change:transform,opacity,filter}
+.gb-standalone-dock{border:1px solid rgba(255,255,255,.13)!important;background:color-mix(in srgb,#17100c 86%,transparent)!important;box-shadow:0 20px 60px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.08)!important;backdrop-filter:blur(28px) saturate(150%)!important}
+.gb-standalone-dock a.active{box-shadow:0 8px 26px rgba(255,101,0,.28)}
+.gb-update-chip{box-shadow:0 18px 46px rgba(255,101,0,.24)!important;animation:gbUpdateAttention 2.8s ease-in-out infinite}
+@keyframes gbUpdateAttention{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@media(prefers-reduced-motion:reduce){.gb-update-chip{animation:none!important}}
+
+
+
+/* =========================================================
+   GO BURGER · PACOTE 58 · REDESIGN REAL
+   Global 2026 visual language — strong, visible, brand-first.
+========================================================= */
+:root{
+  --gb58-orange:#ff6500;
+  --gb58-orange-2:#ff8d3a;
+  --gb58-orange-dark:#c93c00;
+  --gb58-ink:#17100c;
+  --gb58-ink-2:#24150f;
+  --gb58-paper:#fff8f2;
+  --gb58-paper-2:#fff1e6;
+  --gb58-line:rgba(46,24,14,.10);
+  --gb58-radius-sm:14px;
+  --gb58-radius:22px;
+  --gb58-radius-lg:32px;
+  --gb58-shadow:0 18px 50px rgba(53,25,12,.10);
+  --gb58-shadow-lg:0 34px 90px rgba(36,16,8,.18);
+  --gb58-ease:cubic-bezier(.16,1,.3,1);
+}
+html{background:var(--gb58-paper);scrollbar-color:var(--gb58-orange) #eaded4}
+body{font-feature-settings:"ss01" 1,"cv02" 1;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}
+body::selection,*::selection{background:rgba(255,101,0,.25);color:var(--gb58-ink)}
+:where(button,a,[role="button"]){-webkit-tap-highlight-color:transparent}
+:where(button,a,[role="button"]):active{transform:translateY(1px) scale(.985)}
+:where(input,select,textarea){border-radius:14px!important;transition:border-color .22s ease,box-shadow .22s ease,background .22s ease,transform .22s ease}
+:where(input,select,textarea):focus{border-color:rgba(255,101,0,.48)!important;box-shadow:0 0 0 4px rgba(255,101,0,.10)!important}
+:where(.btn,.sa-btn,.driver-btn,.driver-primary-btn,.gb-growth-btn,.gb31-btn,.gbp2-btn){font-weight:850!important;letter-spacing:-.01em}
+:where(.card,.panel,.sa-panel,.store-card,.product-card,.order-card,.driver-card,.gb-growth-card,.gb31-panel,.gbp2-card){backface-visibility:hidden}
+html.gb-motion-js .gb-reveal{opacity:0;transform:translateY(26px) scale(.985);filter:blur(7px)}
+html.gb-motion-js .gb-reveal.gb-inview{opacity:1;transform:none;filter:none;transition:opacity .65s var(--gb58-ease),transform .65s var(--gb58-ease),filter .5s ease}
+.gb-motion-accent::after{background:linear-gradient(110deg,transparent 18%,rgba(255,255,255,.44) 45%,transparent 70%);background-size:250% 100%}
+@keyframes gb58Rise{from{opacity:0;transform:translateY(22px) scale(.985)}to{opacity:1;transform:none}}
+@keyframes gb58Glow{0%,100%{box-shadow:0 0 0 0 rgba(255,101,0,.0)}50%{box-shadow:0 0 0 12px rgba(255,101,0,.0),0 16px 42px rgba(255,101,0,.20)}}
+@keyframes gb58Float{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+@keyframes gb58Sweep{0%{transform:translateX(-135%)}60%,100%{transform:translateX(135%)}}
+@media(prefers-reduced-motion:reduce){html.gb-motion-js .gb-reveal,html.gb-motion-js .gb-reveal.gb-inview{opacity:1!important;transform:none!important;filter:none!important;transition:none!important}}
+
+/* =========================================================
+   PACOTE 61 · RESILIÊNCIA GLOBAL DE LAYOUT E ACESSIBILIDADE
+========================================================= */
+html,body{max-width:100%;overflow-x:clip}
+:where(img,svg,video,canvas){max-width:100%}
+:where(img,video){height:auto}
+:where(button,a,[role="button"],input,select,textarea){touch-action:manipulation}
+:where(input,select,textarea,button){max-width:100%}
+:where(.table-wrap,.data-table-wrap,.sa-table-wrap,.gbp2-table-wrap){max-width:100%;overflow-x:auto;overscroll-behavior-inline:contain;-webkit-overflow-scrolling:touch}
+:where(.modal-card,.sa-modal-card,.gbp2-modal-card,.gb31-modal-card,.driver-form-card){overscroll-behavior:contain}
+
+@media (pointer:coarse),(max-width:700px){
+  :where(button,.btn,.sa-btn,.driver-btn,.driver-primary-btn,.driver-outline-btn,.gb-growth-btn,.gb31-btn,.gbp2-btn,a[role="button"]){min-height:44px}
+  :where(.gb-theme-toggle,.icon-btn,.circle-btn,.sa-icon-btn){min-width:44px;min-height:44px}
+}
+
+@supports not (backdrop-filter:blur(1px)){
+  :where(.gb-topbar,.topbar,.market-topbar,.sa-topbar,.driver-topbar,.driver-signup-topbar,.legal-topbar,.bottom-nav,.mobile-nav){background-color:#1f1814!important}
+  html[data-theme="light"] :where(.gb-topbar,.topbar,.market-topbar,.sa-topbar,.driver-signup-topbar,.legal-topbar){background-color:#fffaf6!important}
+}
+
+@media (forced-colors:active){
+  :where(button,a,input,select,textarea,[role="button"]){forced-color-adjust:auto}
+  :where(.badge,.status-pill,.delivery-status,.gb-chip){border:1px solid currentColor}
+}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto!important}
+  *,*::before,*::after{animation-delay:0ms!important;animation-duration:.001ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-delay:0ms!important;transition-duration:.001ms!important}
+  :where(.gb-reveal,.gb-reveal.gb-inview){filter:none!important;opacity:1!important;transform:none!important}
+}
+
+/* =========================================================
+   PACOTE 62 · CONTROLES COMPACTOS E CONTADORES FLUTUANTES
+========================================================= */
+:where(.notification-trigger,.notification-button,.cart-button){
+  position:relative;
+  overflow:visible!important;
+  isolation:isolate;
+}
+:where(.notification-trigger,.notification-button,.cart-button).gb-motion-accent::before,
+:where(.notification-trigger,.notification-button,.cart-button).gb-motion-accent::after{display:none!important}
+:where(.badge,.notification-badge){
+  z-index:20;
+  line-height:1;
+  white-space:nowrap;
+  font-variant-numeric:tabular-nums;
+}
+:where(.top-actions,.topbar-actions,.sa-top-actions,.filter-controls,.toolbar-actions,.page-actions,.panel-head,.sa-panel-head){min-width:0}
+:where(.toolbar-actions,.page-actions,.panel-head,.sa-panel-head){flex-wrap:wrap}
+
+/* =========================================================
+   PACOTES 90–108 · SHARED UI / A11Y / MOBILE
+========================================================= */
+html{scrollbar-gutter:stable}
+body{overflow-x:clip}
+.gb-consent{max-height:min(82dvh,620px);overflow:auto;overscroll-behavior:contain}
+.gb-global-status{top:max(10px,env(safe-area-inset-top))}
+.gb-standalone-dock{bottom:max(12px,env(safe-area-inset-bottom))}
+@media(pointer:coarse){.gb-consent button,.gb-standalone-dock a{min-height:46px}}
+@media(max-width:560px){.gb-consent{left:10px;right:10px;bottom:max(10px,env(safe-area-inset-bottom));width:auto}}
+

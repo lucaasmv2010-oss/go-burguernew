@@ -1,0 +1,143 @@
+{
+  "id": "./burger/index.html",
+  "name": "Go-burger",
+  "short_name": "Go-burger",
+  "description": "Encontre hamburguerias, faça pedidos, acompanhe entregas e gerencie sua operação em uma só plataforma.",
+  "start_url": "./burger/index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#101216",
+  "theme_color": "#f04c35",
+  "lang": "pt-BR",
+  "categories": [
+    "food",
+    "shopping",
+    "business"
+  ],
+  "icons": [
+    {
+      "src": "./assets/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./assets/icons/icon-maskable-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "./assets/icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "display_override": [
+    "window-controls-overlay",
+    "standalone",
+    "minimal-ui"
+  ],
+  "shortcuts": [
+    {
+      "name": "Explorar hamburguerias",
+      "short_name": "Explorar",
+      "url": "./burger/index.html?modo=cliente",
+      "icons": [
+        {
+          "src": "./assets/icons/icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Meus pedidos",
+      "short_name": "Pedidos",
+      "url": "./cliente/cliente.html#pedidos",
+      "icons": [
+        {
+          "src": "./assets/icons/icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Go-burger Parceiros",
+      "short_name": "Parceiros",
+      "url": "./burger/index.html?modo=admin",
+      "icons": [
+        {
+          "src": "./assets/icons/icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Entregador",
+      "short_name": "Entregador",
+      "url": "./entregador/entregador.html",
+      "icons": [
+        {
+          "src": "./assets/icons/icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Quero ser entregador",
+      "short_name": "Cadastro entrega",
+      "url": "./entregador/cadastro.html",
+      "icons": [
+        {
+          "src": "./assets/icons/icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    }
+  ],
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  },
+  "prefer_related_applications": false,
+  "screenshots": [
+    {
+      "src": "./assets/screenshots/marketplace-narrow.png",
+      "sizes": "405x720",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Marketplace Go-burger no celular"
+    },
+    {
+      "src": "./assets/screenshots/marketplace-wide.png",
+      "sizes": "960x540",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Marketplace Go-burger em tela ampla"
+    }
+  ],
+  "share_target": {
+    "action": "./burger/index.html",
+    "method": "GET",
+    "enctype": "application/x-www-form-urlencoded",
+    "params": {
+      "title": "share_title",
+      "text": "share_text",
+      "url": "share_url"
+    }
+  },
+  "dir": "ltr",
+  "iarc_rating_id": ""
+}

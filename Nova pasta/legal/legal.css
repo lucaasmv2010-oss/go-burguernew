@@ -1,0 +1,158 @@
+
+:root {
+  --gb-primary: #ff6500;
+  --gb-bg: #f7f3ef;
+  --gb-surface: #ffffff;
+  --gb-text: #21150f;
+  --gb-muted: #76675f;
+  --gb-border: #eadfd8;
+  --gb-dark: #17100c;
+  --gb-shadow: 0 18px 60px rgba(54, 27, 13, .10);
+  font-family: "Plus Jakarta Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at 10% 0%, rgba(255, 101, 0, .08), transparent 28%), var(--gb-bg);
+  color: var(--gb-text);
+  line-height: 1.72;
+}
+a { color: inherit; }
+.legal-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+  padding: 14px clamp(18px, 4vw, 54px);
+  background: rgba(23, 16, 12, .96);
+  color: #fff;
+  backdrop-filter: blur(18px);
+}
+.legal-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.legal-brand-mark {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--gb-primary), #ff934d);
+  font-size: 21px;
+}
+.legal-brand strong, .legal-brand small { display: block; }
+.legal-brand small { margin-top: 2px; color: #c9bdb6; font-size: 10px; letter-spacing: .08em; }
+.legal-back {
+  padding: 10px 14px;
+  border: 1px solid rgba(255, 255, 255, .12);
+  border-radius: 12px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 800;
+}
+.legal-shell { width: min(980px, calc(100% - 32px)); margin: 42px auto 80px; }
+.legal-hero {
+  padding: clamp(28px, 5vw, 54px);
+  border-radius: 30px;
+  background: linear-gradient(145deg, #21150f, #120c09);
+  color: #fff;
+  box-shadow: var(--gb-shadow);
+}
+.legal-kicker {
+  display: inline-flex;
+  padding: 7px 10px;
+  border: 1px solid rgba(255, 255, 255, .11);
+  border-radius: 999px;
+  color: #ffb480;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: .12em;
+}
+.legal-hero h1 { margin: 15px 0 10px; font-size: clamp(30px, 6vw, 54px); line-height: 1.03; }
+.legal-hero p { max-width: 760px; margin: 0; color: #d6c8bf; }
+.legal-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+.legal-meta span {
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, .06);
+  color: #e5d9d2;
+  font-size: 11px;
+}
+.legal-card {
+  margin-top: 18px;
+  padding: clamp(22px, 4vw, 38px);
+  border: 1px solid var(--gb-border);
+  border-radius: 24px;
+  background: var(--gb-surface);
+  box-shadow: 0 10px 34px rgba(54, 27, 13, .05);
+}
+.legal-card h2 { margin: 0 0 12px; font-size: 21px; }
+.legal-card p, .legal-card li { color: #51433b; font-size: 14px; }
+.legal-notice {
+  padding: 16px 18px;
+  border-left: 4px solid var(--gb-primary);
+  border-radius: 12px;
+  background: #fff3eb;
+  color: #5f3a25;
+  font-size: 13px;
+}
+.legal-footer { margin-top: 26px; text-align: center; color: var(--gb-muted); font-size: 11px; }
+.legal-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 12px; }
+.legal-links a { font-weight: 800; color: var(--gb-primary); }
+@media (max-width: 640px) {
+  .legal-topbar { padding: 10px 14px; }
+  .legal-back { padding: 9px 10px; }
+  .legal-brand small { display: none; }
+}
+
+/* =========================================================
+   CENTRAL JURÍDICA · VISUAL 57 · TRUST EXPERIENCE
+========================================================= */
+body{background-image:radial-gradient(circle at 82% 1%,rgba(255,101,0,.07),transparent 27rem),radial-gradient(circle at 8% 30%,rgba(255,193,136,.05),transparent 24rem);background-attachment:fixed}
+.legal-topbar,.legal-header{backdrop-filter:blur(24px) saturate(145%)}
+.legal-hero{position:relative;overflow:hidden;box-shadow:0 28px 75px rgba(52,25,12,.12)}.legal-hero::after{content:"";position:absolute;width:300px;height:300px;right:-100px;top:-150px;border-radius:50%;background:radial-gradient(circle,rgba(255,101,0,.17),transparent 68%);animation:legalAura57 7s ease-in-out infinite;pointer-events:none}
+.legal-card,.legal-notice,.trust-card{transition:transform .36s cubic-bezier(.16,1,.3,1),box-shadow .36s ease,border-color .3s ease}.legal-card:hover,.trust-card:hover{transform:translateY(-4px);border-color:rgba(255,101,0,.15);box-shadow:0 20px 52px rgba(52,25,12,.10)}
+.legal-card h2{letter-spacing:-.025em}.legal-card a{transition:.25s ease}.legal-card a:hover{color:#ff6500}
+@keyframes legalAura57{0%,100%{transform:translate(0,0) scale(.95)}50%{transform:translate(-28px,24px) scale(1.08)}}
+@media(prefers-reduced-motion:reduce){.legal-hero::after{animation:none!important}}
+
+
+
+/* =========================================================
+   PACOTE 58 · LEGAL REDESIGN — PREMIUM PAPER
+========================================================= */
+body{background:radial-gradient(circle at 8% 0%,rgba(255,101,0,.10),transparent 24rem),linear-gradient(180deg,#fff9f4,#fffdfb 50%,#fff3e9)!important;color:#28160e!important}.legal-topbar{top:10px!important;width:min(1080px,calc(100% - 20px))!important;margin:auto!important;padding:10px 14px!important;border-radius:20px!important;background:rgba(255,252,249,.86)!important;border:1px solid rgba(45,21,10,.08)!important;box-shadow:0 18px 52px rgba(46,21,9,.09)!important;backdrop-filter:blur(24px)!important}.legal-brand-mark{width:44px!important;height:44px!important;border-radius:15px!important;background:linear-gradient(145deg,#ffa15a,#ff6500)!important;box-shadow:0 10px 25px rgba(255,101,0,.28)!important}.legal-back{min-height:42px!important;border-radius:13px!important;background:#fff!important;border:1px solid rgba(44,20,10,.08)!important}.legal-shell{width:min(1040px,calc(100% - 28px))!important;padding-top:96px!important}.legal-hero{padding:46px!important;border-radius:34px!important;background:radial-gradient(circle at 82% 30%,rgba(255,133,43,.34),transparent 20rem),linear-gradient(135deg,#17100c,#2a160e)!important;color:#fff!important;box-shadow:0 32px 86px rgba(41,18,7,.24)!important}.legal-hero h1{font-size:clamp(40px,5vw,62px)!important;line-height:.98!important;letter-spacing:-.06em!important}.legal-hero p{color:#d5c4b9!important;line-height:1.7!important}.legal-kicker{color:#ffbd92!important}.legal-card{padding:28px!important;border-radius:24px!important;background:#fff!important;border:1px solid rgba(43,20,10,.08)!important;box-shadow:0 16px 44px rgba(47,21,9,.08)!important}.legal-card h2{font-size:24px!important;letter-spacing:-.045em!important}.legal-links a{border-radius:16px!important;background:#fff8f2!important;border:1px solid rgba(45,22,11,.08)!important}.legal-links a:hover{transform:translateX(6px)!important;background:#17100c!important;color:#fff!important}.legal-notice{border-radius:18px!important;background:#fff0e4!important;border-color:rgba(255,101,0,.18)!important}
+@media(max-width:680px){.legal-topbar{top:6px!important;width:calc(100% - 12px)!important;border-radius:17px!important}.legal-shell{width:calc(100% - 18px)!important;padding-top:82px!important}.legal-hero{padding:32px 22px!important;border-radius:27px!important}.legal-hero h1{font-size:40px!important}.legal-card{padding:20px!important;border-radius:20px!important}}
+
+/* GO-BURGER P89 · visual dos documentos jurídicos sem alterar o HTML versionado */
+.gb-legal-page{background:var(--gb89-bg,#f2efe9)!important;color:var(--gb89-ink,#17181c)!important}
+.gb-legal-page .legal-topbar{background:color-mix(in srgb,var(--gb89-surface-solid,#fffdf9) 90%,transparent)!important;border-color:var(--gb89-line,rgba(23,24,28,.10))!important;backdrop-filter:blur(22px)}
+.gb-legal-page .legal-shell{width:min(1120px,calc(100% - 34px))!important;max-width:none!important}
+.gb-legal-page .legal-hero{border-radius:32px!important;border:0!important;padding:42px!important;color:#fff!important;background:radial-gradient(circle at 85% 18%,rgba(255,200,87,.26),transparent 18rem),linear-gradient(135deg,#17181c,#35252a 65%,#5f2e27)!important;box-shadow:0 34px 90px rgba(28,24,20,.15)!important}
+.gb-legal-page .legal-card,.gb-legal-page .legal-paper{border-radius:22px!important;border:1px solid var(--gb89-line,rgba(23,24,28,.10))!important;background:var(--gb89-surface-solid,#fffdf9)!important;color:var(--gb89-ink,#17181c)!important;box-shadow:0 4px 16px rgba(28,24,20,.06)!important}
+html[data-theme="dark"] .gb-legal-page{--gb89-bg:#0d0f13;--gb89-surface-solid:#181b21;--gb89-ink:#f7f5f2;--gb89-line:rgba(255,255,255,.09)}
+
+/* =========================================================
+   PACOTES 90–108 · LEGAL / LEITURA / DARK MODE
+   Mantido no CSS externo para preservar hashes dos documentos versionados.
+========================================================= */
+:root{--gb108-legal-bg:#f4f1eb;--gb108-legal-surface:#fffdfa;--gb108-legal-ink:#17181d;--gb108-legal-muted:#6f6d69;--gb108-legal-line:rgba(23,24,29,.10);--gb108-legal-brand:#f04c35}
+html[data-theme="dark"]{--gb108-legal-bg:#101216;--gb108-legal-surface:#1a1d23;--gb108-legal-ink:#f7f5f1;--gb108-legal-muted:#aaa59f;--gb108-legal-line:rgba(255,255,255,.09);--gb108-legal-brand:#ff6650;color-scheme:dark}
+body.gb-legal-page{background:var(--gb108-legal-bg)!important;color:var(--gb108-legal-ink)!important}
+body.gb-legal-page .legal-topbar{background:color-mix(in srgb,var(--gb108-legal-surface) 92%,transparent)!important;border-bottom:1px solid var(--gb108-legal-line)!important;backdrop-filter:blur(18px)}
+body.gb-legal-page .legal-shell{max-width:980px!important}
+body.gb-legal-page .legal-card{border:1px solid var(--gb108-legal-line)!important;border-radius:22px!important;background:var(--gb108-legal-surface)!important;box-shadow:0 10px 30px rgba(0,0,0,.05)!important}
+body.gb-legal-page .legal-card p,body.gb-legal-page .legal-card li{color:var(--gb108-legal-muted)!important;line-height:1.75!important}
+body.gb-legal-page .legal-card a{color:var(--gb108-legal-brand)!important;text-underline-offset:3px}
+body.gb-legal-page :focus-visible{outline:3px solid color-mix(in srgb,var(--gb108-legal-brand) 55%,#fff)!important;outline-offset:3px!important}
+@media(max-width:620px){body.gb-legal-page .legal-shell{padding-inline:14px!important}.legal-topbar{padding-top:max(12px,env(safe-area-inset-top))!important}}
+
+
+
+/* =========================================================
+   GO-BURGER JURÍDICO 1.2 · 12/08/2026
+========================================================= */
+.legal-top-actions{display:flex;align-items:center;gap:8px}.legal-notice--warning{border-left-color:#d97706!important;background:color-mix(in srgb,#f59e0b 10%,var(--gb108-legal-surface,#fff))!important;color:var(--gb108-legal-ink,#2a2018)!important}.legal-card ul{margin:10px 0 0;padding-left:20px}.legal-card li+li{margin-top:7px}.legal-doc-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.legal-doc-grid>a{display:grid;gap:5px;padding:16px;border:1px solid var(--gb108-legal-line);border-radius:16px;text-decoration:none;background:color-mix(in srgb,var(--gb108-legal-surface) 92%,var(--gb108-legal-brand) 8%);transition:transform .2s ease,border-color .2s ease}.legal-doc-grid>a:hover{transform:translateY(-2px);border-color:color-mix(in srgb,var(--gb108-legal-brand) 45%,var(--gb108-legal-line))}.legal-doc-grid strong{font-size:14px}.legal-doc-grid span{font-size:12px;color:var(--gb108-legal-muted)}.legal-status-list{display:grid;gap:10px}.legal-status-list>div{display:grid;grid-template-columns:max-content 1fr;gap:10px;align-items:start;padding:12px;border:1px solid var(--gb108-legal-line);border-radius:14px}.legal-status-list p{margin:0!important}.legal-status{display:inline-flex;align-items:center;justify-content:center;min-height:26px;padding:5px 8px;border-radius:999px;font-size:9px;font-weight:900;letter-spacing:.05em}.legal-status--ok{background:#dcfce7;color:#166534}.legal-status--pending{background:#fef3c7;color:#92400e}html[data-theme="dark"] .legal-status--ok{background:rgba(34,197,94,.14);color:#86efac}html[data-theme="dark"] .legal-status--pending{background:rgba(245,158,11,.14);color:#fcd34d}@media(max-width:640px){.legal-doc-grid{grid-template-columns:1fr}.legal-status-list>div{grid-template-columns:1fr}.legal-top-actions{gap:5px}.legal-back{font-size:11px}}

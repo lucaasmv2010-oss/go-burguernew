@@ -1,0 +1,56 @@
+/* Go Burger P607 — MFA field visibility / scroll-safe gate */
+.sa-gate{
+  overflow-x:hidden!important;
+  overflow-y:auto!important;
+  overscroll-behavior:contain;
+  scrollbar-gutter:stable;
+}
+.sa-gate-card{
+  width:min(92vw,560px)!important;
+  max-height:calc(100dvh - 32px)!important;
+  overflow-x:hidden!important;
+  overflow-y:auto!important;
+  overscroll-behavior:contain;
+  scrollbar-width:thin;
+  scrollbar-color:rgba(255,111,55,.45) transparent;
+}
+.sa-gate-card::-webkit-scrollbar{width:8px}
+.sa-gate-card::-webkit-scrollbar-track{background:transparent}
+.sa-gate-card::-webkit-scrollbar-thumb{background:rgba(255,111,55,.4);border-radius:99px}
+.sa-mfa-panel{padding-bottom:4px}
+.sa-mfa-form{scroll-margin-block:24px}
+.sa-mfa-form label{font-size:.92rem}
+.sa-mfa-form input{
+  min-height:52px;
+  font-size:1.12rem;
+  letter-spacing:.28em;
+}
+.sa-mfa-form input::placeholder{letter-spacing:.2em;color:#74665e}
+.sa-mfa-form .sa-btn{min-height:48px}
+@media (max-height:860px){
+  .sa-gate{place-items:start center!important;padding-top:16px!important;padding-bottom:16px!important}
+  .sa-gate-card{margin:0 auto!important;max-height:calc(100dvh - 32px)!important;padding:26px!important}
+  .sa-gate-logo{width:58px!important;height:58px!important;margin-bottom:10px!important;font-size:30px!important;border-radius:18px!important}
+  .sa-gate-card h1{font-size:25px!important;margin:7px 0!important}
+  .sa-gate-card>p{margin-bottom:12px!important}
+  .sa-mfa-panel{margin-top:10px!important;gap:10px!important}
+  .sa-mfa-qr-wrap{padding:9px!important}
+  .sa-mfa-qr{width:min(176px,26vh,56vw)!important;padding:7px!important}
+  .sa-mfa-secret{padding:9px 11px!important}
+  .sa-mfa-security-note{font-size:.75rem!important}
+}
+@media (max-width:600px){
+  .sa-gate{padding:10px!important;place-items:start center!important}
+  .sa-gate-card{width:100%!important;max-height:calc(100dvh - 20px)!important;padding:20px 14px!important;border-radius:24px!important}
+  .sa-mfa-panel{width:100%!important}
+  .sa-mfa-qr{width:min(190px,48vw,25vh)!important}
+  .sa-mfa-form input{font-size:1.05rem!important;min-height:54px!important}
+}
+
+.sa-mfa-form-primary{padding:12px;border:1px solid rgba(255,111,55,.32);border-radius:16px;background:rgba(255,111,55,.07)}
+.sa-mfa-code-help{display:block;margin-top:-2px;color:#a99a91;font-size:.77rem;line-height:1.45;text-align:center}
+.sa-mfa-manual{border:1px solid rgba(255,255,255,.08);border-radius:14px;background:rgba(0,0,0,.16);overflow:hidden}
+.sa-mfa-manual summary{cursor:pointer;padding:11px 13px;color:#cbbdb4;font-size:.8rem;font-weight:700;text-align:center;list-style:none}
+.sa-mfa-manual summary::-webkit-details-marker{display:none}
+.sa-mfa-manual[open] summary{border-bottom:1px solid rgba(255,255,255,.07)}
+.sa-mfa-manual .sa-mfa-secret{border:0;border-radius:0;background:transparent}

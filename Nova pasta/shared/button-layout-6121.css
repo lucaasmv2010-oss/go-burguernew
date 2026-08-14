@@ -1,0 +1,275 @@
+/* ========================================================================
+   GO BURGER WEB 2.0 · P612.1 · BUTTON / ACTION LAYOUT STABILITY
+   ------------------------------------------------------------------------
+   Camada final de geometria dos controles. Carregada depois dos estilos
+   históricos (e depois do Finance Ready P612 no Super Admin).
+   Objetivos:
+   - nenhum botão textual cortado por altura fixa;
+   - nenhuma action-bar extrapolando o container;
+   - controles compactos não herdarem o min-height global de 44px;
+   - modais sempre caberem na viewport/iframe;
+   - footer do modal de produto nunca ficar parcialmente fora da tela;
+   - comportamento consistente em Web e espelho app-store.
+   ======================================================================== */
+
+:root{
+  --gb6121-control-h:44px;
+  --gb6121-gap:8px;
+  --gb6121-safe-bottom:max(0px,env(safe-area-inset-bottom));
+  --gb6121-safe-right:max(0px,env(safe-area-inset-right));
+  --gb6121-safe-left:max(0px,env(safe-area-inset-left));
+}
+
+/* 01 · CONTRATO GEOMÉTRICO DOS BOTÕES ----------------------------------- */
+:where(button,.btn,.sa-btn,.gbp2-btn,.gb31-btn,.gb-growth-btn,[role="button"]){
+  box-sizing:border-box;
+  max-width:100%;
+  min-width:0;
+  vertical-align:middle;
+}
+:where(.btn,.sa-btn,.gbp2-btn,.gb31-btn,.gb-growth-btn){
+  height:auto!important;
+  min-height:var(--gb6121-control-h)!important;
+  line-height:1.2!important;
+  padding-top:9px;
+  padding-bottom:9px;
+}
+:where(button,.btn,.sa-btn,.gbp2-btn,.gb31-btn,.gb-growth-btn)>i{
+  flex:0 0 auto;
+}
+:where(button,.btn,.sa-btn,.gbp2-btn,.gb31-btn,.gb-growth-btn)>:where(span,strong,b){
+  min-width:0;
+}
+
+/* Controles explicitamente compactos: não devem crescer para 44px e sair
+   do card/toolbar por causa do contrato global de acessibilidade da P611. */
+:where(
+  .modal-close,.sa-modal-close,.gbp2-modal-close,.gb31-close,
+  .favorite-button,.favorite-float,.product-footer button,.qty-control button,
+  .inline-qty button,.banner-dots button,.star-picker button,
+  .sa-banner-actions button,.sa-team-actions button,
+  .stock-card-actions button,.presence-url-preview button,
+  .preview-device-switch button,.public-top-actions button
+){
+  min-height:0!important;
+  flex:0 0 auto;
+}
+
+/* 02 · ACTION BARS: SEM ESTOURO / SEM SOBREPOSIÇÃO ----------------------- */
+:where(
+  .sa-page-actions,.sa-hero-actions,.sa-modal-actions,.sa-team-actions,
+  .sa-banner-actions,.gb31-hero-actions,.gb-growth-actions,
+  .gb-finance-form-actions,.modal-actions,.form-actions,.card-actions,
+  .panel-actions,.toolbar-actions,.redemption-actions
+){
+  min-width:0;
+  max-width:100%;
+  flex-wrap:wrap;
+  align-items:center;
+  row-gap:var(--gb6121-gap);
+}
+:where(.sa-page-intro,.sa-panel-head,.section-head,.page-toolbar,.gb31-panel-head){
+  min-width:0;
+  max-width:100%;
+}
+:where(.sa-page-actions,.sa-hero-actions,.gb31-hero-actions,.gb-growth-actions) > :where(button,.btn,.sa-btn,.gb31-btn,.gb-growth-btn){
+  flex:0 1 auto;
+}
+
+/* 03 · SUPER ADMIN ------------------------------------------------------- */
+body.gb-superadmin-page .sa-page-intro{
+  min-width:0!important;
+  max-width:100%!important;
+  padding-inline:1px;
+}
+body.gb-superadmin-page .sa-page-actions{
+  max-width:100%!important;
+  margin-inline-start:auto;
+  justify-content:flex-end;
+}
+body.gb-superadmin-page .sa-page-actions .sa-btn{
+  min-width:max-content;
+}
+body.gb-superadmin-page .sa-panel-head{
+  flex-wrap:wrap;
+}
+body.gb-superadmin-page :where(.sa-main,.sa-page,.sa-panel,.gb-sa-card){
+  max-width:100%;
+}
+body.gb-superadmin-page .gb-sa-card :where(.sa-btn,button){
+  max-width:100%;
+}
+
+/* Evita que sombras/controles na extremidade direita pareçam cortados. */
+body.gb-superadmin-page .sa-page{
+  padding-inline:2px;
+}
+
+/* 04 · CLIENTE: MODAL DE PRODUTO ----------------------------------------- */
+body.gb-client-page .modal{
+  overflow:auto!important;
+  overscroll-behavior:contain;
+}
+body.gb-client-page .modal.active{
+  place-items:center;
+}
+body.gb-client-page .modal-card{
+  margin:auto;
+}
+body.gb-client-page #productModal{
+  padding:max(12px,env(safe-area-inset-top)) max(12px,var(--gb6121-safe-right)) max(12px,var(--gb6121-safe-bottom)) max(12px,var(--gb6121-safe-left))!important;
+}
+body.gb-client-page #productModal .product-modal-card{
+  width:min(960px,calc(100vw - 32px))!important;
+  max-width:calc(100vw - 32px)!important;
+  height:min(720px,calc(100dvh - 32px));
+  max-height:calc(100dvh - 32px)!important;
+  overflow:hidden!important;
+}
+body.gb-client-page #productModal .product-modal-grid{
+  height:100%;
+  min-height:0;
+  grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);
+}
+body.gb-client-page #productModal .product-modal-image{
+  min-height:0!important;
+  height:100%;
+  max-height:none!important;
+  overflow:hidden;
+}
+body.gb-client-page #productModal .product-config{
+  min-height:0;
+  height:100%;
+  max-height:none!important;
+  overflow-x:hidden!important;
+  overflow-y:auto!important;
+  overscroll-behavior:contain;
+  scrollbar-gutter:stable;
+  padding-bottom:0!important;
+}
+body.gb-client-page #productModal .modal-product-footer{
+  bottom:0!important;
+  z-index:6;
+  margin:16px -25px 0!important;
+  padding:12px 25px max(12px,var(--gb6121-safe-bottom))!important;
+  align-items:center;
+  background:color-mix(in srgb,var(--surface) 97%,transparent)!important;
+}
+body.gb-client-page #productModal .modal-product-footer .btn{
+  min-width:0;
+  width:100%;
+}
+body.gb-client-page #productModal .qty-control{
+  min-width:max-content;
+  align-self:stretch;
+}
+
+/* Quando a altura fica curta, a composição de duas colunas deixa de ser
+   segura. O modal vira uma única coluna rolável em vez de cortar controles. */
+@media (max-width:820px), (max-height:680px){
+  body.gb-client-page #productModal{
+    place-items:start center!important;
+  }
+  body.gb-client-page #productModal .product-modal-card{
+    width:min(720px,calc(100vw - 24px))!important;
+    max-width:calc(100vw - 24px)!important;
+    height:auto!important;
+    max-height:calc(100dvh - 24px)!important;
+    overflow:auto!important;
+  }
+  body.gb-client-page #productModal .product-modal-grid{
+    height:auto!important;
+    grid-template-columns:1fr!important;
+  }
+  body.gb-client-page #productModal .product-modal-image{
+    height:clamp(210px,32dvh,300px)!important;
+    min-height:210px!important;
+  }
+  body.gb-client-page #productModal .product-config{
+    height:auto!important;
+    overflow:visible!important;
+  }
+  body.gb-client-page #productModal .modal-product-footer{
+    position:sticky!important;
+    bottom:0!important;
+  }
+}
+
+@media (max-width:560px){
+  body.gb-client-page #productModal .modal-product-footer{
+    grid-template-columns:1fr!important;
+    gap:10px!important;
+  }
+  body.gb-client-page #productModal .qty-control{
+    width:100%;
+    justify-content:space-between;
+  }
+  body.gb-client-page #productModal .qty-control button{
+    width:44px!important;
+    height:44px!important;
+  }
+}
+
+/* 05 · SHELL / DOCK / NAVEGAÇÃO ----------------------------------------- */
+.gb-standalone-dock{
+  max-width:calc(100vw - 20px)!important;
+  overflow:visible!important;
+}
+.gb-standalone-dock :where(a,button){
+  min-width:0;
+  max-width:100%;
+}
+.gb-navigation-panel,
+.gb-choice-sheet{
+  max-width:calc(100vw - 16px);
+}
+
+/* 06 · ADMIN / ENTREGADOR / COMPONENTES COMPARTILHADOS ------------------ */
+body.gb-admin-page :where(.form-actions,.modal-actions,.studio-savebar),
+body.gb-driver-page :where(.driver-actions,.driver-form-actions),
+body.gb-driver-signup-page :where(.driver-actions,.driver-form-actions){
+  max-width:100%;
+  flex-wrap:wrap;
+}
+body.gb-admin-page .studio-savebar :where(button,.btn),
+body.gb-driver-page :where(.driver-actions,.driver-form-actions) :where(button,.btn),
+body.gb-driver-signup-page :where(.driver-actions,.driver-form-actions) :where(button,.btn){
+  max-width:100%;
+}
+
+/* 07 · BREAKPOINTS DE SEGURANÇA ------------------------------------------ */
+@media (max-width:760px){
+  body.gb-superadmin-page .sa-page-actions{
+    width:100%!important;
+    margin-inline-start:0;
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  }
+  body.gb-superadmin-page .sa-page-actions .sa-btn{
+    min-width:0!important;
+    width:100%!important;
+    white-space:normal!important;
+  }
+  :where(.modal-actions,.form-actions,.gb-growth-actions,.gb-finance-form-actions) > :where(button,.btn,.sa-btn,.gb-growth-btn){
+    min-width:min(100%,180px);
+  }
+}
+
+@media (max-width:440px){
+  body.gb-superadmin-page .sa-page-actions{
+    grid-template-columns:1fr!important;
+  }
+  :where(.modal-actions,.form-actions,.gb-growth-actions,.gb-finance-form-actions){
+    display:grid!important;
+    grid-template-columns:1fr!important;
+  }
+  :where(.modal-actions,.form-actions,.gb-growth-actions,.gb-finance-form-actions) > :where(button,.btn,.sa-btn,.gb-growth-btn){
+    width:100%!important;
+  }
+}
+
+/* 08 · STICKY ACTION FOOTERS: NUNCA USAR OFFSET NEGATIVO ------------------ */
+body.gb-admin-page .store-create-modal .modal-actions{
+  bottom:0!important;
+  margin-bottom:0!important;
+  padding-bottom:max(14px,var(--gb6121-safe-bottom))!important;
+}

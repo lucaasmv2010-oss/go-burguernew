@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' data: https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: blob: https://ethlgaszdextwckdwgsf.supabase.co; connect-src 'self' https://ethlgaszdextwckdwgsf.supabase.co wss://ethlgaszdextwckdwgsf.supabase.co; frame-src 'self'; worker-src 'self' blob:; manifest-src 'self'; media-src 'self' blob: https://ethlgaszdextwckdwgsf.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#17100c">
+  <meta name="description" content="Go-burger — encontre hamburguerias, faça pedidos, acompanhe entregas e conecte parceiros em uma única plataforma.">
+  <meta name="application-name" content="Go-burger">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="color-scheme" content="dark light">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Go-burger">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="format-detection" content="telephone=no">
+  <link rel="canonical" href="https://go-burger.app/burger/index.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Go-burger">
+  <meta property="og:title" content="Go-burger | Hamburguerias, pedidos e entregas">
+  <meta property="og:description" content="Encontre hamburguerias, faça pedidos e acompanhe entregas na Go-burger.">
+  <meta property="og:url" content="https://go-burger.app/burger/index.html">
+  <meta property="og:image" content="https://go-burger.app/assets/screenshots/marketplace-wide.png">
+  <title>Go-burger</title>
+
+  <link rel="manifest" href="../manifest.webmanifest">
+  <link rel="apple-touch-icon" href="../assets/icons/icon-192.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link rel="stylesheet" href="go-burger.css?v=88">
+  <link rel="stylesheet" href="../shared/app-ui.css?v=88">
+
+  <script src="../shared/theme.js?v=88"></script>
+  <link rel="stylesheet" href="../shared/theme.css?v=88">
+  <meta name="go-burger-release" content="89">
+  <link rel="stylesheet" href="../shared/release-88.css?v=88">
+  <link rel="stylesheet" href="../shared/redesign-89.css?v=89">
+  <link rel="stylesheet" href="../shared/css-master-90-108.css?v=108">
+  <meta name="go-burger-css-release" content="108">
+  <link rel="stylesheet" href="../shared/final-109-600.css?v=600">
+  <meta name="go-burger-final-release" content="600">
+  <meta name="go-burger-hotfix" content="605-super-admin-mfa">
+  <link rel="stylesheet" href="../shared/hotfix-609-video-qa.css?v=609">
+  <link rel="stylesheet" href="../shared/final-ui-611.css?v=611">
+  <link rel="stylesheet" href="../shared/button-layout-6121.css?v=6121">
+</head>
+<body class="gb-shell-page">
+  <h1 class="gb-visually-hidden">Go-burger</h1>
+  <div class="gb-shell" id="gbShell">
+    <header class="gb-topbar">
+      <button class="gb-brand" id="brandHome" type="button" aria-label="Ir para o modo cliente">
+        <span class="gb-mark">🍔</span>
+        <span class="gb-brand-copy">
+          <strong>Go-burger</strong>
+          <small id="brandSubtitle">HAMBURGUERIAS EM UM SÓ APP</small>
+        </span>
+      </button>
+
+      <nav class="gb-modes" aria-label="Modos do aplicativo">
+        <button class="gb-mode active" id="btnExplorar" type="button" data-route="explorar">
+          <i class="fa-solid fa-compass"></i>
+          <span>Explorar</span>
+        </button>
+        <button class="gb-mode" id="btnCliente" type="button" data-mode="cliente">
+          <i class="fa-solid fa-burger"></i>
+          <span>Pedir</span>
+        </button>
+
+        <button class="gb-mode hidden" id="btnAdmin" type="button" data-mode="admin">
+          <i class="fa-solid fa-store"></i>
+          <span id="btnAdminLabel">Painel da loja</span>
+        </button>
+
+        <button class="gb-mode hidden" id="btnEntregador" type="button" data-mode="entregador">
+          <i class="fa-solid fa-motorcycle"></i>
+          <span>Entregador</span>
+        </button>
+
+        <button class="gb-mode gb-mode-super hidden" id="btnSuperAdmin" type="button" data-mode="superadmin">
+          <i class="fa-solid fa-shield-halved"></i>
+          <span>Super Admin</span>
+        </button>
+      </nav>
+
+      <div class="gb-actions">
+        <button class="gb-theme-toggle" id="gbTheme" data-gb-theme-toggle type="button" aria-label="Ativar modo escuro" title="Ativar modo escuro"><i class="fa-regular fa-moon"></i></button>
+        <button class="gb-more-btn" id="btnMore" type="button" aria-haspopup="menu" aria-expanded="false" title="Mais opções">
+          <i class="fa-solid fa-ellipsis"></i>
+        </button>
+        <div class="gb-more-menu hidden" id="gbMoreMenu" role="menu">
+          <button type="button" data-shell-route="explorar"><i class="fa-solid fa-compass"></i><span><strong>Explorar hamburguerias</strong><small>Voltar ao marketplace</small></span></button>
+          <button type="button" data-shell-route="pedidos"><i class="fa-solid fa-receipt"></i><span><strong>Meus pedidos</strong><small>Acompanhar histórico</small></span></button>
+          <button type="button" data-shell-route="perfil"><i class="fa-solid fa-user"></i><span><strong>Minha conta</strong><small>Perfil, endereços e privacidade</small></span></button>
+          <button type="button" data-shell-route="admin"><i class="fa-solid fa-store"></i><span><strong>Go-burger Parceiros</strong><small>Gerenciar hamburgueria</small></span></button>
+          <button type="button" data-shell-route="entregador"><i class="fa-solid fa-motorcycle"></i><span><strong>Painel do entregador</strong><small>Rotas e entregas</small></span></button>
+          <button type="button" data-shell-route="cadastro-entregador"><i class="fa-solid fa-id-card"></i><span><strong>Quero ser entregador</strong><small>Cadastro, documentos e análise</small></span></button>
+          <button type="button" data-shell-route="ajuda"><i class="fa-solid fa-circle-question"></i><span><strong>Privacidade e ajuda</strong><small>Documentos da plataforma</small></span></button>
+        </div>
+      </div>
+
+      <div class="gb-account">
+        <span class="gb-dot" id="sessionDot" aria-hidden="true"></span>
+        <div class="gb-account-copy">
+          <strong id="sessionLabel">Visitante</strong>
+          <small id="storeLabel">Faça login para continuar</small>
+        </div>
+      </div>
+    </header>
+
+    <main class="gb-stage">
+      <div class="gb-loader hidden" id="gbLoader">
+        <div class="gb-loader-mark">🍔</div>
+        <strong>Go-burger</strong>
+        <span>Preparando seu aplicativo...</span>
+      </div>
+
+      <iframe
+        id="appFrame"
+        class="gb-frame ready"
+        title="Go-burger"
+        src="../cliente/marketplace/market.html?v=62"
+        allow="clipboard-read; clipboard-write; geolocation"
+      ></iframe>
+    </main>
+
+    <div class="gb-toast" id="gbToast" role="status" aria-live="polite"></div>
+  </div>
+
+  <noscript>Ative o JavaScript para usar a Go-burger.</noscript>
+
+  <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.111.0"></script>
+  <script defer src="go-burger.js?v=608"></script>
+  <script src="../shared/app-ui.js?v=88" defer></script>
+  <script src="../shared/release-88.js?v=88" defer></script>
+  <script src="../shared/redesign-89.js?v=89" defer></script>
+  <script src="../shared/css-master-90-108.js?v=108" defer></script>
+  <script src="../shared/final-109-600.js?v=600" defer></script>
+  <script src="../shared/final-runtime-611.js?v=611"></script>
+</body>
+</html>

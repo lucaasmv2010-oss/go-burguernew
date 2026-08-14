@@ -1,0 +1,5 @@
+/* Go Burger P701 — Super Admin visibility hotfix */
+body.gb-superadmin-page .sa-page.active[hidden]{display:block!important}
+body.gb-superadmin-page .sa-page:not(.active){display:none!important}
+body.gb-superadmin-page .gb-finance-nav-lock{pointer-events:none;user-select:none;display:inline-flex!important;align-items:center;justify-content:center;min-width:34px!important;width:auto!important;height:22px!important;padding:0 7px!important;border-radius:999px!important;background:rgba(234,88,12,.14)!important;color:#ea580c!important;font-size:8px!important;font-weight:900!important;letter-spacing:.08em!important;line-height:1!important}
+body.gb-superadmin-page [data-section="financeiro"] .gb-finance-lock{cursor:default}

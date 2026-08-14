@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' data: https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: blob: https://ethlgaszdextwckdwgsf.supabase.co; connect-src 'self' https://ethlgaszdextwckdwgsf.supabase.co wss://ethlgaszdextwckdwgsf.supabase.co; frame-src 'self'; worker-src 'self' blob:; manifest-src 'self'; media-src 'self' blob: https://ethlgaszdextwckdwgsf.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#ff6500">
+  <meta name="description" content="Go-burger — descubra hamburguerias, compare opções, faça pedidos e acompanhe entregas em uma única plataforma.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Go-burger | Hamburguerias em um só lugar">
+  <meta property="og:description" content="Descubra hamburguerias, favoritos, pedidos e entregas na Go-burger.">
+  <meta name="application-name" content="Go-burger">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Go-burger">
+  <link rel="canonical" href="https://go-burger.app/cliente/marketplace/market.html">
+  <meta property="og:site_name" content="Go-burger">
+  <meta property="og:url" content="https://go-burger.app/cliente/marketplace/market.html">
+  <meta property="og:image" content="https://go-burger.app/assets/screenshots/marketplace-wide.png">
+  <title>Go-burger | Hamburguerias em um só app</title>
+  <link rel="manifest" href="../../manifest.webmanifest">
+  <link rel="apple-touch-icon" href="../../assets/icons/icon-192.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link rel="stylesheet" href="market.css?v=88">
+  <link rel="stylesheet" href="../../shared/app-ui.css?v=88">
+<link rel="stylesheet" href="../../shared/growth.css?v=88">
+
+  <script src="../../shared/theme.js?v=88"></script>
+  <link rel="stylesheet" href="../../shared/theme.css?v=88">
+  <meta name="go-burger-release" content="89">
+  <link rel="stylesheet" href="../../shared/release-88.css?v=88">
+  <link rel="stylesheet" href="../../shared/redesign-89.css?v=89">
+  <link rel="stylesheet" href="../../shared/css-master-90-108.css?v=108">
+  <meta name="go-burger-css-release" content="108">
+  <link rel="stylesheet" href="../../shared/final-109-600.css?v=600">
+  <link rel="stylesheet" href="../../shared/hotfix-604-modal.css?v=604">
+  <meta name="go-burger-hotfix" content="604-modal-layer">
+  <meta name="go-burger-final-release" content="600">
+  <link rel="stylesheet" href="../../shared/hotfix-609-video-qa.css?v=609">
+  <link rel="stylesheet" href="../../shared/final-ui-611.css?v=611">
+  <link rel="stylesheet" href="../../shared/button-layout-6121.css?v=6121">
+</head>
+<body class="gb-market-page">
+  <div class="offline hidden" id="offlineBar"><i class="fa-solid fa-wifi"></i> Você está offline. Alguns dados podem estar desatualizados.</div>
+
+  <header class="market-topbar">
+    <div class="market-container topbar-inner">
+      <button class="go-brand" id="brandHome" type="button" aria-label="Início da Go-burger">
+        <span class="brand-mark">🍔</span>
+        <span><strong>Go-burger</strong><small>HAMBURGUERIAS EM UM SÓ APP</small></span>
+      </button>
+      <div class="top-search">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input id="marketSearch" type="search" autocomplete="off" placeholder="Buscar hamburgueria, estilo ou cidade..." aria-label="Buscar hamburguerias">
+        <button id="clearMarketSearch" class="clear-search hidden" type="button" aria-label="Limpar busca"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="top-actions">
+        <button class="circle-btn" id="btnTheme" type="button" aria-label="Alternar tema" data-gb-theme-toggle><i class="fa-regular fa-moon"></i></button>
+        <button class="circle-btn notification-trigger" id="btnNotificationsTop" type="button" aria-label="Notificações"><i class="fa-regular fa-bell"></i><b id="marketNotificationBadge" class="badge zero">0</b></button>
+        <button class="account-btn" id="btnAccount" type="button"><span id="marketAvatar">V</span><span><strong id="marketUserName">Visitante</strong><small id="marketAccountLabel">Entrar</small></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="market-container hero">
+      <div class="hero-copy">
+        <span class="hero-pill"><i class="fa-solid fa-burger"></i> FEITO PARA QUEM AMA BURGER</span>
+        <h1>Só hamburguerias.<br><em>Todas em um lugar.</em></h1>
+        <p>Descubra artesanais, smash, combos e muito mais. Compare notas, tempo de entrega e encontre seu próximo favorito.</p>
+        <div class="hero-actions">
+          <button class="primary-action" type="button" data-scroll-stores><i class="fa-solid fa-compass"></i> Descobrir hamburguerias</button>
+          <button class="secondary-action" type="button" id="btnBecomePartner"><i class="fa-solid fa-store"></i> Seja parceiro</button>
+        </div>
+        <div class="hero-trust">
+          <span><i class="fa-solid fa-shield-heart"></i> Lojas aprovadas</span>
+          <span><i class="fa-solid fa-star"></i> Avaliações reais</span>
+          <span><i class="fa-solid fa-bolt"></i> Pedido rápido</span>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="burger-orbit orbit-a">🍔</div>
+        <div class="burger-orbit orbit-b">🍟</div>
+        <div class="burger-orbit orbit-c">🥤</div>
+        <div class="hero-phone">
+          <div class="phone-notch"></div>
+          <div class="phone-brand"><span>🍔</span><strong>Go-burger</strong></div>
+          <div class="phone-card"><div></div><strong>Seu próximo favorito</strong><small>está aqui</small></div>
+          <div class="phone-lines"><i></i><i></i><i></i></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="market-container filters-shell" id="storesAnchor">
+      <div class="filters-heading">
+        <div><span class="eyebrow">EXPLORE</span><h2>O que você quer pedir hoje?</h2></div>
+        <div class="filter-controls">
+          <label class="select-control"><i class="fa-solid fa-location-dot"></i><select id="cityFilter"><option value="">Todas as cidades</option></select></label>
+          <label class="select-control"><i class="fa-solid fa-arrow-down-wide-short"></i><select id="sortFilter">
+            <option value="recomendadas">Recomendadas</option>
+            <option value="populares">Populares</option>
+            <option value="melhor_avaliadas">Melhor avaliadas</option>
+            <option value="entrega_rapida">Entrega rápida</option>
+            <option value="menor_taxa">Menor taxa</option>
+            <option value="nome">Nome A–Z</option>
+          </select></label>
+          <label class="open-toggle"><input id="openOnly" type="checkbox"><span><i class="fa-solid fa-clock"></i> Abertas agora</span></label>
+        </div>
+      </div>
+      <div class="category-scroll" id="marketCategories"></div>
+    </section>
+
+    <section class="market-container section hidden" id="sponsoredSection">
+      <div class="section-head"><div><span class="eyebrow">EM DESTAQUE</span><h2>Escolhas da Go-burger</h2><p>Parceiros e experiências que merecem atenção.</p></div></div>
+      <div class="store-carousel" id="sponsoredStores"></div>
+    </section>
+
+    <section class="market-container section" id="storeSection">
+      <div class="section-head store-heading">
+        <div><span class="eyebrow">HAMBURGUERIAS</span><h2 id="storeListTitle">Descubra novos sabores</h2><p id="storeCountText">Carregando hamburguerias...</p></div>
+        <button class="ghost-action hidden" id="btnClearFilters" type="button"><i class="fa-solid fa-rotate-left"></i> Limpar filtros</button>
+      </div>
+      <div class="store-grid" id="storeGrid"></div>
+      <div class="market-loading" id="marketLoading"><span></span><span></span><span></span></div>
+    </section>
+
+    <section class="market-container section hidden" id="favoritesSection">
+      <div class="section-head"><div><span class="eyebrow">SEUS FAVORITOS</span><h2>Hamburguerias que você ama</h2><p>Salve e encontre de novo em um toque.</p></div></div>
+      <div class="store-grid" id="favoriteGrid"></div>
+    </section>
+
+    <section class="market-container section hidden" id="ordersSection">
+      <div class="section-head"><div><span class="eyebrow">HISTÓRICO</span><h2>Pedidos em todas as lojas</h2><p>Seu histórico Go-burger reunido em uma única tela.</p></div></div>
+      <div class="timeline-list" id="marketOrders"></div>
+    </section>
+
+    <section class="market-container section hidden" id="notificationsSection">
+      <div class="section-head"><div><span class="eyebrow">CENTRAL</span><h2>Notificações</h2><p>Atualizações dos seus pedidos e hamburguerias.</p></div></div>
+      <div class="notification-list" id="marketNotifications"></div>
+    </section>
+
+    <section class="market-container partner-cta">
+      <div><span class="eyebrow">PARCEIROS</span><h2>Tem uma hamburgueria?</h2><p>Leve sua marca para a Go-burger e gerencie pedidos, cardápio, equipe e fidelidade em um só painel.</p></div>
+      <button id="btnPartnerCta" type="button"><i class="fa-solid fa-store"></i> Cadastrar minha hamburgueria</button>
+    </section>
+
+    <section class="market-container driver-cta">
+      <div class="driver-cta-icon"><i class="fa-solid fa-motorcycle"></i></div>
+      <div><span class="eyebrow">ENTREGADORES</span><h2>Quer fazer entregas pela Go-burger?</h2><p>Crie seu perfil, envie os documentos com segurança e acompanhe o status da análise antes de se vincular às hamburguerias.</p></div>
+      <a href="../../entregador/cadastro.html"><i class="fa-solid fa-id-card"></i> Quero ser entregador</a>
+    </section>
+  </main>
+
+  <nav class="mobile-nav" aria-label="Navegação do marketplace">
+    <button class="active" type="button" data-market-page="discover"><i class="fa-solid fa-compass"></i><span>Descobrir</span></button>
+    <button type="button" data-market-page="favorites"><i class="fa-regular fa-heart"></i><span>Favoritos</span></button>
+    <button type="button" data-market-page="orders"><i class="fa-solid fa-receipt"></i><span>Pedidos</span></button>
+    <button type="button" data-market-page="notifications"><i class="fa-regular fa-bell"></i><span>Avisos</span><b id="mobileNotifBadge" class="badge zero">0</b></button>
+    <button type="button" data-market-page="account"><i class="fa-regular fa-user"></i><span>Conta</span></button>
+  </nav>
+
+  <div class="modal hidden" id="authModal" role="dialog" aria-modal="true" aria-labelledby="authModalTitle">
+    <div class="modal-backdrop" data-close-auth></div>
+    <div class="auth-modal-card">
+      <button class="modal-close" type="button" data-close-auth aria-label="Fechar"><i class="fa-solid fa-xmark"></i></button>
+      <div class="auth-modal-brand"><span>🍔</span><div><strong>Go-burger</strong><small>UMA CONTA, TODAS AS HAMBURGUERIAS</small></div></div>
+      <h2 id="authModalTitle">Entre para aproveitar tudo</h2>
+      <p>Favorite lojas, acompanhe pedidos e acumule benefícios.</p>
+      <div class="auth-tabs"><button class="active" type="button" data-market-auth="login">Entrar</button><button type="button" data-market-auth="register">Criar conta</button></div>
+      <div class="auth-message" id="marketAuthMessage"></div>
+      <form class="auth-form active" id="marketLoginForm" data-market-auth-form="login">
+        <label><span>E-mail</span><input name="email" type="email" autocomplete="email" required></label>
+        <label><span>Senha</span><input name="password" type="password" autocomplete="current-password" required></label>
+        <button class="auth-submit" type="submit"><i class="fa-solid fa-arrow-right-to-bracket"></i> Entrar</button>
+        <button class="auth-link" id="marketRecover" type="button">Esqueci minha senha</button>
+      </form>
+      <form class="auth-form" id="marketRegisterForm" data-market-auth-form="register">
+        <label><span>Nome completo</span><input name="nome" autocomplete="name" required></label>
+        <label><span>E-mail</span><input name="email" type="email" autocomplete="email" required></label>
+        <label><span>Celular</span><input name="telefone" type="tel" autocomplete="tel" required></label>
+        <label><span>Senha</span><input name="password" type="password" autocomplete="new-password" minlength="8" required></label>
+        <label class="market-terms"><input name="termos" type="checkbox" required><span>Aceito os <a href="../../legal/termos-cliente.html" target="_blank" rel="noopener">Termos</a> e a <a href="../../legal/privacidade.html" target="_blank" rel="noopener">Política de Privacidade</a>.</span></label>
+        <button class="auth-submit" type="submit"><i class="fa-solid fa-user-plus"></i> Criar conta</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="toast-container" id="marketToast" aria-live="polite"></div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.111.0"></script>
+  <script src="market.js?v=88"></script>
+<script src="market-growth.js?v=88"></script>
+  <footer class="market-legal-links">
+    <a href="../../legal/privacidade.html" target="_blank" rel="noopener">Privacidade</a>
+    <a href="../../legal/termos-cliente.html" target="_blank" rel="noopener">Termos</a>
+    <a href="../../legal/termos-parceiros.html" target="_blank" rel="noopener">Parceiros</a>
+    <a href="../../legal/termos-entregadores.html" target="_blank" rel="noopener">Entregadores</a>
+  </footer>
+  <script src="../../shared/app-ui.js?v=88" defer></script>
+  <script src="../../shared/release-88.js?v=88" defer></script>
+  <script src="../../shared/redesign-89.js?v=89" defer></script>
+  <script src="../../shared/css-master-90-108.js?v=108" defer></script>
+  <script src="../../shared/final-109-600.js?v=600" defer></script>
+  <script src="../../shared/final-runtime-611.js?v=611"></script>
+</body>
+</html>

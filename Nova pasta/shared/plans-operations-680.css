@@ -1,0 +1,106 @@
+/* ========================================================================== */
+/* GO BURGER P680 — Plan Operations & UX Hardening                           */
+/* ========================================================================== */
+
+.gb-plan-terms-card,
+.gb-plan-recovery-card,
+.sa-plan-ops-panel,
+.sa-plan-migration-panel{
+  border:1px solid color-mix(in srgb,var(--line,#d9dee8) 82%,transparent);
+  border-radius:18px;
+  background:var(--surface,#fff);
+  box-shadow:0 10px 30px rgba(15,23,42,.06);
+}
+.gb-plan-terms-card{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;padding:16px 18px;margin:16px 0}
+.gb-plan-terms-card input{inline-size:20px;block-size:20px;accent-color:var(--brand,#ff6500)}
+.gb-plan-terms-card strong{display:block;margin-bottom:3px}
+.gb-plan-terms-card p,.gb-plan-terms-card small{margin:0;color:var(--muted,#667085)}
+.gb-plan-terms-card .gb-plan-terms-version{white-space:nowrap;font-size:.76rem;font-weight:800;padding:7px 10px;border-radius:999px;background:color-mix(in srgb,var(--brand,#ff6500) 10%,transparent);color:var(--brand,#ff6500)}
+.gb-plan-terms-card.is-missing{border-color:#ef4444;background:color-mix(in srgb,#ef4444 7%,var(--surface,#fff))}
+
+.gb-plan-card{position:relative;min-width:0}
+.gb-plan-card .gb-plan-card-top{gap:10px;align-items:flex-start}
+.gb-plan-badge{display:inline-flex;align-items:center;gap:6px;max-width:100%;padding:6px 9px;border-radius:999px;font-size:.7rem;font-weight:900;letter-spacing:.04em;white-space:normal;text-align:center}
+.gb-plan-badge.popular{background:#fff1e8;color:#c2410c}
+.gb-plan-badge.recomendado{background:#ede9fe;color:#6d28d9}
+.gb-plan-badge.economia{background:#dcfce7;color:#166534}
+.gb-plan-badge.premium{background:#fef3c7;color:#92400e}
+.gb-plan-badge.novo{background:#dbeafe;color:#1d4ed8}
+
+.gb-plan-recovery-card{padding:16px 18px;margin-top:16px;display:flex;gap:14px;align-items:flex-start}
+.gb-plan-recovery-card>i{margin-top:2px;font-size:1.15rem;color:#d97706}
+.gb-plan-recovery-card strong{display:block}
+.gb-plan-recovery-card p{margin:4px 0 0;color:var(--muted,#667085)}
+.gb-plan-recovery-card.ok>i{color:#16a34a}
+
+.gb-plan-loading{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:16px 0}
+.gb-plan-skeleton{min-height:220px;border-radius:18px;background:linear-gradient(90deg,rgba(148,163,184,.12) 25%,rgba(148,163,184,.24) 38%,rgba(148,163,184,.12) 63%);background-size:400% 100%;animation:gbPlanShimmer 1.2s ease-in-out infinite}
+@keyframes gbPlanShimmer{0%{background-position:100% 0}100%{background-position:0 0}}
+@media (prefers-reduced-motion:reduce){.gb-plan-skeleton{animation:none}}
+.gb-plan-error-state{padding:24px;border:1px solid #fecaca;border-radius:18px;background:#fef2f2;text-align:center;color:#991b1b;margin:16px 0}
+.gb-plan-error-state button{margin-top:12px}
+
+.sa-plan-ops-kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:14px 0}
+.sa-plan-ops-kpis article{padding:15px;border:1px solid var(--sa-line,rgba(148,163,184,.2));border-radius:15px;background:var(--sa-panel,#fff);min-width:0}
+.sa-plan-ops-kpis small{display:block;color:var(--sa-muted,#64748b);font-weight:800;font-size:.7rem;letter-spacing:.05em}
+.sa-plan-ops-kpis strong{display:block;font-size:1.25rem;margin-top:5px;overflow-wrap:anywhere}
+.sa-plan-ops-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:16px;margin-top:16px}
+.sa-plan-ops-panel{padding:18px;min-width:0}
+.sa-plan-funnel{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:12px}
+.sa-plan-funnel div{padding:12px;border-radius:13px;background:color-mix(in srgb,var(--sa-bg,#f8fafc) 84%,transparent);border:1px solid var(--sa-line,rgba(148,163,184,.18))}
+.sa-plan-funnel small{display:block;color:var(--sa-muted,#64748b)}
+.sa-plan-funnel strong{font-size:1.12rem}
+.sa-plan-distribution{width:100%;border-collapse:collapse}
+.sa-plan-distribution th,.sa-plan-distribution td{padding:10px 8px;border-bottom:1px solid var(--sa-line,rgba(148,163,184,.16));text-align:left;vertical-align:middle}
+.sa-plan-distribution th{font-size:.72rem;color:var(--sa-muted,#64748b);text-transform:uppercase;letter-spacing:.04em}
+.sa-plan-recovery-summary{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.sa-plan-recovery-summary span{padding:8px 10px;border-radius:999px;background:rgba(245,158,11,.1);color:#b45309;font-weight:800;font-size:.78rem}
+.sa-plan-migration-panel{padding:18px;margin-top:16px}
+.sa-plan-migration-form{display:grid;grid-template-columns:1fr 1fr auto;gap:10px;align-items:end}
+.sa-plan-migration-form label{display:grid;gap:6px;min-width:0}
+.sa-plan-migration-result{margin-top:14px;display:grid;gap:10px}
+.sa-plan-migration-result .summary{display:flex;gap:8px;flex-wrap:wrap}
+.sa-plan-migration-result .summary span{padding:7px 9px;border-radius:999px;background:rgba(59,130,246,.09);font-size:.78rem;font-weight:800}
+.sa-plan-migration-list{max-height:300px;overflow:auto;border:1px solid var(--sa-line,rgba(148,163,184,.18));border-radius:14px}
+.sa-plan-migration-list article{display:grid;grid-template-columns:1fr auto;gap:10px;padding:11px 12px;border-bottom:1px solid var(--sa-line,rgba(148,163,184,.14))}
+.sa-plan-migration-list article:last-child{border-bottom:0}
+.sa-plan-migration-list small{display:block;color:var(--sa-muted,#64748b);margin-top:3px}
+.sa-plan-migration-list .blocked{color:#b91c1c;font-weight:800}
+.sa-plan-migration-list .ok{color:#15803d;font-weight:800}
+
+.sa-plan-card{min-width:0}
+.sa-plan-card .sa-plan-commercial-badge{margin-left:6px}
+.sa-plan-card-badge{display:inline-flex;margin-top:8px;padding:5px 8px;border-radius:999px;background:rgba(124,58,237,.1);color:#6d28d9;font-size:.7rem;font-weight:900}
+.sa-plan-editor-critical{grid-column:1/-1;border:1px solid rgba(245,158,11,.28);background:rgba(245,158,11,.07);border-radius:13px;padding:11px 12px;color:#92400e;font-size:.82rem}
+
+body.dark .gb-plan-terms-card,
+html[data-theme="dark"] .gb-plan-terms-card,
+body.dark .gb-plan-recovery-card,
+html[data-theme="dark"] .gb-plan-recovery-card,
+body.dark .sa-plan-ops-panel,
+html[data-theme="dark"] .sa-plan-ops-panel,
+body.dark .sa-plan-migration-panel,
+html[data-theme="dark"] .sa-plan-migration-panel{
+  background:var(--surface,#111827);
+  border-color:rgba(148,163,184,.22);
+  color:var(--text,#f8fafc)
+}
+body.dark .gb-plan-error-state,html[data-theme="dark"] .gb-plan-error-state{background:rgba(127,29,29,.24);border-color:rgba(248,113,113,.35);color:#fecaca}
+
+@media (max-width:1100px){
+  .gb-plan-loading{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .sa-plan-ops-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .sa-plan-ops-grid{grid-template-columns:1fr}
+}
+@media (max-width:760px){
+  .gb-plan-terms-card{grid-template-columns:auto 1fr}.gb-plan-terms-card .gb-plan-terms-version{grid-column:1/-1;justify-self:start}
+  .gb-plan-loading{grid-template-columns:1fr}
+  .sa-plan-ops-kpis{grid-template-columns:1fr 1fr}
+  .sa-plan-funnel{grid-template-columns:1fr 1fr}
+  .sa-plan-migration-form{grid-template-columns:1fr}
+  .sa-plan-migration-form .sa-btn{width:100%}
+}
+@media (max-width:480px){
+  .sa-plan-ops-kpis,.sa-plan-funnel{grid-template-columns:1fr}
+  .gb-plan-terms-card{padding:14px}
+}

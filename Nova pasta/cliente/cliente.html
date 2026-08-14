@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' data: https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: blob: https://ethlgaszdextwckdwgsf.supabase.co; connect-src 'self' https://ethlgaszdextwckdwgsf.supabase.co wss://ethlgaszdextwckdwgsf.supabase.co; frame-src 'self'; worker-src 'self' blob:; manifest-src 'self'; media-src 'self' blob: https://ethlgaszdextwckdwgsf.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#ff6500">
+  <meta name="application-name" content="Go-burger">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Go-burger">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="format-detection" content="telephone=no">
+  <meta
+    name="description"
+    content="Go-burger - encontre hamburguerias, personalize seu pedido e acompanhe tudo em um só lugar."
+  >
+
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>Go-burger | Seu burger, sua escolha</title>
+
+  <!-- PWA -->
+  <link rel="manifest" href="../manifest.webmanifest">
+  <link rel="apple-touch-icon" href="../assets/icons/icon-192.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+  >
+
+  <!-- Icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+  >
+
+  <!-- App CSS -->
+  <link rel="stylesheet" href="cliente.css?v=88">
+  <link rel="stylesheet" href="../shared/app-ui.css?v=88">
+<link rel="stylesheet" href="../shared/growth.css?v=88">
+<link rel="stylesheet" href="../shared/case-center.css?v=88">
+<link rel="stylesheet" href="../shared/phase2.css?v=88">
+
+  <script src="../shared/theme.js?v=88"></script>
+  <link rel="stylesheet" href="../shared/theme.css?v=88">
+  <meta name="go-burger-release" content="89">
+  <link rel="stylesheet" href="../shared/release-88.css?v=88">
+  <link rel="stylesheet" href="../shared/redesign-89.css?v=89">
+  <link rel="stylesheet" href="../shared/css-master-90-108.css?v=108">
+  <meta name="go-burger-css-release" content="108">
+  <link rel="stylesheet" href="../shared/final-109-600.css?v=600">
+  <link rel="stylesheet" href="../shared/hotfix-604-modal.css?v=604">
+  <meta name="go-burger-hotfix" content="604-modal-layer">
+  <meta name="go-burger-final-release" content="600">
+  <link rel="stylesheet" href="../shared/hotfix-609-video-qa.css?v=609">
+  <link rel="stylesheet" href="../shared/final-ui-611.css?v=611">
+  <link rel="stylesheet" href="../shared/button-layout-6121.css?v=6121">
+</head>
+
+<body class="gb-client-page">
+  <!-- =====================================================
+       OFFLINE STATUS
+  ====================================================== -->
+  <div class="offline-bar hidden" id="offlineBar">
+    <i class="fa-solid fa-wifi" aria-hidden="true"></i>
+    Você está offline. O carrinho continua salvo neste aparelho.
+  </div>
+
+  <!-- =====================================================
+       AUTENTICAÇÃO
+  ====================================================== -->
+  <section class="auth-screen" id="authScreen">
+    <div class="auth-glow glow-a"></div>
+    <div class="auth-glow glow-b"></div>
+
+    <div class="auth-shell">
+      <div class="auth-showcase">
+        <span class="pill">
+          <i class="fa-solid fa-bolt" aria-hidden="true"></i>
+          Go-burger
+        </span>
+
+        <div class="auth-logo" aria-hidden="true">🍔</div>
+
+        <h1>Seu burger favorito, exatamente do seu jeito.</h1>
+
+        <p>
+          Personalize ingredientes, escolha adicionais, agende,
+          acompanhe o pedido e acumule pontos.
+        </p>
+
+        <div class="showcase-features">
+          <span>
+            <i class="fa-solid fa-sliders" aria-hidden="true"></i>
+            Personalização
+          </span>
+
+          <span>
+            <i class="fa-solid fa-motorcycle" aria-hidden="true"></i>
+            Entrega e retirada
+          </span>
+
+          <span>
+            <i class="fa-solid fa-star" aria-hidden="true"></i>
+            Fidelidade
+          </span>
+
+          <span>
+            <i class="fa-solid fa-clock" aria-hidden="true"></i>
+            Agendamento
+          </span>
+        </div>
+      </div>
+
+      <div class="auth-card">
+        <div class="auth-brand">
+          <span aria-hidden="true">🍔</span>
+
+          <div>
+            <strong id="authBrandName">Go-burger</strong>
+            <small>APP DE HAMBURGUERIAS</small>
+          </div>
+        </div>
+
+        <div class="auth-tabs">
+          <button type="button" class="active" data-auth-tab="login">
+            Entrar
+          </button>
+
+          <button type="button" data-auth-tab="register">
+            Criar conta
+          </button>
+        </div>
+
+        <div class="auth-message" id="authMessage" aria-live="polite"></div>
+
+        <!-- Login somente por e-mail -->
+        <form class="auth-form active" id="loginForm" data-auth-form="login">
+          <label class="field">
+            <span>E-mail</span>
+
+            <div class="input-icon">
+              <i class="fa-regular fa-envelope" aria-hidden="true"></i>
+
+              <input
+                name="identificador"
+                type="email"
+                autocomplete="email"
+                placeholder="email@exemplo.com"
+                required
+              >
+            </div>
+          </label>
+
+          <label class="field">
+            <span>Senha</span>
+
+            <div class="input-icon password-wrap">
+              <i class="fa-solid fa-lock" aria-hidden="true"></i>
+
+              <input
+                name="senha"
+                type="password"
+                autocomplete="current-password"
+                minlength="6"
+                required
+              >
+
+              <button
+                type="button"
+                class="password-toggle"
+                data-toggle-password
+                aria-label="Mostrar senha"
+              >
+                <i class="fa-regular fa-eye" aria-hidden="true"></i>
+              </button>
+            </div>
+          </label>
+
+          <button class="btn primary large" type="submit">
+            Entrar
+            <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+          </button>
+
+          <button class="link-btn" id="btnRecover" type="button">
+            Esqueci minha senha
+          </button>
+        </form>
+
+        <!-- Cadastro -->
+        <form class="auth-form" id="registerForm" data-auth-form="register">
+          <label class="field">
+            <span>Nome completo</span>
+            <input name="nome" autocomplete="name" required>
+          </label>
+
+          <label class="field">
+            <span>E-mail</span>
+            <input name="email" type="email" autocomplete="email" required>
+          </label>
+
+          <label class="field">
+            <span>Celular</span>
+            <input
+              name="telefone"
+              type="tel"
+              autocomplete="tel"
+              placeholder="(32) 99999-9999"
+              required
+            >
+          </label>
+
+          <label class="field">
+            <span>Senha</span>
+
+            <div class="password-wrap">
+              <input
+                name="senha"
+                type="password"
+                autocomplete="new-password"
+                minlength="8"
+                required
+              >
+
+              <button
+                type="button"
+                class="password-toggle"
+                data-toggle-password
+                aria-label="Mostrar senha"
+              >
+                <i class="fa-regular fa-eye" aria-hidden="true"></i>
+              </button>
+            </div>
+          </label>
+
+          <label class="field">
+            <span>Confirmar senha</span>
+            <input
+              name="confirmar"
+              type="password"
+              autocomplete="new-password"
+              minlength="8"
+              required
+            >
+          </label>
+
+          <label class="terms-check">
+            <input name="termos" type="checkbox" required>
+            <span>
+              Li e aceito os
+              <a href="../legal/termos-cliente.html" target="_blank" rel="noopener">Termos do Cliente</a>
+              e a
+              <a href="../legal/privacidade.html" target="_blank" rel="noopener">Política de Privacidade</a>.
+            </span>
+          </label>
+
+          <button class="btn primary large" type="submit">
+            Criar minha conta
+            <i class="fa-solid fa-user-plus" aria-hidden="true"></i>
+          </button>
+        </form>
+
+        <div class="auth-safe">
+          <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+          Login seguro com Supabase Auth
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================
+       APLICAÇÃO
+  ====================================================== -->
+  <div class="app hidden" id="app">
+    <!-- ===================================================
+         HEADER
+    ==================================================== -->
+    <header class="topbar">
+      <div class="container topbar-inner">
+        <button class="brand" type="button" data-page="inicio">
+          <span class="brand-logo" id="brandLogo" aria-hidden="true">🍔</span>
+
+          <span>
+            <strong id="nomeLoja">Hamburgueria</strong>
+            <small id="storeStatusHeader">Verificando loja...</small>
+          </span>
+        </button>
+
+        <nav class="desktop-nav" aria-label="Navegação principal">
+          <button type="button" class="active" data-page="inicio">
+            <i class="fa-solid fa-house" aria-hidden="true"></i>
+            Início
+          </button>
+
+          <button type="button" data-page="cardapio">
+            <i class="fa-solid fa-burger" aria-hidden="true"></i>
+            Cardápio
+          </button>
+
+          <button type="button" data-page="pedidos">
+            <i class="fa-solid fa-receipt" aria-hidden="true"></i>
+            Pedidos
+          </button>
+
+          <button type="button" data-page="fidelidade">
+            <i class="fa-solid fa-star" aria-hidden="true"></i>
+            Fidelidade
+          </button>
+
+          <button type="button" data-page="beneficios">
+            <i class="fa-solid fa-people-group" aria-hidden="true"></i>
+            Benefícios
+          </button>
+        </nav>
+
+        <div class="top-actions">
+          <button type="button" class="icon-btn" id="btnMarketplace" title="Voltar para a Go-burger" aria-label="Voltar para o marketplace">
+            <i class="fa-solid fa-store" aria-hidden="true"></i>
+          </button>
+
+          <button type="button" class="icon-btn" id="shareStoreBtn" title="Compartilhar hamburgueria" aria-label="Compartilhar hamburgueria">
+            <i class="fa-solid fa-share-nodes" aria-hidden="true"></i>
+          </button>
+
+          <button
+            type="button"
+            class="icon-btn"
+            id="exploreStoresBtn"
+            title="Explorar outras hamburguerias"
+            aria-label="Explorar outras hamburguerias"
+          >
+            <i class="fa-solid fa-compass" aria-hidden="true"></i>
+          </button>
+
+          <button
+            type="button"
+            class="icon-btn hidden"
+            id="btnInstall"
+            title="Instalar aplicativo"
+            aria-label="Instalar aplicativo"
+          >
+            <i class="fa-solid fa-download" aria-hidden="true"></i>
+          </button>
+
+          <button
+            type="button"
+            class="icon-btn"
+            id="btnTheme"
+            title="Alternar tema"
+            aria-label="Alternar tema"
+           data-gb-theme-toggle>
+            <i class="fa-regular fa-moon" aria-hidden="true"></i>
+          </button>
+
+          <button
+            type="button"
+            class="icon-btn notification-button"
+            id="btnNotifications"
+            title="Notificações"
+            aria-label="Abrir notificações"
+          >
+            <i class="fa-regular fa-bell" aria-hidden="true"></i>
+            <b id="notificationBadge" class="badge zero">0</b>
+          </button>
+
+          <button type="button" class="user-button" data-page="perfil">
+            <span class="avatar" id="avatarHeader">C</span>
+
+            <span>
+              <strong id="nomeHeader">Cliente</strong>
+              <small>Minha conta</small>
+            </span>
+          </button>
+
+          <button
+            type="button"
+            class="cart-button"
+            id="openCart"
+            aria-label="Abrir carrinho"
+          >
+            <i class="fa-solid fa-bag-shopping" aria-hidden="true"></i>
+            <b id="cartBadge">0</b>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- ===================================================
+         PÁGINA: INÍCIO
+    ==================================================== -->
+    <main class="page active" data-section="inicio">
+      <section class="container hero-section">
+        <div class="hero-copy">
+          <span class="hero-chip" id="storeChip">
+            <i class="fa-solid fa-circle" aria-hidden="true"></i>
+            Carregando...
+          </span>
+
+          <h1>
+            Olá, <span id="nomeBoasVindas">Cliente</span> 👋
+          </h1>
+
+          <h2>Seu pedido, do seu jeito.</h2>
+
+          <p id="heroText">
+            Escolha seus favoritos, personalize cada detalhe e acompanhe tudo em tempo real.
+          </p>
+
+          <div class="hero-actions">
+            <button type="button" class="btn primary" data-page="cardapio">
+              Ver cardápio
+              <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+            </button>
+
+            <button type="button" class="btn secondary" data-page="pedidos">
+              Acompanhar pedido
+            </button>
+          </div>
+
+          <div class="store-rating-line"><i class="fa-solid fa-star" aria-hidden="true"></i><span id="homeRating">Carregando avaliações...</span></div>
+        </div>
+
+        <div class="hero-visual" id="storeHeroVisual" aria-hidden="true"><span id="storeHeroFallback">🍔</span></div>
+      </section>
+
+      <section class="container banner-section hidden" id="bannerSection">
+        <div class="banner-track" id="bannerTrack"></div>
+        <div class="banner-dots" id="bannerDots"></div>
+      </section>
+
+      <section class="container info-grid">
+        <article>
+          <i class="fa-solid fa-clock" aria-hidden="true"></i>
+
+          <div>
+            <strong>Preparo</strong>
+            <span id="homePrepTime">30–50 min</span>
+          </div>
+        </article>
+
+        <article>
+          <i class="fa-solid fa-motorcycle" aria-hidden="true"></i>
+
+          <div>
+            <strong>Entrega</strong>
+            <span id="homeDelivery">Consulte seu bairro</span>
+          </div>
+        </article>
+
+        <article>
+          <i class="fa-solid fa-store" aria-hidden="true"></i>
+
+          <div>
+            <strong>Retirada</strong>
+            <span id="homePickup">Disponível</span>
+          </div>
+        </article>
+
+        <article>
+          <i class="fa-solid fa-star" aria-hidden="true"></i>
+
+          <div>
+            <strong>Seus pontos</strong>
+            <span id="homePoints">0 pontos</span>
+          </div>
+        </article>
+      </section>
+
+      <section class="container content-section">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">DESTAQUES</span>
+            <h2>Mais vontade de pedir</h2>
+            <p>Selecionados pela loja para você.</p>
+          </div>
+
+          <button type="button" class="text-btn" data-page="cardapio">
+            Ver cardápio
+            <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+          </button>
+        </div>
+
+        <div class="product-grid" id="featuredProducts"></div>
+      </section>
+
+      <section class="container content-section hidden" id="recentOrderSection">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">PEDIR DE NOVO</span>
+            <h2>Seu último pedido</h2>
+          </div>
+        </div>
+
+        <div id="recentOrderCard"></div>
+      </section>
+
+      <section class="container content-section">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">AVALIAÇÕES</span>
+            <h2>O que os clientes estão dizendo</h2>
+            <p>Avaliações publicadas desta hamburgueria na Go-burger.</p>
+          </div>
+        </div>
+        <div class="public-review-grid" id="publicReviews"></div>
+      </section>
+    </main>
+
+    <!-- ===================================================
+         PÁGINA: CARDÁPIO
+    ==================================================== -->
+    <main class="page" data-section="cardapio">
+      <section class="container page-header">
+        <span class="eyebrow">CARDÁPIO</span>
+        <h1>Escolha sua próxima combinação</h1>
+        <p>Busque, filtre, favorite e personalize.</p>
+      </section>
+
+      <section class="container menu-tools">
+        <div class="search-box">
+          <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+
+          <input
+            id="productSearch"
+            type="search"
+            placeholder="Buscar burger, bebida, porção..."
+            aria-label="Buscar produtos"
+          >
+
+          <button
+            type="button"
+            id="clearSearch"
+            class="clear-search hidden"
+            aria-label="Limpar busca"
+          >
+            <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+          </button>
+        </div>
+
+        <select id="productSort" aria-label="Ordenar produtos">
+          <option value="ordem">Recomendados</option>
+          <option value="menor">Menor preço</option>
+          <option value="maior">Maior preço</option>
+          <option value="nome">Nome A–Z</option>
+        </select>
+
+        <button type="button" class="filter-favorite" id="filterFavorites">
+          <i class="fa-regular fa-heart" aria-hidden="true"></i>
+          Favoritos
+        </button>
+      </section>
+
+      <section class="container categories" id="categories"></section>
+
+      <section class="container content-section">
+        <div class="product-grid" id="productGrid"></div>
+      </section>
+    </main>
+
+    <!-- ===================================================
+         PÁGINA: PEDIDOS
+    ==================================================== -->
+    <main class="page" data-section="pedidos">
+      <section class="container page-header">
+        <span class="eyebrow">ACOMPANHE</span>
+        <h1>Meus pedidos</h1>
+        <p>Status em tempo real, detalhes, cancelamento e avaliação.</p>
+      </section>
+
+      <section class="container order-filter" id="orderFilter">
+        <button type="button" class="active" data-order-filter="todos">Todos</button>
+        <button type="button" data-order-filter="andamento">Em andamento</button>
+        <button type="button" data-order-filter="concluidos">Concluídos</button>
+        <button type="button" data-order-filter="cancelados">Cancelados</button>
+      </section>
+
+      <section class="container content-section">
+        <div class="orders-list" id="ordersList"></div>
+      </section>
+    </main>
+
+    <!-- ===================================================
+         PÁGINA: FIDELIDADE
+    ==================================================== -->
+    <main class="page" data-section="fidelidade">
+      <section class="container loyalty-hero">
+        <div>
+          <span class="eyebrow">Go-burger CLUB</span>
+          <h1>Seus pontos valem vantagens</h1>
+          <p id="loyaltyRule">Acumule pontos a cada pedido concluído.</p>
+        </div>
+
+        <div class="points-orb">
+          <span id="loyaltyBalance">0</span>
+          <small>pontos</small>
+        </div>
+      </section>
+
+      <section class="container content-section">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">RECOMPENSAS</span>
+            <h2>Benefícios disponíveis</h2>
+          </div>
+        </div>
+
+        <div class="reward-grid" id="rewardGrid"></div>
+      </section>
+
+      <section class="container content-section">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">MEUS BENEFÍCIOS</span>
+            <h2>Recompensas resgatadas</h2>
+            <p>Use o código no carrinho ou cancele um benefício ainda não utilizado para recuperar os pontos.</p>
+          </div>
+        </div>
+
+        <div class="redemption-list" id="redemptionList"></div>
+      </section>
+
+      <section class="container content-section">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">EXTRATO</span>
+            <h2>Movimentações</h2>
+          </div>
+        </div>
+
+        <div class="movement-list" id="movementList"></div>
+      </section>
+    </main>
+
+    <!-- ===================================================
+         PÁGINA: BENEFÍCIOS PRO / FASE 2
+    ==================================================== -->
+    <main class="page" data-section="beneficios">
+      <section class="container page-header">
+        <span class="eyebrow">Go-burger PRO</span>
+        <h1>Créditos, pedido em grupo e mesa</h1>
+        <p>Recursos avançados para pedir junto, usar créditos da plataforma e consumir no local.</p>
+      </section>
+      <section class="container content-section">
+        <div id="gbPhase2ClientRoot" class="gbp2-shell"><div class="gbp2-skeleton"></div></div>
+      </section>
+    </main>
+
+    <!-- ===================================================
+         PÁGINA: PERFIL
+    ==================================================== -->
+    <main class="page" data-section="perfil">
+      <section class="container page-header">
+        <span class="eyebrow">MINHA CONTA</span>
+        <h1>Perfil e preferências</h1>
+      </section>
+
+      <section class="container profile-grid">
+        <article class="profile-card">
+          <span class="profile-avatar" id="profileAvatar">C</span>
+
+          <h2 id="profileName">Cliente</h2>
+          <p id="profileEmail">—</p>
+          <p id="profilePhone">—</p>
+
+          <div class="profile-mini">
+            <span>
+              <b id="profileOrdersCount">0</b>
+              pedidos
+            </span>
+
+            <span>
+              <b id="profilePoints">0</b>
+              pontos
+            </span>
+          </div>
+
+          <button type="button" class="btn secondary full" data-page="beneficios" style="margin-bottom:10px">
+            <i class="fa-solid fa-gift" aria-hidden="true"></i> Benefícios Go-burger
+          </button>
+
+          <button type="button" class="btn danger full" id="logoutBtn">
+            <i class="fa-solid fa-right-from-bracket" aria-hidden="true"></i>
+            Sair
+          </button>
+        </article>
+
+        <div class="profile-main">
+          <!-- Dados pessoais -->
+          <article class="panel">
+            <div class="panel-head">
+              <div>
+                <span class="eyebrow">DADOS</span>
+                <h2>Dados pessoais</h2>
+              </div>
+            </div>
+
+            <form class="form-grid" id="profileForm">
+              <label class="field">
+                <span>Nome</span>
+                <input name="nome" required>
+              </label>
+
+              <label class="field">
+                <span>Celular</span>
+                <input name="telefone" type="tel" autocomplete="tel">
+              </label>
+
+              <label class="field full">
+                <span>Endereço legado</span>
+                <textarea
+                  name="endereco"
+                  rows="2"
+                  placeholder="Usado como alternativa aos endereços salvos"
+                ></textarea>
+              </label>
+
+              <button class="btn primary" type="submit">
+                Salvar alterações
+              </button>
+            </form>
+          </article>
+
+          <!-- Endereços -->
+          <article class="panel">
+            <div class="panel-head">
+              <div>
+                <span class="eyebrow">ENDEREÇOS</span>
+                <h2>Endereços salvos</h2>
+              </div>
+
+              <button type="button" class="btn secondary small" id="newAddressBtn">
+                <i class="fa-solid fa-plus" aria-hidden="true"></i>
+                Novo
+              </button>
+            </div>
+
+            <div class="address-list" id="addressList"></div>
+          </article>
+
+          <!-- Privacidade e LGPD -->
+          <article class="panel privacy-center">
+            <div class="panel-head"><div><span class="eyebrow">PRIVACIDADE</span><h2>Seus dados e LGPD</h2></div></div>
+            <p class="privacy-copy">Consulte os documentos vigentes, exporte uma cópia dos dados vinculados à sua conta ou envie uma solicitação de direito do titular.</p>
+            <div class="privacy-actions">
+              <button type="button" class="btn secondary small" id="exportMyData"><i class="fa-solid fa-file-export"></i> Exportar meus dados</button>
+              <button type="button" class="btn secondary small" id="requestDataCorrection"><i class="fa-solid fa-pen-to-square"></i> Solicitar correção</button>
+              <button type="button" class="btn danger small" id="requestAccountDeletion"><i class="fa-solid fa-user-slash"></i> Solicitar exclusão</button>
+              <button type="button" class="btn secondary small" id="revokeOtherSessions"><i class="fa-solid fa-shield-halved"></i> Encerrar outras sessões</button>
+            </div>
+            <div class="privacy-actions privacy-actions-extra"><button class="btn secondary small" id="manageConsentPreferences" type="button"><i class="fa-solid fa-sliders"></i> Gerenciar consentimento</button></div>
+
+            <div class="privacy-links">
+              <a href="../legal/privacidade.html" target="_blank" rel="noopener">Política de Privacidade</a>
+              <a href="../legal/termos-cliente.html" target="_blank" rel="noopener">Termos do Cliente</a>
+              <a href="../legal/cookies.html" target="_blank" rel="noopener">Cookies</a>
+            </div>
+            <small class="helper" id="privacyRequestStatus"></small>
+            <div class="session-device-list" id="sessionDeviceList"></div>
+          </article>
+
+          <!-- Notificações -->
+          <article class="panel">
+            <div class="panel-head">
+              <div>
+                <span class="eyebrow">NOTIFICAÇÕES</span>
+                <h2>Central de avisos</h2>
+              </div>
+
+              <button type="button" class="text-btn" id="markAllRead">
+                Marcar todas como lidas
+              </button>
+            </div>
+
+            <div class="notification-list" id="notificationList"></div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <!-- ===================================================
+         NAVEGAÇÃO MOBILE
+    ==================================================== -->
+    <nav class="mobile-nav" aria-label="Navegação mobile">
+      <button type="button" class="active" data-page="inicio">
+        <i class="fa-solid fa-house" aria-hidden="true"></i>
+        <span>Início</span>
+      </button>
+
+      <button type="button" data-page="cardapio">
+        <i class="fa-solid fa-burger" aria-hidden="true"></i>
+        <span>Cardápio</span>
+      </button>
+
+      <button type="button" data-page="pedidos">
+        <i class="fa-solid fa-receipt" aria-hidden="true"></i>
+        <span>Pedidos</span>
+      </button>
+
+      <button type="button" data-page="fidelidade">
+        <i class="fa-solid fa-star" aria-hidden="true"></i>
+        <span>Pontos</span>
+      </button>
+
+      <button type="button" data-page="perfil">
+        <i class="fa-regular fa-user" aria-hidden="true"></i>
+        <span>Perfil</span>
+      </button>
+    </nav>
+
+    <!-- ===================================================
+         CARRINHO
+    ==================================================== -->
+    <div class="drawer-overlay" id="cartOverlay"></div>
+
+    <aside class="cart-drawer" id="cartDrawer" aria-label="Carrinho">
+      <div class="drawer-head">
+        <div>
+          <span class="eyebrow">SEU PEDIDO</span>
+          <h2>Carrinho</h2>
+          <p id="cartCountText">0 itens</p>
+        </div>
+
+        <button
+          type="button"
+          class="icon-btn"
+          id="closeCart"
+          aria-label="Fechar carrinho"
+        >
+          <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+        </button>
+      </div>
+
+      <div class="cart-items" id="cartItems"></div>
+
+      <div class="checkout" id="checkoutArea">
+        <div class="checkout-progress" id="checkoutProgress" aria-label="Etapas do checkout">
+          <span class="active" data-checkout-step="recebimento"><b>1</b><small>Recebimento</small></span>
+          <span data-checkout-step="endereco"><b>2</b><small>Endereço</small></span>
+          <span data-checkout-step="pagamento"><b>3</b><small>Pagamento</small></span>
+          <span data-checkout-step="revisao"><b>4</b><small>Revisão</small></span>
+        </div>
+        <!-- Entrega / retirada -->
+        <div class="checkout-block">
+          <label>Como você quer receber?</label>
+
+          <div class="choice-grid" id="deliveryChoices">
+            <button type="button" class="choice active" data-delivery="Entrega">
+              <i class="fa-solid fa-motorcycle" aria-hidden="true"></i>
+
+              <span>
+                <strong>Entrega</strong>
+                <small>Receber no endereço</small>
+              </span>
+            </button>
+
+            <button type="button" class="choice" data-delivery="Retirada">
+              <i class="fa-solid fa-store" aria-hidden="true"></i>
+
+              <span>
+                <strong>Retirada</strong>
+                <small>Buscar na loja</small>
+              </span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Endereço -->
+        <div class="checkout-block checkout-address-block" id="deliveryFields">
+          <div class="checkout-block-title">
+            <div>
+              <label>Onde devemos entregar?</label>
+              <small>Escolha um endereço salvo ou informe outro.</small>
+            </div>
+            <button type="button" class="mini-link" id="checkoutNewAddress"><i class="fa-solid fa-plus"></i> Novo endereço</button>
+          </div>
+
+          <div class="checkout-option-field">
+            <span class="checkout-option-icon"><i class="fa-solid fa-house"></i></span>
+            <div class="checkout-option-copy">
+              <small>ENDEREÇO</small>
+              <select id="savedAddressSelect" aria-label="Escolha o endereço de entrega">
+                <option value="">＋ Informar outro endereço</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="checkout-option-field">
+            <span class="checkout-option-icon"><i class="fa-solid fa-location-dot"></i></span>
+            <div class="checkout-option-copy">
+              <small>BAIRRO / REGIÃO</small>
+              <select id="neighborhoodSelect" aria-label="Selecione o bairro de entrega">
+                <option value="">📍 Selecione o bairro</option>
+              </select>
+            </div>
+          </div>
+
+          <label class="checkout-manual-address">
+            <span>Complementar ou informar outro endereço</span>
+            <textarea id="checkoutAddress" rows="2" placeholder="Rua, número, complemento e referência" aria-label="Endereço de entrega"></textarea>
+          </label>
+
+          <div class="location-helper">
+            <button type="button" class="btn secondary small" id="useCurrentLocation">
+              <i class="fa-solid fa-location-crosshairs"></i>
+              Usar minha localização
+            </button>
+            <small class="helper" id="deliveryLocationStatus">Opcional · melhora o cálculo de distância e a previsão de entrega.</small>
+          </div>
+        </div>
+
+        <!-- Agendamento -->
+        <div class="checkout-block">
+          <label>Quando?</label>
+
+          <div class="segmented" id="scheduleChoices">
+            <button type="button" class="active" data-schedule="agora">Agora</button>
+            <button type="button" data-schedule="agendar">Agendar</button>
+          </div>
+
+          <input
+            class="hidden"
+            id="scheduleAt"
+            type="datetime-local"
+            aria-label="Data e horário do agendamento"
+          >
+
+          <small class="helper" id="scheduleAvailabilityMessage"></small>
+        </div>
+
+        <!-- Cupom -->
+        <div class="checkout-block">
+          <label for="couponInput">Cupom</label>
+
+          <div class="coupon-row">
+            <input id="couponInput" placeholder="Ex.: BURGER10">
+            <button id="applyCoupon" type="button">Aplicar</button>
+          </div>
+
+          <small class="helper" id="couponMessage"></small>
+        </div>
+
+        <!-- Pagamento -->
+        <div class="checkout-block">
+          <label>Pagamento</label>
+
+          <div class="payment-grid" id="paymentChoices">
+            <button type="button" class="choice active" data-payment="PIX">
+              <i class="fa-brands fa-pix" aria-hidden="true"></i>
+              PIX
+            </button>
+
+            <button type="button" class="choice" data-payment="Cartão">
+              <i class="fa-regular fa-credit-card" aria-hidden="true"></i>
+              Cartão
+            </button>
+
+            <button type="button" class="choice" data-payment="Dinheiro">
+              <i class="fa-solid fa-money-bill-wave" aria-hidden="true"></i>
+              Dinheiro
+            </button>
+          </div>
+
+          <div class="sub-fields hidden" id="cardFields">
+            <select id="cardType" aria-label="Tipo do cartão">
+              <option value="Crédito">Crédito</option>
+              <option value="Débito">Débito</option>
+            </select>
+          </div>
+
+          <div class="sub-fields hidden" id="cashFields">
+            <input
+              id="cashChange"
+              type="number"
+              min="0"
+              step="0.01"
+              placeholder="Troco para quanto?"
+              aria-label="Troco para quanto"
+            >
+          </div>
+
+          <div class="pix-box hidden" id="pixBox">
+            <span>Chave PIX</span>
+            <strong id="pixKey">—</strong>
+            <small id="pixName">—</small>
+          </div>
+
+          <button type="button" class="online-payment-choice" id="onlinePaymentChoice" hidden aria-hidden="true" disabled>
+            <span class="online-payment-icon"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i></span>
+            <span><strong>Pagar online</strong><small>Mercado Pago · ambiente protegido do provedor</small></span>
+            <i class="fa-solid fa-check online-payment-check" aria-hidden="true"></i>
+          </button>
+          <small class="helper">Disponível quando a hamburgueria conectar a conta de pagamentos.</small>
+        </div>
+
+        <div class="checkout-trust">
+          <i class="fa-solid fa-shield-heart"></i>
+          <span><strong>Pedido protegido pela Go-burger</strong><small>Valores são recalculados no servidor antes da confirmação. Seus dados de pagamento não ficam salvos no navegador.</small></span>
+        </div>
+
+        <!-- Observação -->
+        <div class="checkout-block">
+          <label for="orderNote">Observação do pedido</label>
+
+          <textarea
+            id="orderNote"
+            rows="2"
+            maxlength="500"
+            placeholder="Ex.: tocar interfone, embalagem separada..."
+          ></textarea>
+        </div>
+
+        <!-- Resumo -->
+        <div class="summary">
+          <div>
+            <span>Subtotal</span>
+            <strong id="cartSubtotal">R$ 0,00</strong>
+          </div>
+
+          <div>
+            <span>Desconto estimado</span>
+            <strong id="cartDiscount">- R$ 0,00</strong>
+          </div>
+
+          <div>
+            <span>Entrega</span>
+            <strong id="cartDeliveryFee">R$ 0,00</strong>
+          </div>
+
+          <div class="grand">
+            <span>Total estimado</span>
+            <strong id="cartTotal">R$ 0,00</strong>
+          </div>
+
+          <small>
+            O valor final é recalculado e validado pelo servidor ao confirmar.
+          </small>
+        </div>
+
+        <button type="button" class="btn primary large" id="checkoutBtn">
+          Confirmar pedido
+          <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+        </button>
+      </div>
+    </aside>
+
+    <!-- ===================================================
+         MODAL: PRODUTO
+    ==================================================== -->
+    <div class="modal" id="productModal" aria-hidden="true">
+      <div class="modal-card product-modal-card">
+        <button
+          type="button"
+          class="modal-close"
+          data-close="productModal"
+          aria-label="Fechar produto"
+        >
+          <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+        </button>
+
+        <div class="product-modal-grid">
+          <div class="product-modal-image">
+            <img id="modalProductImage" alt="Produto">
+
+            <button
+              type="button"
+              class="favorite-float"
+              id="modalFavorite"
+              aria-label="Favoritar produto"
+            >
+              <i class="fa-regular fa-heart" aria-hidden="true"></i>
+            </button>
+          </div>
+
+          <div class="product-config">
+            <span class="eyebrow" id="modalProductCategory">PRODUTO</span>
+            <h2 id="modalProductName">Produto</h2>
+            <p id="modalProductDescription"></p>
+            <strong class="product-base-price" id="modalProductPrice">R$ 0,00</strong>
+
+            <div id="productGroups"></div>
+            <div id="productIngredients"></div>
+
+            <label class="field" id="productObservationField">
+              <span>Observação</span>
+
+              <textarea
+                id="productObservation"
+                rows="2"
+                maxlength="300"
+                placeholder="Algum detalhe especial?"
+              ></textarea>
+            </label>
+
+            <div class="modal-product-footer">
+              <div class="qty-control">
+                <button type="button" id="modalQtyMinus" aria-label="Diminuir quantidade">−</button>
+                <strong id="modalQty">1</strong>
+                <button type="button" id="modalQtyPlus" aria-label="Aumentar quantidade">+</button>
+              </div>
+
+              <button type="button" class="btn primary" id="addConfiguredProduct">
+                <span>Adicionar</span>
+                <strong id="modalProductTotal">R$ 0,00</strong>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================================================
+         MODAL: PEDIDO
+    ==================================================== -->
+    <div class="modal" id="orderModal" aria-hidden="true">
+      <div class="modal-card large">
+        <div class="modal-head">
+          <div>
+            <span class="eyebrow">PEDIDO</span>
+            <h2 id="orderModalTitle">Pedido</h2>
+          </div>
+
+          <button
+            type="button"
+            class="icon-btn"
+            data-close="orderModal"
+            aria-label="Fechar detalhes do pedido"
+          >
+            <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+          </button>
+        </div>
+
+        <div id="orderModalContent"></div>
+      </div>
+    </div>
+
+    <!-- ===================================================
+         MODAL: ENDEREÇO
+    ==================================================== -->
+    <div class="modal" id="addressModal" aria-hidden="true">
+      <div class="modal-card">
+        <div class="modal-head">
+          <div>
+            <span class="eyebrow">ENDEREÇO</span>
+            <h2 id="addressModalTitle">Novo endereço</h2>
+          </div>
+
+          <button
+            type="button"
+            class="icon-btn"
+            data-close="addressModal"
+            aria-label="Fechar endereço"
+          >
+            <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+          </button>
+        </div>
+
+        <form class="form-grid" id="addressForm">
+          <label class="field">
+            <span>Apelido</span>
+            <input name="apelido" placeholder="Casa, Trabalho...">
+          </label>
+
+          <label class="field">
+            <span>CEP</span>
+            <input name="cep" inputmode="numeric" autocomplete="postal-code">
+          </label>
+
+          <label class="field full">
+            <span>Rua / logradouro</span>
+            <input name="logradouro" autocomplete="street-address" required>
+          </label>
+
+          <label class="field">
+            <span>Número</span>
+            <input name="numero">
+          </label>
+
+          <label class="field">
+            <span>Complemento</span>
+            <input name="complemento">
+          </label>
+
+          <label class="field">
+            <span>Bairro</span>
+
+            <select name="bairro_id" id="addressNeighborhood">
+              <option value="">Selecione</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span>Cidade</span>
+            <input name="cidade" autocomplete="address-level2">
+          </label>
+
+          <label class="field">
+            <span>Estado</span>
+            <input name="estado" maxlength="2" autocomplete="address-level1">
+          </label>
+
+          <label class="field full">
+            <span>Referência</span>
+            <input name="referencia">
+          </label>
+
+          <label class="check-row full">
+            <input name="principal" type="checkbox">
+            <span>Usar como endereço principal</span>
+          </label>
+
+          <div class="modal-actions full">
+            <button type="button" class="btn secondary" data-close="addressModal">
+              Cancelar
+            </button>
+
+            <button class="btn primary" type="submit">
+              Salvar endereço
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- ===================================================
+         MODAL: AVALIAÇÃO
+    ==================================================== -->
+    <div class="modal" id="reviewModal" aria-hidden="true">
+      <div class="modal-card">
+        <div class="modal-head">
+          <div>
+            <span class="eyebrow">AVALIAÇÃO</span>
+            <h2 id="reviewTitle">Como foi seu pedido?</h2>
+          </div>
+
+          <button
+            type="button"
+            class="icon-btn"
+            data-close="reviewModal"
+            aria-label="Fechar avaliação"
+          >
+            <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+          </button>
+        </div>
+
+        <form id="reviewForm">
+          <input type="hidden" name="pedido_id">
+
+          <div class="star-picker" id="starPicker" aria-label="Nota do pedido">
+            <button type="button" data-star="1" aria-label="1 estrela">★</button>
+            <button type="button" data-star="2" aria-label="2 estrelas">★</button>
+            <button type="button" data-star="3" aria-label="3 estrelas">★</button>
+            <button type="button" data-star="4" aria-label="4 estrelas">★</button>
+            <button type="button" data-star="5" aria-label="5 estrelas">★</button>
+          </div>
+
+          <label class="field">
+            <span>Comentário</span>
+
+            <textarea
+              name="comentario"
+              rows="4"
+              maxlength="500"
+              placeholder="Conte para a gente como foi..."
+            ></textarea>
+          </label>
+
+          <button class="btn primary large" type="submit">
+            Enviar avaliação
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- ===================================================
+         UPSELL
+    ==================================================== -->
+    <div class="upsell-toast hidden" id="upsellToast">
+      <button
+        type="button"
+        class="upsell-close"
+        id="closeUpsell"
+        aria-label="Fechar sugestão"
+      >
+        <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+      </button>
+
+      <img id="upsellImage" alt="Sugestão">
+
+      <div>
+        <small>COMBINA COM SEU PEDIDO</small>
+        <strong id="upsellName">Complete seu pedido</strong>
+        <span id="upsellPrice"></span>
+      </div>
+
+      <button type="button" class="btn primary small" id="acceptUpsell">
+        Adicionar
+      </button>
+    </div>
+
+    <!-- ===================================================
+         TOASTS
+    ==================================================== -->
+    <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+  </div>
+
+  <!-- =====================================================
+       SCRIPTS
+  ====================================================== -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.111.0"></script>
+  <script src="cliente.js?v=88"></script>
+<script src="cliente-growth.js?v=88"></script>
+<script src="cliente-cases.js?v=88"></script>
+<script src="cliente-phase2.js?v=88"></script>
+  <script src="../shared/app-ui.js?v=88" defer></script>
+  <script src="../shared/release-88.js?v=88" defer></script>
+  <script src="../shared/redesign-89.js?v=89" defer></script>
+  <script src="../shared/css-master-90-108.js?v=108" defer></script>
+  <script src="../shared/final-109-600.js?v=600" defer></script>
+  <script src="../shared/final-runtime-611.js?v=611"></script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-labelledby="title description">
+  <title id="title">Imagem Go-burger</title>
+  <desc id="description">Espaço reservado para foto de hambúrguer, produto ou banner.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#24140d"/>
+      <stop offset=".55" stop-color="#4c1c0a"/>
+      <stop offset="1" stop-color="#f4511e"/>
+    </linearGradient>
+    <linearGradient id="bread" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffcc72"/>
+      <stop offset="1" stop-color="#e9892f"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="180%">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#120806" flood-opacity=".42"/>
+    </filter>
+  </defs>
+  <rect width="800" height="450" rx="34" fill="url(#background)"/>
+  <circle cx="650" cy="55" r="190" fill="#ffb35f" opacity=".12"/>
+  <circle cx="100" cy="420" r="210" fill="#ff7a35" opacity=".1"/>
+  <g transform="translate(285 72)" filter="url(#shadow)">
+    <path d="M15 133c8-72 51-108 115-108s107 36 115 108z" fill="url(#bread)"/>
+    <g fill="#fff1bd">
+      <ellipse cx="75" cy="65" rx="5" ry="10" transform="rotate(-34 75 65)"/>
+      <ellipse cx="132" cy="48" rx="5" ry="10" transform="rotate(18 132 48)"/>
+      <ellipse cx="180" cy="77" rx="5" ry="10" transform="rotate(-16 180 77)"/>
+    </g>
+    <rect x="2" y="142" width="256" height="25" rx="12" fill="#54a85b"/>
+    <path d="M10 174h240l-38 28-39-20-47 23-42-22-38 17z" fill="#ffc62f"/>
+    <rect x="7" y="200" width="246" height="48" rx="22" fill="#552719"/>
+    <path d="M7 258h246c-5 42-37 61-76 61H83c-39 0-71-19-76-61z" fill="url(#bread)"/>
+  </g>
+  <g fill="#fffaf6" font-family="Arial, sans-serif" text-anchor="middle">
+    <text x="415" y="418" font-size="30" font-weight="700">Go-burger</text>
+  </g>
+</svg>

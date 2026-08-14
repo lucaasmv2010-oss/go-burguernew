@@ -1,0 +1,41 @@
+/* ========================================================================== */
+/* GO BURGER P700 — PLANOS 1.0                                               */
+/* Final authority for P681-P700 plan surfaces. Billing production stays OFF. */
+/* ========================================================================== */
+.gb-plan-v1-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:16px}
+.gb-plan-v1-card{min-width:0}
+.gb-plan-v1-status{display:grid;gap:6px;padding:2px 0}
+.gb-plan-v1-status strong{font-size:1.06rem;overflow-wrap:anywhere}
+.gb-plan-v1-status small,.gb-plan-v1-cache,.gb-plan-v1-pilot{color:var(--muted,#667085);margin:0}
+.gb-plan-v1-badge{display:inline-flex;align-items:center;gap:7px;width:max-content;max-width:100%;padding:7px 10px;border-radius:999px;background:color-mix(in srgb,var(--brand,#ff6500) 11%,transparent);font-size:.72rem;font-weight:900;letter-spacing:.04em}
+.gb-entitlements{display:grid;gap:8px}
+.gb-entitlement-row{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;padding:9px 11px;border:1px solid color-mix(in srgb,var(--line,#d9dee8) 80%,transparent);border-radius:12px}
+.gb-entitlement-row span{color:var(--muted,#667085)}
+.gb-entitlements>small{color:var(--muted,#667085);line-height:1.5}
+.gb-plan-addon-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.gb-plan-addon-list>span{display:inline-flex;align-items:center;gap:7px;padding:7px 9px;border-radius:999px;background:color-mix(in srgb,var(--brand,#ff6500) 7%,var(--surface,#fff));border:1px solid color-mix(in srgb,var(--line,#d9dee8) 82%,transparent);font-size:.78rem}
+.gb-plan-error-state.cached{border-color:color-mix(in srgb,var(--brand,#ff6500) 35%,var(--line,#d9dee8));background:color-mix(in srgb,var(--brand,#ff6500) 5%,var(--surface,#fff));color:var(--text,#1f2937)}
+.gb-plan-sandbox-form #plansSandboxE2E{justify-self:stretch}
+
+.sa-plan-final-panel{border:1px solid color-mix(in srgb,var(--sa-line,rgba(148,163,184,.2)) 88%,transparent)}
+.sa-plan-final-actions{display:flex;flex-wrap:wrap;gap:9px;margin:14px 0}
+.sa-plan-final-actions .sa-btn{max-width:100%;white-space:normal}
+.sa-plan-final-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:12px}
+.sa-plan-final-grid>section{min-width:0;border:1px solid var(--sa-line,rgba(148,163,184,.18));border-radius:15px;padding:14px;background:var(--sa-panel,#fff)}
+.sa-plan-final-grid h4{margin:0 0 10px;font-size:.92rem}
+.sa-plan-final-banner{display:flex;gap:10px;align-items:flex-start;padding:12px;border-radius:13px;border:1px solid var(--sa-line,rgba(148,163,184,.18));background:color-mix(in srgb,var(--sa-bg,#f8fafc) 88%,transparent)}
+.sa-plan-final-banner>i{margin-top:2px}
+.sa-plan-final-banner strong,.sa-plan-final-banner p{display:block;margin:0}
+.sa-plan-final-banner p{margin-top:3px;color:var(--sa-muted,#64748b);font-size:.8rem}
+.sa-plan-blocker-list{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}
+.sa-plan-blocker-list span{display:inline-flex;align-items:center;gap:6px;padding:7px 9px;border-radius:999px;background:color-mix(in srgb,var(--sa-bg,#f8fafc) 82%,transparent);border:1px solid var(--sa-line,rgba(148,163,184,.18));font-size:.72rem;font-weight:800}
+.sa-plan-qa-list{display:grid;gap:6px;margin-top:10px}
+.sa-plan-qa-list span{display:flex;align-items:center;gap:7px;font-size:.76rem;overflow-wrap:anywhere}
+.sa-plan-qa-list span.bad{font-weight:800}
+
+body.dark .gb-plan-addon-list>span,html[data-theme="dark"] .gb-plan-addon-list>span,
+body.dark .sa-plan-final-grid>section,html[data-theme="dark"] .sa-plan-final-grid>section{background:var(--surface,#111827);border-color:rgba(148,163,184,.22)}
+
+@media (max-width:980px){.gb-plan-v1-grid,.sa-plan-final-grid{grid-template-columns:1fr}}
+@media (max-width:640px){.sa-plan-final-actions{display:grid;grid-template-columns:1fr}.sa-plan-final-actions .sa-btn{width:100%}.gb-plan-v1-badge{width:100%;justify-content:center}.gb-plan-sandbox-form #plansSandboxE2E{grid-column:1/-1}}
+@media (prefers-reduced-motion:reduce){.gb-plan-v1-card,.sa-plan-final-panel{scroll-behavior:auto}}

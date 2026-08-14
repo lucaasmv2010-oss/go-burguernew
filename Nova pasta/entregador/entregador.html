@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' data: https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: blob: https://ethlgaszdextwckdwgsf.supabase.co; connect-src 'self' https://ethlgaszdextwckdwgsf.supabase.co wss://ethlgaszdextwckdwgsf.supabase.co; frame-src 'self'; worker-src 'self' blob:; manifest-src 'self'; media-src 'self' blob: https://ethlgaszdextwckdwgsf.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#17100c">
+  <meta name="description" content="Painel de entregas da Go-burger.">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>Go-burger | Entregador</title>
+  <link rel="manifest" href="../manifest.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link rel="stylesheet" href="entregador.css?v=88">
+  <link rel="stylesheet" href="../shared/app-ui.css?v=88">
+
+  <script src="../shared/theme.js?v=88"></script>
+  <link rel="stylesheet" href="../shared/theme.css?v=88">
+  <meta name="go-burger-release" content="89">
+  <link rel="stylesheet" href="../shared/release-88.css?v=88">
+  <link rel="stylesheet" href="../shared/redesign-89.css?v=89">
+  <link rel="stylesheet" href="../shared/css-master-90-108.css?v=108">
+  <meta name="go-burger-css-release" content="108">
+  <link rel="stylesheet" href="../shared/final-109-600.css?v=600">
+  <meta name="go-burger-final-release" content="600">
+  <link rel="stylesheet" href="../shared/hotfix-609-video-qa.css?v=609">
+  <link rel="stylesheet" href="../shared/final-ui-611.css?v=611">
+  <link rel="stylesheet" href="../shared/button-layout-6121.css?v=6121">
+</head>
+<body class="gb-driver-page">
+  <header class="driver-topbar">
+    <button class="driver-brand" id="driverHome" type="button"><span>🍔</span><div><strong>Go-burger</strong><small>ENTREGADOR</small></div></button>
+    <div class="driver-session"><button class="gb-theme-toggle driver-theme-toggle" data-gb-theme-toggle type="button" aria-label="Ativar modo escuro"><i class="fa-regular fa-moon"></i></button><button class="driver-online-toggle" id="driverAvailability" type="button" aria-pressed="false"><span id="driverOnlineDot"></span><b id="driverAvailabilityText">Offline</b></button><div><strong id="driverName">Carregando...</strong><small id="driverStore">Go-burger</small></div></div>
+  </header>
+  <main class="driver-shell">
+    <section class="driver-hero"><div><span>ROTA ATUAL</span><h1>Suas entregas em um só lugar.</h1><p>Atualize a rota, envie sua localização e confirme a entrega diretamente pelo celular.</p></div><button class="driver-btn secondary" id="driverRefresh" type="button"><i class="fa-solid fa-rotate"></i> Atualizar</button></section>
+    <div class="driver-location-card"><div><i class="fa-solid fa-location-crosshairs"></i><span><strong>Localização em rota</strong><small id="driverLocationText">Envie sua posição somente durante a entrega.</small></span></div><div class="driver-location-actions"><button class="driver-btn secondary" id="driverLiveLocation" type="button" aria-pressed="false"><i class="fa-solid fa-satellite-dish"></i> Compartilhar em tempo real</button><button class="driver-btn primary" id="driverSendLocation" type="button">Enviar agora</button></div></div>
+    <section class="driver-section"><div class="driver-section-head"><div><span>ENTREGAS</span><h2>Fila atribuída</h2></div><b id="driverDeliveryCount">0</b></div><div class="driver-grid" id="driverDeliveries"></div></section>
+    <section class="driver-empty hidden" id="driverNoAccess"><i class="fa-solid fa-user-lock"></i><h2 id="driverNoAccessTitle">Conta sem perfil de entregador</h2><p id="driverNoAccessText">Faça seu cadastro ou aceite o convite de uma hamburgueria parceira.</p><a class="driver-btn primary" href="cadastro.html"><i class="fa-solid fa-id-card"></i>&nbsp; Quero ser entregador</a></section>
+  </main>
+  <div class="driver-toast" id="driverToast"></div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.111.0"></script>
+  <script src="entregador.js?v=88"></script>
+  <script src="../shared/app-ui.js?v=88" defer></script>
+  <script src="../shared/release-88.js?v=88" defer></script>
+  <script src="../shared/redesign-89.js?v=89" defer></script>
+  <script src="../shared/css-master-90-108.js?v=108" defer></script>
+  <script src="../shared/final-109-600.js?v=600" defer></script>
+  <script src="../shared/final-runtime-611.js?v=611"></script>
+</body>
+</html>

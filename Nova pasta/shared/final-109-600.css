@@ -1,0 +1,342 @@
+/* ========================================================================== 
+   GO-BURGER WEB 2.0 · FECHAMENTO EM LOTE · PACOTES 109–600
+   Camada final de estabilidade visual, mobile, dark mode, acessibilidade,
+   estados de rede, safe-area, teclado virtual, PWA e consistência operacional.
+   Carregar após css-master-90-108.css.
+   ========================================================================== */
+
+:root {
+  --gb600-page-bg: var(--gb108-bg, #f4f1eb);
+  --gb600-surface: var(--gb108-surface, #fffdfa);
+  --gb600-surface-2: var(--gb108-surface-2, #f5f0e9);
+  --gb600-ink: var(--gb108-ink, #17181d);
+  --gb600-muted: var(--gb108-muted, #74716d);
+  --gb600-line: var(--gb108-line, rgba(23,24,29,.10));
+  --gb600-brand: var(--gb108-brand, #f04c35);
+  --gb600-success: var(--gb108-success, #147a58);
+  --gb600-danger: var(--gb108-danger, #c33d4b);
+  --gb600-safe-top: env(safe-area-inset-top, 0px);
+  --gb600-safe-right: env(safe-area-inset-right, 0px);
+  --gb600-safe-bottom: env(safe-area-inset-bottom, 0px);
+  --gb600-safe-left: env(safe-area-inset-left, 0px);
+  --gb600-vh: 100dvh;
+  --gb600-vw: 100vw;
+  --gb600-vv-top: 0px;
+  --gb600-vv-bottom: 0px;
+  --gb600-ease: cubic-bezier(.2,.8,.2,1);
+  --gb600-ring: 0 0 0 4px color-mix(in srgb,var(--gb600-brand) 20%,transparent);
+}
+
+html[data-theme="dark"] {
+  --gb600-page-bg: var(--gb108-bg, #101216);
+  --gb600-surface: var(--gb108-surface, #1a1d23);
+  --gb600-surface-2: var(--gb108-surface-2, #21252c);
+  --gb600-ink: var(--gb108-ink, #f7f5f1);
+  --gb600-muted: var(--gb108-muted, #aaa59f);
+  --gb600-line: var(--gb108-line, rgba(255,255,255,.09));
+}
+
+html.gb600-runtime,
+html.gb600-runtime body {
+  min-width: 0;
+  width: 100%;
+  min-height: 100%;
+  background: var(--gb600-page-bg)!important;
+  color: var(--gb600-ink);
+}
+
+html.gb600-runtime { overflow-x: clip; }
+body { min-width:0; }
+main,section,article,aside,header,footer,nav,form,fieldset,div { min-width:0; }
+img,video,canvas,svg,iframe { max-width:100%; }
+:where(p,h1,h2,h3,h4,h5,h6,span,strong,small,a,button,label,td,th) { overflow-wrap:break-word; }
+:where(code,pre) { overflow-wrap:normal; }
+
+/* Barra/status do navegador e superfícies de topo acompanham o tema real. */
+html.gb600-runtime body::before {
+  content:"";
+  position:fixed;
+  inset:0 0 auto 0;
+  height:max(var(--gb600-safe-top),1px);
+  background:var(--gb600-page-bg);
+  pointer-events:none;
+  z-index:2147483000;
+}
+
+/* Inputs nunca dão zoom involuntário no Safari/iOS. */
+@media (max-width:900px) {
+  :where(input,select,textarea) { font-size:16px!important; }
+}
+
+/* Shell: altura segue visualViewport, inclusive teclado virtual e barras móveis. */
+.gb-shell-page .gb-shell,
+.gb-shell-page .gb-topbar,
+.gb-shell-page .gb-stage {
+  height:var(--gb600-vh)!important;
+  min-height:var(--gb600-vh)!important;
+  max-height:var(--gb600-vh)!important;
+}
+.gb-shell-page .gb-frame {
+  width:100%!important;
+  height:100%!important;
+  min-height:0!important;
+  display:block;
+}
+.gb-shell-page .gb-stage { overflow:hidden!important; }
+
+/* Melhor leitura das ações do launcher desktop. */
+@media (min-width:901px) {
+  .gb-shell-page .gb-mode { position:relative; }
+  .gb-shell-page .gb-mode::after {
+    content:attr(aria-label);
+    position:absolute;
+    left:calc(100% + 10px);
+    top:50%;
+    transform:translate(-5px,-50%);
+    opacity:0;
+    pointer-events:none;
+    white-space:nowrap;
+    max-width:220px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    padding:8px 10px;
+    border:1px solid var(--gb600-line);
+    border-radius:10px;
+    background:var(--gb600-surface);
+    color:var(--gb600-ink);
+    box-shadow:var(--gb108-shadow-sm,0 8px 24px rgba(0,0,0,.12));
+    font-size:11px;
+    font-weight:800;
+    transition:opacity 140ms ease,transform 140ms ease;
+    z-index:120;
+  }
+  .gb-shell-page .gb-mode[aria-label]:hover::after,
+  .gb-shell-page .gb-mode[aria-label]:focus-visible::after { opacity:1; transform:translate(0,-50%); }
+}
+
+/* Mobile dock: nunca fica atrás da barra do aparelho. */
+@media (max-width:900px) {
+  .gb-shell-page .gb-topbar {
+    bottom:0!important;
+    top:auto!important;
+    padding-bottom:max(8px,var(--gb600-safe-bottom))!important;
+    min-height:calc(68px + var(--gb600-safe-bottom))!important;
+    height:auto!important;
+    max-height:none!important;
+  }
+  .gb-shell-page .gb-stage {
+    height:var(--gb600-vh)!important;
+    max-height:var(--gb600-vh)!important;
+    padding-bottom:calc(72px + var(--gb600-safe-bottom))!important;
+  }
+  .gb-shell-page .gb-more-menu {
+    max-height:calc(var(--gb600-vh) - 150px - var(--gb600-safe-bottom))!important;
+    overscroll-behavior:contain;
+    scrollbar-gutter:stable;
+  }
+  .gb-shell-page .gb-actions {
+    top:calc(max(8px,var(--gb600-safe-top)) + var(--gb600-vv-top))!important;
+    right:max(8px,var(--gb600-safe-right))!important;
+  }
+  html[data-gb-keyboard="open"] .gb-shell-page .gb-topbar { transform:translateY(110%)!important; pointer-events:none!important; }
+  html[data-gb-keyboard="open"] .gb-shell-page .gb-stage { padding-bottom:0!important; }
+}
+
+/* Marketplace e cliente: barras fixas/sticky com safe-area e sem cortes laterais. */
+.gb-market-page .market-topbar,
+.gb-client-page .topbar,
+.gb-admin-page .topbar,
+.gb-superadmin-page .sa-topbar {
+  padding-left:max(var(--gb108-gutter,16px),var(--gb600-safe-left));
+  padding-right:max(var(--gb108-gutter,16px),var(--gb600-safe-right));
+}
+
+.gb-market-page .market-container,
+.gb-client-page .content,
+.gb-admin-page .main-content,
+.gb-superadmin-page .sa-content,
+.gb-driver-page .driver-shell,
+.gb-driver-signup-page .driver-signup-shell {
+  max-width:100%!important;
+}
+
+:where(.store-grid,.product-grid,.menu-grid,.sa-approval-grid,.sa-ticket-grid,.driver-grid) > * { min-width:0; }
+
+/* Filtros: evita a sensação de controles soltos/desalinhados. */
+.gb-market-page .filter-controls > *,
+.gb-market-page .select-control,
+.gb-market-page .open-toggle {
+  min-width:0!important;
+  width:100%!important;
+}
+.gb-market-page .select-control { overflow:hidden; }
+.gb-market-page .select-control select { text-overflow:ellipsis; }
+
+/* Estados de rede globais. */
+.gb600-network-status {
+  position:fixed;
+  top:calc(max(10px,var(--gb600-safe-top)) + var(--gb600-vv-top));
+  left:50%;
+  z-index:2147483200;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:9px;
+  max-width:min(92vw,560px);
+  min-height:42px;
+  padding:10px 14px;
+  border:1px solid color-mix(in srgb,var(--gb600-danger) 28%,var(--gb600-line));
+  border-radius:999px;
+  background:color-mix(in srgb,var(--gb600-surface) 94%,transparent);
+  color:var(--gb600-ink);
+  box-shadow:0 18px 46px rgba(0,0,0,.18);
+  backdrop-filter:blur(18px) saturate(1.25);
+  font-size:12px;
+  font-weight:800;
+  text-align:center;
+  opacity:0;
+  transform:translate(-50%,-12px) scale(.98);
+  transition:opacity 180ms ease,transform 220ms var(--gb600-ease),border-color 180ms ease;
+  pointer-events:none;
+}
+.gb600-network-status.show { opacity:1; transform:translate(-50%,0) scale(1); }
+.gb600-network-status[data-kind="online"] { border-color:color-mix(in srgb,var(--gb600-success) 34%,var(--gb600-line)); }
+.gb600-network-status i { color:var(--gb600-brand); }
+.gb600-network-status[data-kind="online"] i { color:var(--gb600-success); }
+
+/* Dialogs/bottom sheets: área segura, foco e rolagem interna. */
+:where(.modal,.sa-modal,.gb-choice-overlay,.gb-navigation-overlay,.store-create-overlay,.driver-modal,[role="dialog"]) {
+  overscroll-behavior:contain;
+}
+:where(.modal-card,.sa-modal-card,.store-create-modal,.gb-choice-sheet,.gb-navigation-panel,.driver-modal-card) {
+  max-width:calc(100vw - max(24px,calc(var(--gb600-safe-left) + var(--gb600-safe-right))))!important;
+  max-height:calc(var(--gb600-vh) - max(24px,var(--gb600-safe-top)) - max(24px,var(--gb600-safe-bottom)))!important;
+  overscroll-behavior:contain;
+  scrollbar-gutter:stable;
+}
+
+/* Parceiros: modal completo, compacto e previsível em qualquer aparelho. */
+.gb-admin-page .store-create-modal {
+  width:min(640px,calc(100vw - 24px - var(--gb600-safe-left) - var(--gb600-safe-right)))!important;
+}
+.gb-admin-page .store-create-form { overscroll-behavior:contain; }
+.gb-admin-page .store-create-modal .modal-actions {
+  padding-bottom:max(14px,var(--gb600-safe-bottom))!important;
+  background:linear-gradient(to bottom,color-mix(in srgb,var(--gb600-surface) 88%,transparent),var(--gb600-surface) 26%);
+}
+
+/* Admin e Super Admin: densidade operacional sem perder legibilidade. */
+.gb-admin-page :where(.panel,.metric-card,.stat-card),
+.gb-superadmin-page :where(.sa-panel,.sa-metric,.sa-stat-card) {
+  isolation:isolate;
+}
+.gb-admin-page :where(.table-wrap,.management-list),
+.gb-superadmin-page :where(.sa-table-wrap,.sa-list) { scrollbar-gutter:stable; }
+.gb-superadmin-page .sa-sidebar,
+.gb-admin-page .sidebar { padding-bottom:max(16px,var(--gb600-safe-bottom))!important; }
+
+/* Dark mode: remove superfícies brancas residuais e mantém status/inputs coerentes. */
+html[data-theme="dark"] body :where(.gb-more-menu,.gb-choice-sheet,.gb-navigation-panel,.modal-card,.sa-modal-card,.store-create-modal,.driver-modal-card) {
+  color-scheme:dark;
+  border-color:var(--gb600-line)!important;
+}
+html[data-theme="dark"] body :where(input,select,textarea) { caret-color:var(--gb108-brand,#ff6650); }
+html[data-theme="dark"] body :where(.table-wrap,.sa-table-wrap) { scrollbar-color:rgba(255,255,255,.18) transparent; }
+
+/* Teclado virtual: ações sticky ficam visíveis, conteúdo evita salto de viewport. */
+html[data-gb-keyboard="open"] body { scroll-padding-bottom:24px; }
+html[data-gb-keyboard="open"] :where(.modal-card,.sa-modal-card,.store-create-modal,.gb-choice-sheet,.gb-navigation-panel) {
+  max-height:calc(var(--gb600-vh) - 12px)!important;
+}
+
+/* Responsividade fina para celulares reais. */
+@media (max-width:680px) {
+  body { padding-left:var(--gb600-safe-left); padding-right:var(--gb600-safe-right); }
+  .gb-shell-page { padding-inline:0!important; }
+  .gb-market-page .market-container,
+  .gb-driver-page .driver-shell,
+  .gb-driver-signup-page .driver-signup-shell { width:calc(100% - 20px)!important; }
+  .gb-market-page .hero { border-radius:24px!important; }
+  .gb-market-page .partner-cta,
+  .gb-market-page .driver-cta { border-radius:20px!important; }
+  :where(.toast,.gb-toast) {
+    left:max(10px,var(--gb600-safe-left))!important;
+    right:max(10px,var(--gb600-safe-right))!important;
+    bottom:calc(80px + var(--gb600-safe-bottom))!important;
+    width:auto!important;
+    max-width:none!important;
+  }
+}
+
+@media (max-width:440px) {
+  .gb-shell-page .gb-mode { font-size:9px!important; }
+  .gb-shell-page .gb-mode span { max-width:64px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .gb-market-page .topbar-inner { grid-template-columns:minmax(0,1fr) auto!important; }
+  .gb-market-page .go-brand { min-width:0; }
+  .gb-market-page .go-brand strong { white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .gb-market-page .hero { padding-inline:18px!important; }
+  .gb-market-page .filters-shell { border-radius:18px!important; }
+  .gb-admin-page .main-content,
+  .gb-superadmin-page .sa-content { padding-inline:12px!important; }
+}
+
+@media (max-width:360px) {
+  :root { --gb108-gutter:10px; --gb108-control-h:44px; }
+  .gb-shell-page .gb-topbar { padding-inline:4px!important; }
+  .gb-shell-page .gb-mode { padding-inline:1px!important; border-radius:13px!important; }
+  .gb-shell-page .gb-mode i { font-size:17px!important; }
+  .gb-shell-page .gb-actions { right:6px!important; padding:3px!important; }
+  .gb-market-page .market-container,
+  .gb-driver-page .driver-shell,
+  .gb-driver-signup-page .driver-signup-shell { width:calc(100% - 14px)!important; }
+  .gb-market-page .hero { padding:20px 14px!important; border-radius:20px!important; }
+  .gb-market-page .filters-shell { padding:9px!important; }
+  :where(.modal-card,.sa-modal-card,.store-create-modal,.driver-modal-card) { border-radius:20px 20px 0 0!important; }
+}
+
+/* Aparência desktop ampla: usa o espaço sem esticar conteúdo textual demais. */
+@media (min-width:1500px) {
+  :root { --gb108-content:1440px; }
+  .gb-market-page .store-grid { grid-template-columns:repeat(4,minmax(0,1fr))!important; }
+}
+
+/* Preferências do aparelho e desempenho. */
+html.gb600-save-data :where(.hero-art,.burger-orbit,.gb-brand-pulse,.gb89-ripple) { display:none!important; }
+html.gb600-save-data :where(.market-topbar,.filters-shell,.topbar,.sa-topbar,.gb-topbar,.modal,.toast) {
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+}
+html.gb600-save-data *,
+html.gb600-reduced-motion * { scroll-behavior:auto!important; }
+
+@media (prefers-reduced-motion:reduce) {
+  .gb600-network-status { transition:none!important; }
+  .gb-shell-page .gb-mode::after { transition:none!important; }
+}
+
+@media (prefers-contrast:more) {
+  .gb600-network-status { border-width:2px; }
+  :where(.gb-market-page .filters-shell,.gb-market-page .store-card,.gb-admin-page .panel,.gb-superadmin-page .sa-panel) {
+    border-width:2px!important;
+  }
+}
+
+@media (forced-colors:active) {
+  .gb600-network-status { forced-color-adjust:auto; border:1px solid CanvasText; background:Canvas; color:CanvasText; }
+}
+
+/* Scrollbars discretas em desktop, nativas em touch. */
+@media (pointer:fine) {
+  * { scrollbar-width:thin; scrollbar-color:color-mix(in srgb,var(--gb600-muted) 35%,transparent) transparent; }
+  *::-webkit-scrollbar { width:9px; height:9px; }
+  *::-webkit-scrollbar-thumb { background:color-mix(in srgb,var(--gb600-muted) 30%,transparent); border:2px solid transparent; background-clip:padding-box; border-radius:999px; }
+}
+
+@media print {
+  .gb600-network-status,.gb-install-chip,.gb-update-chip,.gb-topbar,.market-topbar,.mobile-nav,.bottom-nav { display:none!important; }
+  body { background:#fff!important; color:#000!important; }
+  * { box-shadow:none!important; text-shadow:none!important; }
+}
+
+/* Marcador não visual para auditoria de release. */
+html.gb600-ready body::after { content:""; position:fixed; width:1px; height:1px; opacity:0; pointer-events:none; }

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://go-burger.app/burger/index.html</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://go-burger.app/cliente/marketplace/market.html</loc><changefreq>daily</changefreq></url>
+  <url><loc>https://go-burger.app/entregador/cadastro.html</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://go-burger.app/ajuda/index.html</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://go-burger.app/legal/index.html</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://go-burger.app/legal/privacidade.html</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://go-burger.app/legal/termos-cliente.html</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://go-burger.app/legal/termos-parceiros.html</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://go-burger.app/legal/termos-entregadores.html</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://go-burger.app/legal/cookies.html</loc><changefreq>monthly</changefreq></url>
+
+  <url><loc>https://go-burger.app/legal/protecao-menores.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+</urlset>

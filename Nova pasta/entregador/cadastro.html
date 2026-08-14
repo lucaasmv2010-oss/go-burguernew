@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' data: https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: blob: https://ethlgaszdextwckdwgsf.supabase.co; connect-src 'self' https://ethlgaszdextwckdwgsf.supabase.co wss://ethlgaszdextwckdwgsf.supabase.co; frame-src 'self'; worker-src 'self' blob:; manifest-src 'self'; media-src 'self' blob: https://ethlgaszdextwckdwgsf.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#17100c">
+  <meta name="description" content="Cadastre-se para realizar entregas nas hamburguerias parceiras da Go-burger.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://go-burger.app/entregador/cadastro.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Go-burger">
+  <meta property="og:title" content="Go-burger | Seja entregador">
+  <meta property="og:description" content="Crie seu perfil de entregador e conecte-se às hamburguerias parceiras da Go-burger.">
+  <meta property="og:url" content="https://go-burger.app/entregador/cadastro.html">
+  <meta property="og:image" content="https://go-burger.app/assets/screenshots/marketplace-wide.png">
+  <title>Go-burger | Quero ser entregador</title>
+  <link rel="manifest" href="../manifest.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link rel="stylesheet" href="cadastro.css?v=88">
+  <link rel="stylesheet" href="../shared/app-ui.css?v=88">
+
+  <script src="../shared/theme.js?v=88"></script>
+  <link rel="stylesheet" href="../shared/theme.css?v=88">
+  <meta name="go-burger-release" content="89">
+  <link rel="stylesheet" href="../shared/release-88.css?v=88">
+  <link rel="stylesheet" href="../shared/redesign-89.css?v=89">
+  <link rel="stylesheet" href="../shared/css-master-90-108.css?v=108">
+  <meta name="go-burger-css-release" content="108">
+  <link rel="stylesheet" href="../shared/final-109-600.css?v=600">
+  <meta name="go-burger-final-release" content="600">
+  <link rel="stylesheet" href="../shared/hotfix-609-video-qa.css?v=609">
+  <link rel="stylesheet" href="../shared/final-ui-611.css?v=611">
+  <link rel="stylesheet" href="../shared/button-layout-6121.css?v=6121">
+</head>
+<body class="gb-driver-signup-page">
+  <div class="driver-ambient driver-ambient-a"></div><div class="driver-ambient driver-ambient-b"></div>
+  <header class="driver-signup-topbar">
+    <a class="driver-signup-brand" href="../burger/index.html"><span>🍔</span><div><strong>Go-burger</strong><small>ENTREGAS</small></div></a>
+    <div class="driver-top-actions"><button class="gb-theme-toggle" data-gb-theme-toggle type="button" aria-label="Ativar modo escuro"><i class="fa-regular fa-moon"></i></button><a class="driver-top-link" href="entregador.html"><i class="fa-solid fa-motorcycle"></i> Já sou entregador</a></div>
+  </header>
+
+  <main class="driver-signup-shell">
+    <section class="driver-signup-hero">
+      <div class="driver-hero-copy">
+        <span class="driver-kicker"><i class="fa-solid fa-bolt"></i> GO-BURGER ENTREGAS</span>
+        <h1>Entre para a operação que conecta hamburguerias e clientes.</h1>
+        <p>Crie seu perfil, envie os documentos necessários e acompanhe a análise pela própria Go-burger. A ativação nunca acontece automaticamente.</p>
+        <div class="driver-hero-points"><span><i class="fa-solid fa-user-check"></i> Cadastro verificado</span><span><i class="fa-solid fa-shield-halved"></i> Documentos privados</span><span><i class="fa-solid fa-store"></i> Vínculo por hamburgueria</span></div>
+      </div>
+      <div class="driver-hero-orbit" aria-hidden="true"><span class="orbit-burger">🍔</span><i class="fa-solid fa-location-dot orbit-pin"></i><i class="fa-solid fa-motorcycle orbit-bike"></i></div>
+    </section>
+
+    <section class="driver-auth-card" id="driverAuthCard">
+      <div class="driver-panel-head"><div><span>ACESSO</span><h2>Entre ou crie sua conta</h2><p>Use uma conta Go-burger para acompanhar seu cadastro em qualquer aparelho.</p></div></div>
+      <div class="driver-auth-tabs"><button class="active" data-auth-tab="login" type="button">Entrar</button><button data-auth-tab="register" type="button">Criar conta</button></div>
+      <form class="driver-auth-form active" id="driverLoginForm" data-auth-form="login">
+        <label><span>E-mail</span><input name="email" type="email" autocomplete="email" required></label>
+        <label><span>Senha</span><input name="password" type="password" autocomplete="current-password" required></label>
+        <button class="driver-primary-btn" type="submit"><i class="fa-solid fa-arrow-right-to-bracket"></i> Entrar</button>
+      </form>
+      <form class="driver-auth-form" id="driverRegisterForm" data-auth-form="register">
+        <label><span>Nome completo</span><input name="nome" autocomplete="name" required></label>
+        <label><span>E-mail</span><input name="email" type="email" autocomplete="email" required></label>
+        <label><span>Celular</span><input name="telefone" type="tel" autocomplete="tel" required></label>
+        <label><span>Senha</span><input name="password" type="password" minlength="8" autocomplete="new-password" required></label>
+        <button class="driver-primary-btn" type="submit"><i class="fa-solid fa-user-plus"></i> Criar conta</button>
+      </form>
+    </section>
+
+    <section class="driver-dashboard hidden" id="driverOnboarding">
+      <div class="driver-status-banner" id="driverStatusBanner"><span class="driver-status-icon"><i class="fa-solid fa-file-signature"></i></span><div><small>SEU CADASTRO</small><strong id="driverStatusTitle">Comece seu cadastro</strong><p id="driverStatusText">Preencha os dados abaixo e envie para análise.</p></div><button class="driver-outline-btn" id="driverLogout" type="button"><i class="fa-solid fa-right-from-bracket"></i> Sair</button></div>
+
+      <div class="driver-progress-wrap"><div class="driver-progress-copy"><span>Progresso do cadastro</span><strong id="driverProgressText">0%</strong></div><div class="driver-progress"><span id="driverProgressBar"></span></div></div>
+
+      <div class="driver-onboarding-grid">
+        <section class="driver-form-card">
+          <div class="driver-panel-head"><div><span>ETAPA 1 · PERFIL</span><h2>Seus dados</h2><p>Esses dados são usados apenas para análise, segurança e operação.</p></div></div>
+          <form class="driver-main-form" id="driverApplicationForm">
+            <div class="driver-fields two"><label><span>Nome completo *</span><input name="nome" autocomplete="name" required></label><label><span>CPF *</span><input name="cpf" inputmode="numeric" maxlength="14" placeholder="000.000.000-00" required></label></div>
+            <div class="driver-fields two"><label><span>Data de nascimento *</span><input name="data_nascimento" type="date" required></label><label><span>Celular *</span><input name="telefone" type="tel" autocomplete="tel" required></label></div>
+            <div class="driver-fields two"><label><span>E-mail</span><input name="email" type="email" autocomplete="email"></label><label><span>CEP</span><input name="cep" inputmode="numeric" maxlength="9"></label></div>
+            <label><span>Endereço</span><input name="endereco" autocomplete="street-address" placeholder="Rua, número e bairro"></label>
+            <div class="driver-fields two"><label><span>Cidade *</span><input name="cidade" required></label><label><span>UF *</span><input name="estado" maxlength="2" required></label></div>
+            <div class="driver-fields two"><label><span>Contato de emergência</span><input name="contato_emergencia_nome"></label><label><span>Telefone de emergência</span><input name="contato_emergencia_telefone" type="tel"></label></div>
+
+            <div class="driver-form-divider"><span>VEÍCULO</span></div>
+            <div class="driver-fields two"><label><span>Como você entrega? *</span><select name="tipo_veiculo" id="driverVehicleType" required><option value="moto">Moto</option><option value="carro">Carro</option><option value="bicicleta">Bicicleta</option><option value="a_pe">A pé</option><option value="outro">Outro</option></select></label><label><span>Modelo</span><input name="modelo_veiculo" placeholder="Ex.: Honda CG 160"></label></div>
+            <div class="driver-fields two"><label><span>Cor</span><input name="cor_veiculo"></label><label><span>Placa</span><input name="placa" maxlength="8"></label></div>
+            <div class="driver-fields two driver-cnh-fields"><label><span>Categoria da CNH</span><input name="cnh_categoria" maxlength="5" placeholder="Ex.: A"></label><label><span>Validade da CNH</span><input name="cnh_validade" type="date"></label></div>
+            <label><span>Observações</span><textarea name="observacoes" rows="3" placeholder="Algo importante para a análise?"></textarea></label>
+            <label class="driver-check"><input name="aceite_termos" type="checkbox" required><span>Li e aceito os <a href="../legal/termos-entregadores.html" target="_blank" rel="noopener">Termos do Entregador</a> e a <a href="../legal/privacidade.html" target="_blank" rel="noopener">Política de Privacidade</a>.</span></label>
+            <label class="driver-check"><input name="declaracao_veracidade" type="checkbox" required><span>Confirmo que os dados e documentos enviados são verdadeiros e pertencem a mim.</span></label>
+            <div class="driver-age-note"><i class="fa-solid fa-circle-info"></i><span>O cadastro independente de entregador na plataforma é liberado apenas para pessoas com 18 anos ou mais.</span></div>
+            <button class="driver-primary-btn large" type="submit"><i class="fa-solid fa-paper-plane"></i> Salvar e enviar para análise</button>
+          </form>
+        </section>
+
+        <aside class="driver-side-column">
+          <section class="driver-form-card">
+            <div class="driver-panel-head"><div><span>ETAPA 2 · DOCUMENTOS</span><h2>Validação</h2><p>Arquivos ficam em área privada e não são publicados no seu perfil.</p></div></div>
+            <div class="driver-doc-list" id="driverDocsList"></div>
+            <label class="driver-upload"><input id="driverDocFile" type="file" accept="image/jpeg,image/png,image/webp,application/pdf"><span><i class="fa-solid fa-cloud-arrow-up"></i><strong>Enviar documento</strong><small>Imagem ou PDF · até 10 MB</small></span></label>
+            <select id="driverDocType" class="driver-doc-type" aria-label="Tipo do documento"><option value="foto_perfil">Foto de perfil *</option><option value="cnh_frente">CNH · frente</option><option value="cnh_verso">CNH · verso</option><option value="documento_veiculo">Documento do veículo</option><option value="comprovante_endereco">Comprovante de endereço</option><option value="outro">Outro documento</option></select>
+            <button class="driver-outline-btn full" id="driverUploadDoc" type="button"><i class="fa-solid fa-upload"></i> Enviar arquivo selecionado</button>
+          </section>
+
+          <section class="driver-form-card invite-card hidden" id="driverInviteCard"><div class="driver-panel-head"><div><span>CONVITE</span><h2>Uma hamburgueria convidou você</h2><p>Depois da aprovação do perfil, o vínculo pode ser ativado automaticamente.</p></div></div><button class="driver-primary-btn full" id="driverAcceptInvite" type="button"><i class="fa-solid fa-handshake"></i> Aceitar convite</button></section>
+
+          <section class="driver-form-card"><div class="driver-panel-head"><div><span>COMO FUNCIONA</span><h2>Próximas etapas</h2></div></div><ol class="driver-steps"><li><span>1</span><div><strong>Envie seus dados</strong><small>Cadastro e documentos necessários.</small></div></li><li><span>2</span><div><strong>Análise da Go-burger</strong><small>Nenhum perfil é ativado automaticamente.</small></div></li><li><span>3</span><div><strong>Vínculo com hamburgueria</strong><small>Você aceita um convite de uma loja parceira.</small></div></li><li><span>4</span><div><strong>Fique online</strong><small>Receba ofertas de entrega e aceite quando puder.</small></div></li></ol></section>
+        </aside>
+      </div>
+    </section>
+  </main>
+  <div class="driver-toast" id="driverSignupToast"></div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.111.0"></script>
+  <script src="cadastro.js?v=609"></script>
+  <script src="../shared/app-ui.js?v=88" defer></script>
+  <script src="../shared/release-88.js?v=88" defer></script>
+  <script src="../shared/redesign-89.js?v=89" defer></script>
+  <script src="../shared/css-master-90-108.js?v=108" defer></script>
+  <script src="../shared/final-109-600.js?v=600" defer></script>
+  <script src="../shared/final-runtime-611.js?v=611"></script>
+</body>
+</html>

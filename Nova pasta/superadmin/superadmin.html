@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' data: https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: blob: https://ethlgaszdextwckdwgsf.supabase.co; connect-src 'self' https://ethlgaszdextwckdwgsf.supabase.co wss://ethlgaszdextwckdwgsf.supabase.co; frame-src 'self'; worker-src 'self' blob:; manifest-src 'self'; media-src 'self' blob: https://ethlgaszdextwckdwgsf.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+<meta content="strict-origin-when-cross-origin" name="referrer"/>
+<meta content="nosniff" http-equiv="X-Content-Type-Options"/>
+<meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/>
+<meta content="#120c09" name="theme-color"/>
+<meta content="Go-burger Command Center — Super Admin da plataforma." name="description"/>
+<meta name="robots" content="noindex,nofollow,noarchive">
+  <title>Go-burger | Command Center</title>
+<link href="../manifest.webmanifest" rel="manifest"/>
+<link href="../assets/icons/icon-192.png" rel="apple-touch-icon"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet"/>
+<link href="superadmin.css?v=88" rel="stylesheet"/>
+<link href="../shared/app-ui.css?v=88" rel="stylesheet"/>
+<link rel="stylesheet" href="../shared/growth.css?v=88">
+<link rel="stylesheet" href="../shared/case-center.css?v=88">
+<link rel="stylesheet" href="../shared/phase2.css?v=88">
+
+  <script src="../shared/theme.js?v=88"></script>
+  <link rel="stylesheet" href="../shared/theme.css?v=88">
+  <meta name="go-burger-release" content="89">
+  <link rel="stylesheet" href="../shared/release-88.css?v=88">
+  <link rel="stylesheet" href="../shared/redesign-89.css?v=89">
+  <link rel="stylesheet" href="../shared/css-master-90-108.css?v=108">
+  <meta name="go-burger-css-release" content="108">
+  <link rel="stylesheet" href="../shared/final-109-600.css?v=600">
+  <link rel="stylesheet" href="../shared/hotfix-604-modal.css?v=604">
+  <link rel="stylesheet" href="../shared/hotfix-605-superadmin-mfa.css?v=605">
+  <link rel="stylesheet" href="../shared/hotfix-607-mfa-visibility.css?v=607">
+  <meta name="go-burger-hotfix" content="607-mfa-field-visibility">
+  <meta name="go-burger-final-release" content="600">
+  <link rel="stylesheet" href="../shared/hotfix-609-video-qa.css?v=609">
+  <link rel="stylesheet" href="../shared/final-ui-611.css?v=611">
+  <link rel="stylesheet" href="../shared/finance-ready-612.css?v=612">
+  <link rel="stylesheet" href="../shared/button-layout-6121.css?v=6121">
+<link rel="stylesheet" href="../shared/plans-623.css?v=623">
+<link rel="stylesheet" href="../shared/plans-commercial-660.css?v=660">
+<link rel="stylesheet" href="../shared/plans-operations-680.css?v=680">
+<link rel="stylesheet" href="../shared/plans-700.css?v=700">
+  <link rel="stylesheet" href="../shared/hotfix-701-superadmin-visibility.css?v=701">
+</head>
+<body class="gb-superadmin-page">
+<section class="sa-gate" id="saGate">
+<div class="sa-gate-orb orb-a"></div>
+<div class="sa-gate-orb orb-b"></div>
+<div class="sa-gate-card">
+<div class="sa-gate-logo">🍔</div>
+<span>Go-burger PLATFORM</span>
+<h1>Go-burger Command Center</h1>
+<p id="saGateText">Validando acesso ao Super Admin...</p>
+<div class="sa-loader" id="saGateLoader"><i></i><i></i><i></i></div>
+<button class="sa-btn ghost hidden" id="saBackButton" type="button"><i class="fa-solid fa-arrow-left"></i> Voltar para a Go-burger</button>
+</div>
+</section>
+<div class="sa-app hidden" id="superApp">
+<aside class="sa-sidebar" id="saSidebar">
+<div class="sa-brand">
+<span class="sa-brand-mark">🍔</span>
+<div><strong>Go-burger</strong><small>COMMAND CENTER</small></div>
+<span class="sa-brand-badge">SUPER</span>
+</div>
+<div class="sa-sidebar-scroll">
+<span class="sa-nav-label">PLATAFORMA</span>
+<nav aria-label="Super Admin" class="sa-nav">
+<button class="active" data-page="dashboard"><i class="fa-solid fa-grid-2"></i><span>Visão geral</span></button>
+<button data-page="lojas"><i class="fa-solid fa-store"></i><span>Hamburguerias</span><b id="navStoresBadge">0</b></button>
+<button data-page="aprovacoes"><i class="fa-solid fa-handshake"></i><span>Parceiros &amp; aprovações</span><b class="warning" id="navApprovalBadge">0</b></button>
+<button data-page="pedidos"><i class="fa-solid fa-receipt"></i><span>Pedidos globais</span></button>
+<button data-page="usuarios"><i class="fa-solid fa-users"></i><span>Usuários</span></button>
+<button data-page="entregadores"><i class="fa-solid fa-motorcycle"></i><span>Entregadores</span><b class="warning" id="navDriverBadge">0</b></button>
+</nav>
+<span class="sa-nav-label">NEGÓCIO</span>
+<nav class="sa-nav">
+<button data-page="financeiro"><i class="fa-solid fa-chart-line"></i><span>Financeiro · preparação</span><b class="gb-finance-nav-lock" title="Cobranças reais desativadas">OFF</b></button>
+<button data-page="planos"><i class="fa-solid fa-gem"></i><span>Planos &amp; assinaturas</span></button>
+<button data-page="marketing"><i class="fa-solid fa-bullhorn"></i><span>Marketing</span></button>
+<button data-page="categorias"><i class="fa-solid fa-shapes"></i><span>Categorias</span></button>
+</nav>
+<span class="sa-nav-label">CONFIANÇA</span>
+<nav class="sa-nav">
+<button data-page="moderacao"><i class="fa-solid fa-shield-heart"></i><span>Moderação</span><b id="navModerationBadge">0</b></button>
+<button data-page="suporte"><i class="fa-solid fa-headset"></i><span>Suporte</span><b id="navSupportBadge">0</b></button>
+<button data-page="disputas"><i class="fa-solid fa-scale-balanced"></i><span>Disputas</span><b id="gb31NavDisputesBadge">0</b></button>
+<button data-page="antifraude"><i class="fa-solid fa-shield-virus"></i><span>Antifraude</span><b id="gb31NavFraudBadge">0</b></button>
+<button data-page="notificacoes"><i class="fa-solid fa-paper-plane"></i><span>Comunicação</span></button>
+</nav>
+<span class="sa-nav-label">CONTROLE</span>
+<nav class="sa-nav">
+<button data-page="sistema"><i class="fa-solid fa-heart-pulse"></i><span>Saúde do sistema</span></button>
+<button data-page="incidentes"><i class="fa-solid fa-tower-broadcast"></i><span>Incidentes</span><b id="gb31NavIncidentsBadge">0</b></button>
+<button data-page="flags"><i class="fa-solid fa-toggle-on"></i><span>Feature flags</span></button>
+<button data-page="auditoria"><i class="fa-solid fa-fingerprint"></i><span>Auditoria</span></button>
+<button class="nav-featured" data-page="seguranca"><i class="fa-solid fa-shield-halved"></i><span>Security Center</span><b>PRO</b></button>
+<button data-page="backups"><i class="fa-solid fa-database"></i><span>Backup &amp; DR</span></button>
+<button data-page="creditos" hidden aria-hidden="true"><i class="fa-solid fa-coins"></i><span>Créditos Go-burger</span></button>
+<button data-page="equipe"><i class="fa-solid fa-user-shield"></i><span>Equipe Go-burger</span></button>
+<button data-page="configuracoes"><i class="fa-solid fa-sliders"></i><span>Configurações</span></button>
+</nav>
+</div>
+<div class="sa-sidebar-footer">
+<div class="sa-system-pill"><i></i><span><strong>Go-burger Core</strong><small id="saCoreStatus">Conectando...</small></span></div>
+<button id="saExit" title="Voltar" type="button"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
+</div>
+</aside>
+<div class="sa-workspace">
+<header class="sa-topbar">
+<button aria-label="Abrir menu" class="sa-mobile-menu" id="saMobileMenu" type="button"><i class="fa-solid fa-bars"></i></button>
+<div class="sa-title-block"><span id="saPageEyebrow">COMMAND CENTER</span><h1 id="saPageTitle">Visão geral</h1></div>
+<label class="sa-global-search"><i class="fa-solid fa-magnifying-glass"></i><input id="saGlobalSearch" placeholder="Buscar loja, usuário, pedido..." type="search"/><kbd>⌘ K</kbd></label>
+<div class="sa-top-actions">
+<button class="sa-icon-btn" id="saRefresh" title="Atualizar" type="button"><i class="fa-solid fa-rotate"></i></button>
+<button class="sa-icon-btn" id="saTheme" title="Tema" type="button" data-gb-theme-toggle><i class="fa-regular fa-moon"></i></button>
+<button class="sa-user-chip" id="saUserChip" type="button"><span id="saAvatar">GB</span><div><strong id="saUserName">Super Admin</strong><small id="saUserLevel">OWNER</small></div></button>
+</div>
+</header>
+<main class="sa-main">
+<!-- DASHBOARD -->
+<section class="sa-page active" data-section="dashboard">
+<article class="sa-command-hero">
+<div class="sa-hero-glow"></div>
+<div class="sa-hero-copy">
+<span class="sa-live-chip"><i></i> PLATAFORMA ONLINE</span>
+<h2>Bem-vindo ao centro de comando da <em>Go-burger</em>.</h2>
+<p>Acompanhe crescimento, operação, parceiros, receita, risco e experiência do marketplace em um único painel.</p>
+<div class="sa-hero-actions">
+<button class="sa-btn primary" data-page="aprovacoes" type="button"><i class="fa-solid fa-badge-check"></i> Revisar aprovações</button>
+<button class="sa-btn glass" data-page="sistema" type="button"><i class="fa-solid fa-heart-pulse"></i> Ver saúde do sistema</button>
+<button class="sa-btn glass" id="exportPlatformMetrics" type="button"><i class="fa-solid fa-file-csv"></i> Exportar métricas</button>
+</div>
+</div>
+<div class="sa-hero-radar">
+<div class="radar-ring r1"></div><div class="radar-ring r2"></div><div class="radar-ring r3"></div>
+<div class="radar-center">🍔</div>
+<span class="radar-dot d1"></span><span class="radar-dot d2"></span><span class="radar-dot d3"></span>
+</div>
+</article>
+<div class="sa-metric-grid">
+<article class="sa-metric"><span class="metric-icon orange"><i class="fa-solid fa-store"></i></span><div><small>HAMBURGUERIAS</small><strong id="metricStores">0</strong><p><b id="metricActiveStores">0</b> ativas</p></div></article>
+<article class="sa-metric"><span class="metric-icon green"><i class="fa-solid fa-receipt"></i></span><div><small>PEDIDOS NO MÊS</small><strong id="metricOrdersMonth">0</strong><p><b id="metricOrdersToday">0</b> hoje</p></div></article>
+<article class="sa-metric"><span class="metric-icon purple"><i class="fa-solid fa-sack-dollar"></i></span><div><small>GMV DO MÊS</small><strong id="metricGmvMonth">R$ 0</strong><p>Volume movimentado</p></div></article>
+<article class="sa-metric"><span class="metric-icon blue"><i class="fa-solid fa-users"></i></span><div><small>USUÁRIOS</small><strong id="metricUsers">0</strong><p>Contas na plataforma</p></div></article>
+<article class="sa-metric"><span class="metric-icon amber"><i class="fa-solid fa-hourglass-half"></i></span><div><small>AGUARDANDO APROVAÇÃO</small><strong id="metricApprovals">0</strong><p>Parceiros na fila</p></div></article>
+<article class="sa-metric"><span class="metric-icon pink"><i class="fa-solid fa-star"></i></span><div><small>NOTA MÉDIA</small><strong id="metricRating">0,0</strong><p id="metricReviewCount">0 avaliações</p></div></article>
+<article class="sa-metric"><span class="metric-icon cyan"><i class="fa-solid fa-headset"></i></span><div><small>SUPORTE ABERTO</small><strong id="metricSupport">0</strong><p>Chamados pendentes</p></div></article>
+<article class="sa-metric"><span class="metric-icon red"><i class="fa-solid fa-triangle-exclamation"></i></span><div><small>ALERTAS CRÍTICOS</small><strong id="metricAlerts">0</strong><p>Exigem atenção</p></div></article>
+</div>
+<div class="sa-metric-grid sa-metric-grid-advanced">
+<article class="sa-metric"><span class="metric-icon blue"><i class="fa-solid fa-rotate"></i></span><div><small>CLIENTES RECORRENTES · 30D</small><strong id="metricRecurringCustomers">0</strong><p>2 ou mais pedidos</p></div></article>
+<article class="sa-metric"><span class="metric-icon green"><i class="fa-solid fa-coins"></i></span><div><small>MRR ESTIMADO</small><strong id="metricMrrAdvanced">R$ 0</strong><p>Receita recorrente</p></div></article>
+<article class="sa-metric"><span class="metric-icon purple"><i class="fa-solid fa-gem"></i></span><div><small>ASSINATURAS ATIVAS</small><strong id="metricActiveSubs">0</strong><p>Ativas + trial</p></div></article>
+<article class="sa-metric"><span class="metric-icon orange"><i class="fa-solid fa-chart-line"></i></span><div><small>GMV · 30 DIAS</small><strong id="metricPeriodGmv">R$ 0</strong><p>Período móvel</p></div></article>
+<article class="sa-metric"><span class="metric-icon cyan"><i class="fa-solid fa-filter-circle-dollar"></i></span><div><small>CONVERSÃO MARKETPLACE</small><strong id="metricMarketplaceConversion">0%</strong><p>Visita → pedido</p></div></article>
+<article class="sa-metric"><span class="metric-icon amber"><i class="fa-solid fa-cart-shopping"></i></span><div><small>CARRINHOS ATIVOS</small><strong id="metricActiveCarts">0</strong><p id="metricActiveCartValue">R$ 0 em potencial</p></div></article>
+<article class="sa-metric"><span class="metric-icon green"><i class="fa-solid fa-hand-holding-dollar"></i></span><div><small>COMISSÕES · PERÍODO</small><strong id="metricCommissionRevenue">R$ 0</strong><p>Receita por pedidos online</p></div></article>
+<article class="sa-metric"><span class="metric-icon red"><i class="fa-solid fa-arrow-trend-down"></i></span><div><small>CANCELAMENTO</small><strong id="metricCancelRate">0%</strong><p>Taxa de pedidos cancelados</p></div></article>
+</div>
+<div class="sa-dashboard-grid">
+<article class="sa-panel chart-panel wide"><div class="sa-panel-head"><div><span>PERFORMANCE</span><h3>GMV e pedidos</h3></div><select aria-label="Período do gráfico" id="dashboardChartPeriod"><option value="7">7 dias</option><option selected="" value="30">30 dias</option><option value="90">90 dias</option></select></div><div class="chart-wrap"><canvas id="chartGmv"></canvas></div></article>
+<article class="sa-panel chart-panel"><div class="sa-panel-head"><div><span>ECOSSISTEMA</span><h3>Status das lojas</h3></div></div><div class="chart-wrap donut"><canvas id="chartStores"></canvas></div></article>
+</div>
+<div class="sa-dashboard-grid">
+<article class="sa-panel wide"><div class="sa-panel-head"><div><span>ONBOARDING</span><h3>Próximas aprovações</h3></div><button class="sa-text-btn" data-page="aprovacoes" type="button">Ver todas <i class="fa-solid fa-arrow-right"></i></button></div><div class="sa-table-wrap"><table><thead><tr><th>Hamburgueria</th><th>Local</th><th>Status</th><th>Cadastro</th><th></th></tr></thead><tbody id="dashboardApprovals"></tbody></table></div></article>
+<article class="sa-panel"><div class="sa-panel-head"><div><span>RISCO &amp; OPERAÇÃO</span><h3>Alertas</h3></div><button class="sa-text-btn" data-page="sistema" type="button">Sistema</button></div><div class="sa-alert-list" id="dashboardAlerts"></div></article>
+</div>
+<article class="sa-panel"><div class="sa-panel-head"><div><span>TRILHA DE AUDITORIA</span><h3>Atividade recente</h3></div><button class="sa-text-btn" data-page="auditoria" type="button">Abrir auditoria</button></div><div class="sa-timeline" id="dashboardAudit"></div></article>
+</section>
+<!-- LOJAS -->
+<section class="sa-page" data-section="lojas">
+<div class="sa-page-intro"><div><span>PARCEIROS</span><h2>Hamburguerias da Go-burger</h2><p>Controle operacional, verificação, destaque, risco, assinatura e acesso público.</p></div><div class="sa-page-actions"><button class="sa-btn secondary" id="exportStores" type="button"><i class="fa-solid fa-file-export"></i> Exportar</button></div></div>
+<div class="sa-filterbar"><label><i class="fa-solid fa-magnifying-glass"></i><input id="storeSearch" placeholder="Buscar por nome, slug ou cidade..." type="search"/></label><select aria-label="Filtrar hamburguerias por status" id="storeStatusFilter"><option value="">Todos os status</option><option value="ativa">Ativas</option><option value="pausada">Pausadas</option><option value="rascunho">Rascunho</option><option value="bloqueada">Bloqueadas</option><option value="arquivada">Arquivadas</option></select><select aria-label="Filtrar hamburguerias por aprovação" id="storeApprovalFilter"><option value="">Todas aprovações</option><option value="pendente">Pendente</option><option value="em_analise">Em análise</option><option value="aprovada">Aprovada</option><option value="rejeitada">Rejeitada</option><option value="rascunho">Não enviada</option></select></div>
+<article class="sa-panel"><div class="sa-table-wrap"><table class="sa-data-table"><thead><tr><th>Hamburgueria</th><th>Localização</th><th>Operação</th><th>Aprovação</th><th>Plano</th><th>Nota</th><th>Pedidos</th><th>Ações</th></tr></thead><tbody id="storesTableBody"></tbody></table></div><div class="sa-empty hidden" id="storesEmpty"><i class="fa-solid fa-store-slash"></i><strong>Nenhuma hamburgueria encontrada</strong></div></article>
+</section>
+<!-- PARCEIROS & APROVAÇÕES -->
+<section class="sa-page" data-section="aprovacoes">
+<div class="sa-page-intro"><div><span>CONTROLE DE ENTRADA E PUBLICAÇÃO</span><h2>Parceiros &amp; aprovações</h2><p>Primeiro você autoriza a criação da hamburgueria. Depois, quando o parceiro terminar o cadastro, autoriza separadamente a publicação.</p></div></div>
+<div class="sa-approval-section-head"><div><span>ETAPA 1</span><h3>Solicitações de novos parceiros</h3><p>Nenhuma loja existe antes da sua aprovação.</p></div></div>
+<div class="sa-approval-stats"><article><span id="partnerRequestPendingCount">0</span><small>PENDENTES</small></article><article><span id="partnerRequestReviewCount">0</span><small>EM ANÁLISE</small></article><article><span id="partnerRequestCorrectionCount">0</span><small>CORREÇÃO</small></article><article><span id="partnerRequestRejectedCount">0</span><small>RECUSADAS</small></article></div>
+<div class="sa-approval-grid" id="partnerRequestsGrid"></div>
+<div class="sa-approval-section-head second"><div><span>ETAPA 2</span><h3>Autorização para publicação</h3><p>Estas hamburguerias já existem em rascunho e pediram liberação para aparecer no site.</p></div></div>
+<div class="sa-approval-stats"><article><span id="approvalPendingCount">0</span><small>PENDENTES</small></article><article><span id="approvalReviewCount">0</span><small>EM ANÁLISE</small></article><article><span id="approvalApprovedCount">0</span><small>PUBLICADAS</small></article><article><span id="approvalRejectedCount">0</span><small>REJEITADAS</small></article></div>
+<div class="sa-approval-grid" id="approvalsGrid"></div>
+</section>
+<!-- PEDIDOS -->
+<section class="sa-page" data-section="pedidos">
+<div class="sa-page-intro"><div><span>OPERAÇÃO GLOBAL</span><h2>Pedidos da plataforma</h2><p>Visão transversal para identificar crescimento, cancelamentos e gargalos por hamburgueria.</p></div><button class="sa-btn secondary" id="exportOrdersGlobal" type="button"><i class="fa-solid fa-download"></i> CSV</button></div>
+<div class="sa-filterbar"><label><i class="fa-solid fa-magnifying-glass"></i><input id="orderSearch" placeholder="Pedido, cliente ou loja..." type="search"/></label><select aria-label="Filtrar pedidos por status" id="orderStatusFilter"><option value="">Todos os status</option><option value="Recebido">Recebido</option><option value="Em preparo">Em preparo</option><option value="Pronto">Pronto</option><option value="Saiu para entrega">Saiu para entrega</option><option value="Concluído">Concluído</option><option value="Cancelado">Cancelado</option></select><select aria-label="Filtrar pedidos por hamburgueria" id="orderStoreFilter"><option value="">Todas as lojas</option></select></div>
+<article class="sa-panel"><div class="sa-table-wrap"><table><thead><tr><th>Pedido</th><th>Hamburgueria</th><th>Cliente</th><th>Status</th><th>Pagamento</th><th>Total</th><th>Data</th></tr></thead><tbody id="ordersTableBody"></tbody></table></div></article>
+</section>
+<!-- USUÁRIOS -->
+<section class="sa-page" data-section="usuarios">
+<div class="sa-page-intro"><div><span>COMUNIDADE</span><h2>Usuários e parceiros</h2><p>Clientes, responsáveis de lojas, atividade e controles de segurança.</p></div></div>
+<div class="sa-filterbar"><label><i class="fa-solid fa-magnifying-glass"></i><input id="userSearch" placeholder="Nome, e-mail ou telefone..." type="search"/></label><select aria-label="Filtrar usuários por status" id="userStatusFilter"><option value="">Todos</option><option value="ativo">Ativos</option><option value="suspenso">Suspensos</option><option value="bloqueado">Bloqueados</option></select></div>
+<article class="sa-panel"><div class="sa-table-wrap"><table><thead><tr><th>Usuário</th><th>Contato</th><th>Perfil</th><th>Lojas</th><th>Pedidos</th><th>Status</th><th>Ações</th></tr></thead><tbody id="usersTableBody"></tbody></table></div></article>
+</section>
+<!-- ENTREGADORES -->
+<section class="sa-page" data-section="entregadores">
+<div class="sa-page-intro"><div><span>GO-BURGER ENTREGAS</span><h2>Entregadores & onboarding</h2><p>Analise cadastros independentes, documentos, veículo e situação operacional antes de liberar o perfil.</p></div><a class="sa-btn secondary" href="../entregador/cadastro.html" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir cadastro público</a></div>
+<div class="sa-approval-stats"><article><span id="driverPendingCount">0</span><small>PENDENTES</small></article><article><span id="driverReviewCount">0</span><small>EM ANÁLISE</small></article><article><span id="driverApprovedCount">0</span><small>APROVADOS</small></article><article><span id="driverAttentionCount">0</span><small>ATENÇÃO</small></article></div>
+<div class="sa-filterbar"><label><i class="fa-solid fa-magnifying-glass"></i><input id="driverSearch" placeholder="Nome, telefone, cidade ou veículo..." type="search"></label><select id="driverStatusFilter" aria-label="Filtrar entregadores por status"><option value="">Todos os status</option><option value="pendente">Pendente</option><option value="em_analise">Em análise</option><option value="aguardando_correcao">Aguardando correção</option><option value="aprovada">Aprovado</option><option value="rejeitada">Rejeitado</option><option value="suspensa">Suspenso</option></select></div>
+<div class="sa-driver-grid" id="driverRequestsGrid"></div>
+</section>
+<!-- FINANCEIRO -->
+<section class="sa-page" aria-hidden="true" data-section="financeiro">
+<div class="sa-page-intro"><div><span>FINANCE READINESS · P612</span><h2>Financeiro — preparação segura</h2><p>Configure o modelo futuro sem movimentar dinheiro. A comissão efetiva permanece em 0% e o financeiro real continua bloqueado.</p></div><span class="gb-finance-lock"><i class="fa-solid fa-lock"></i> PRODUÇÃO BLOQUEADA</span></div>
+<div class="gb-finance-status-grid">
+  <article class="sa-panel gb-finance-status-card"><small>FINANCEIRO REAL</small><strong id="financeLiveStatus">Desativado</strong><p>Nenhuma cobrança, split ou repasse é criado pela P612.</p></article>
+  <article class="sa-panel gb-finance-status-card"><small>COMISSÃO EFETIVA</small><strong id="financeLiveCommission">0%</strong><p>A comissão de rascunho não altera pedidos reais.</p></article>
+  <article class="sa-panel gb-finance-status-card"><small>AMBIENTE</small><strong id="financePrepEnvironment">Desativado</strong><p>Somente desativado ou sandbox são permitidos.</p></article>
+  <article class="sa-panel gb-finance-status-card"><small>GO-LIVE FINANCEIRO</small><strong id="financeReadyStatus">Bloqueado</strong><p id="financeReadySummary">Carregando checklist...</p></article>
+</div>
+<div class="gb-finance-prep-grid">
+<article class="sa-panel gb-finance-prep-main">
+<div class="sa-panel-head"><div><span>RASCUNHO CONTROLADO</span><h3>Arquitetura de recebimento e comissão</h3></div><span class="sa-badge blue">SEM DINHEIRO REAL</span></div>
+<form class="sa-form-grid gb-finance-form" id="financePreparationForm">
+<label><span>Ambiente</span><select name="ambiente"><option value="desativado">Desativado</option><option value="sandbox">Sandbox</option></select><small>Produção não pode ser selecionada nesta versão.</small></label>
+<label><span>Provedor preferido</span><select name="provedor_preferido"><option value="a_definir">A definir</option><option value="mercado_pago">Mercado Pago</option><option value="outro">Outro / camada abstrata</option></select></label>
+<label><span>Modelo de liquidação</span><select name="modelo_liquidacao"><option value="split_no_provedor">Split no provedor</option><option value="repasse_posterior">Repasse posterior</option></select></label>
+<label><span>Comissão futura (%)</span><input name="comissao_rascunho" type="number" min="0" max="100" step="0.001" value="0"><small>Apenas simulação. A comissão efetiva segue 0%.</small></label>
+<label><span>Tipo do recebedor</span><select name="recebedor_tipo"><option value="nao_definido">Ainda não definido</option><option value="pessoa_fisica">Pessoa física</option><option value="pessoa_juridica">Pessoa jurídica</option></select></label>
+<label><span>Status do recebedor</span><select name="recebedor_status"><option value="nao_configurado">Não configurado</option><option value="rascunho">Rascunho</option><option value="pendente_validacao">Pendente de validação</option><option value="validado">Validado</option></select></label>
+<label><span>Tipo de chave Pix futura</span><select name="pix_tipo"><option value="">Não definido</option><option value="cpf">CPF</option><option value="cnpj">CNPJ</option><option value="email">E-mail</option><option value="telefone">Telefone</option><option value="aleatoria">Aleatória</option></select></label>
+<label><span>Referência segura da chave</span><input name="pix_secret_ref" maxlength="120" placeholder="Ex.: GO_BURGER_RECEIVER_PIX"><small>Não cole a chave Pix aqui. Este campo guarda apenas o nome da referência segura/Vault.</small></label>
+<label><span>Status KYC</span><select name="kyc_status"><option value="nao_iniciado">Não iniciado</option><option value="pendente">Pendente</option><option value="aprovado">Aprovado</option><option value="rejeitado">Rejeitado</option></select></label>
+<div class="span-2 gb-finance-checks-form">
+<label class="check-field"><input name="credenciais_configuradas" type="checkbox"> Credenciais do provedor configuradas com segurança</label>
+<label class="check-field"><input name="webhook_configurado" type="checkbox"> Webhook configurado e validado</label>
+<label class="check-field"><input name="sandbox_e2e_aprovado" type="checkbox"> Compra → split → reembolso testados em sandbox</label>
+<label class="check-field"><input name="reconciliacao_configurada" type="checkbox"> Conciliação financeira validada</label>
+<label class="check-field"><input name="repasses_configurados" type="checkbox"> Fluxo de repasse validado</label>
+<label class="check-field"><input name="termos_financeiros_aprovados" type="checkbox"> Termos financeiros aprovados</label>
+<label class="check-field"><input name="revisao_juridica_fiscal" type="checkbox"> Revisão jurídica/fiscal concluída</label>
+</div>
+<label class="span-2"><span>Observações da preparação</span><textarea name="observacoes" rows="3" placeholder="Decisões, pendências e responsável pela ativação futura."></textarea></label>
+<div class="span-2 gb-finance-form-actions"><button class="sa-btn primary" type="submit"><i class="fa-solid fa-floppy-disk"></i> Salvar preparação</button><small>Salvar nunca ativa pagamentos reais.</small></div>
+</form>
+</article>
+<aside class="gb-finance-prep-side">
+<article class="sa-panel"><div class="sa-panel-head"><div><span>GO-LIVE</span><h3>Checklist de ativação</h3></div></div><div class="gb-finance-checklist" id="financeActivationChecklist"><p>Carregando...</p></div></article>
+<article class="sa-panel"><div class="sa-panel-head"><div><span>SIMULADOR</span><h3>Split sem movimentação</h3></div></div><form class="gb-finance-sim" id="financeSimulatorForm"><label><span>Valor do pedido</span><input name="valor_bruto" type="number" min="0.01" step="0.01" value="100" required></label><label><span>Comissão (%)</span><input name="comissao_percentual" type="number" min="0" max="100" step="0.001" placeholder="Usar rascunho"></label><button class="sa-btn secondary" type="submit"><i class="fa-solid fa-calculator"></i> Simular</button></form><div class="gb-finance-sim-result" id="financeSimulatorResult"><span>Use o simulador para conferir a divisão futura.</span></div></article>
+<article class="sa-panel gb-finance-security-note"><i class="fa-solid fa-shield-halved"></i><div><strong>Segredos fora do navegador</strong><p>Tokens, credenciais, chave Pix real e segredos de webhook não ficam em HTML/JS nem em tabelas públicas. Na ativação, eles devem ficar no Vault/ambiente seguro do backend.</p></div></article>
+</aside>
+</div>
+<div class="sa-dashboard-grid gb-finance-legacy-metrics"><article class="sa-panel wide"><div class="sa-panel-head"><div><span>BASE EXISTENTE</span><h3>Assinaturas atuais — somente leitura</h3></div></div><div class="sa-table-wrap"><table><thead><tr><th>Hamburgueria</th><th>Plano</th><th>Status</th><th>Mensalidade</th><th>Comissão cadastrada</th><th>Próxima cobrança</th></tr></thead><tbody id="financeSubscriptionsBody"></tbody></table></div></article><article class="sa-panel"><div class="sa-panel-head"><div><span>ESTRUTURA</span><h3>Registros financeiros</h3></div></div><div class="gb-finance-counts" id="financeStructureCounts"><span>Carregando...</span></div></article></div>
+</section>
+<!-- PLANOS -->
+<section class="sa-page" aria-hidden="true" data-section="planos">
+<div class="sa-page-intro"><div><span>PLANOS DA PLATAFORMA</span><h2>Planos &amp; assinaturas</h2><p>Edite catálogo, limites e recursos. Preços e comissão ficam em rascunho enquanto o financeiro estiver bloqueado.</p></div><button class="sa-btn primary" id="newPlanButton" type="button"><i class="fa-solid fa-plus"></i> Novo plano</button></div>
+<div class="sa-inline-alert info"><i class="fa-solid fa-shield-halved"></i><div><strong>Editor seguro P615</strong><p>Alterar um plano aqui não ativa cobrança nem comissão real. Limites são aplicados pelo backend e a comissão efetiva permanece 0% enquanto o Finance Freeze estiver ligado.</p></div></div>
+<div class="sa-plan-grid" id="plansGrid"></div>
+<article class="sa-panel top-gap">
+  <div class="sa-panel-head"><div><span>P641–P660 · SANDBOX</span><h3>Comercial & billing de planos</h3><p>Cupons, promoções, ofertas, cortesias e preparação de gateway sem dinheiro real.</p></div><span class="sa-badge amber">PRODUÇÃO OFF</span></div>
+  <div class="sa-plan-commercial-kpis">
+    <article><small>Cupons</small><strong id="planCommercialCouponCount">0</strong></article>
+    <article><small>Promoções</small><strong id="planCommercialPromoCount">0</strong></article>
+    <article><small>Ofertas por loja</small><strong id="planCommercialOfferCount">0</strong></article>
+    <article><small>Cortesias</small><strong id="planCommercialCourtesyCount">0</strong></article>
+    <article><small>Checkouts sandbox</small><strong id="planCommercialCheckoutCount">0</strong></article>
+  </div>
+  <div class="sa-plan-commercial-toolbar">
+    <button class="sa-btn secondary" id="newPlanCouponButton" type="button"><i class="fa-solid fa-ticket"></i> Novo cupom</button>
+    <button class="sa-btn secondary" id="newPlanPromoButton" type="button"><i class="fa-solid fa-tags"></i> Nova promoção</button>
+    <button class="sa-btn secondary" id="newPlanOfferButton" type="button"><i class="fa-solid fa-handshake"></i> Oferta por loja</button>
+    <button class="sa-btn secondary" id="newPlanCourtesyButton" type="button"><i class="fa-solid fa-gift"></i> Conceder cortesia</button>
+    <button class="sa-btn secondary" id="planBillingConfigButton" type="button"><i class="fa-solid fa-clock"></i> Grace & cobrança</button>
+    <button class="sa-btn secondary" id="planGatewayConfigButton" type="button"><i class="fa-solid fa-flask"></i> Mercado Pago sandbox</button>
+  </div>
+  <div class="sa-plan-commercial-grid">
+    <div><div class="sa-panel-head compact"><div><span>CUPONS</span><h4>Cupons de assinatura</h4></div></div><div id="planCommercialCoupons" class="sa-plan-commercial-list"></div></div>
+    <div><div class="sa-panel-head compact"><div><span>PROMOÇÕES</span><h4>Condições automáticas</h4></div></div><div id="planCommercialPromotions" class="sa-plan-commercial-list"></div></div>
+    <div><div class="sa-panel-head compact"><div><span>OFERTAS</span><h4>Condições por hamburgueria</h4></div></div><div id="planCommercialOffers" class="sa-plan-commercial-list"></div></div>
+    <div><div class="sa-panel-head compact"><div><span>CORTESIAS</span><h4>Isenções administrativas</h4></div></div><div id="planCommercialCourtesies" class="sa-plan-commercial-list"></div></div>
+  </div>
+</article>
+<div class="sa-plan-commercial-grid top-gap">
+  <article class="sa-panel"><div class="sa-panel-head"><div><span>P657</span><h3>Gateway sandbox</h3></div></div><div id="planGatewayReadiness" class="sa-plan-readiness"></div></article>
+  <article class="sa-panel"><div class="sa-panel-head"><div><span>P651–P652</span><h3>Grace & inadimplência futura</h3></div></div><div id="planBillingReadiness" class="sa-plan-readiness"></div></article>
+</div>
+<article class="sa-panel top-gap sa-plan-ops-panel" id="planOperationsPanel">
+  <div class="sa-panel-head"><div><span>P661–P680 · OPERAÇÕES</span><h3>Planos · métricas, funil e migração segura</h3><p>Indicadores contratuais/estimados; não representam caixa recebido enquanto o financeiro estiver OFF.</p></div><span class="sa-badge blue">P680</span></div>
+  <div class="sa-plan-ops-kpis">
+    <article><small>MRR estimado</small><strong id="planOpsMrr">R$ 0,00</strong></article>
+    <article><small>ARR estimado</small><strong id="planOpsArr">R$ 0,00</strong></article>
+    <article><small>ARPU estimado</small><strong id="planOpsArpu">R$ 0,00</strong></article>
+    <article><small>Churn estimado · 30d</small><strong id="planOpsChurn">0%</strong></article>
+  </div>
+  <div class="sa-plan-ops-grid">
+    <section class="sa-plan-ops-panel"><div class="sa-panel-head"><div><span>FUNIL</span><h3>Jornada de assinatura</h3></div></div><div class="sa-plan-funnel" id="planOpsFunnel"></div><div class="sa-plan-recovery-summary" id="planRecoverySummary"></div></section>
+    <section class="sa-plan-ops-panel"><div class="sa-panel-head"><div><span>DISTRIBUIÇÃO</span><h3>Base por plano</h3></div></div><div class="sa-table-wrap"><table class="sa-plan-distribution"><thead><tr><th>Plano</th><th>Base</th><th>Ativas</th><th>MRR est.</th></tr></thead><tbody id="planOpsDistributionBody"></tbody></table></div></section>
+  </div>
+</article>
+<article class="sa-panel sa-plan-migration-panel">
+  <div class="sa-panel-head"><div><span>P666–P667</span><h3>Migração em massa · preview e agendamento</h3><p>P680 prepara o lote, identifica blockers e nunca executa automaticamente.</p></div></div>
+  <form class="sa-plan-migration-form" id="planMigrationForm">
+    <label><span>Plano origem</span><select id="planMigrationFrom" required></select></label>
+    <label><span>Plano destino</span><select id="planMigrationTo" required></select></label>
+    <button class="sa-btn secondary" type="submit"><i class="fa-solid fa-magnifying-glass-chart"></i> Pré-visualizar impacto</button>
+  </form>
+  <div class="sa-plan-migration-result" id="planMigrationResult"></div>
+</article>
+<article class="sa-panel top-gap sa-plan-final-panel" id="planP700Panel">
+  <div class="sa-panel-head"><div><span>P681–P700 · PLANOS 1.0</span><h3>Release final do módulo de planos</h3><p>Cache seguro, concorrência, precisão monetária, Enterprise, beta, add-ons, piloto e readiness. Produção financeira continua bloqueada.</p></div><span class="sa-badge green">P700</span></div>
+  <div class="sa-plan-ops-kpis">
+    <article><small>Status</small><strong id="planP700Status">—</strong></article>
+    <article><small>Kill switch</small><strong id="planP700KillSwitchState">ENGAJADO</strong></article>
+    <article><small>Billing produção</small><strong id="planP700Billing">OFF</strong></article>
+    <article><small>Lojas piloto aprovadas</small><strong id="planP700PilotCount">0</strong></article>
+  </div>
+  <div class="sa-plan-final-actions">
+    <button class="sa-btn secondary" id="newPlanPilotP700" type="button"><i class="fa-solid fa-flask"></i> Loja piloto</button>
+    <button class="sa-btn secondary" id="newPlanEnterpriseP700" type="button"><i class="fa-solid fa-building"></i> Enterprise</button>
+    <button class="sa-btn secondary" id="planP700PilotOn" type="button"><i class="fa-solid fa-play"></i> Armar piloto sem cobrança</button>
+    <button class="sa-btn secondary" id="planP700PilotOff" type="button"><i class="fa-solid fa-stop"></i> Desativar piloto</button>
+    <button class="sa-btn danger" id="planP700KillSwitch" type="button"><i class="fa-solid fa-power-off"></i> Engajar kill switch</button>
+  </div>
+  <div class="sa-plan-final-grid">
+    <section><h4>Readiness</h4><div id="planP700Readiness"></div><div id="planP700Qa" class="sa-plan-qa-list"></div></section>
+    <section><h4>Piloto</h4><div id="planP700Pilots" class="sa-plan-commercial-list"></div></section>
+    <section><h4>Enterprise</h4><div id="planP700Enterprise" class="sa-plan-commercial-list"></div></section>
+    <section><h4>Add-ons</h4><div id="planP700Addons" class="sa-plan-commercial-list"></div></section>
+  </div>
+</article>
+<article class="sa-panel"><div class="sa-panel-head"><div><span>BASE DE ASSINANTES</span><h3>Assinaturas</h3></div></div><div class="sa-table-wrap"><table><thead><tr><th>Loja</th><th>Plano</th><th>Status</th><th>Valor</th><th>Comissão</th><th>Ações</th></tr></thead><tbody id="subscriptionsTableBody"></tbody></table></div></article>
+</section>
+<!-- MARKETING -->
+<section class="sa-page" data-section="marketing">
+<div class="sa-page-intro"><div><span>GROWTH</span><h2>Marketing da Go-burger</h2><p>Banners globais, campanhas sazonais, parceiros patrocinados e destaques.</p></div><div class="sa-page-actions"><button class="sa-btn secondary" id="newCampaignButton" type="button"><i class="fa-solid fa-wand-magic-sparkles"></i> Campanha</button><button class="sa-btn primary" id="newBannerButton" type="button"><i class="fa-solid fa-plus"></i> Banner global</button></div></div>
+<div class="sa-dashboard-grid"><article class="sa-panel wide"><div class="sa-panel-head"><div><span>VITRINE</span><h3>Banners globais</h3></div></div><div class="sa-banner-grid" id="platformBannersGrid"></div></article><article class="sa-panel"><div class="sa-panel-head"><div><span>CAMPANHAS</span><h3>Calendário</h3></div></div><div class="sa-campaign-list" id="campaignList"></div></article></div>
+</section>
+<!-- CATEGORIAS -->
+<section class="sa-page" data-section="categorias">
+<div class="sa-page-intro"><div><span>DESCOBERTA</span><h2>Categorias do marketplace</h2><p>Organize a navegação por estilo, proposta e intenção de compra.</p></div><button class="sa-btn primary" id="newCategoryButton" type="button"><i class="fa-solid fa-plus"></i> Nova categoria</button></div>
+<div class="sa-category-grid" id="categoriesGrid"></div>
+</section>
+<!-- MODERAÇÃO -->
+<section class="sa-page" data-section="moderacao">
+<div class="sa-page-intro"><div><span>TRUST &amp; SAFETY</span><h2>Avaliações e moderação</h2><p>Proteja a qualidade do ecossistema e revise conteúdo reportado.</p></div></div>
+<div class="sa-tabs" id="moderationTabs"><button class="active" data-mod-tab="reviews">Avaliações</button><button data-mod-tab="queue">Fila de moderação</button></div>
+<div class="sa-mod-pane active" data-mod-pane="reviews"><div class="sa-review-grid" id="reviewsGrid"></div></div>
+<div class="sa-mod-pane" data-mod-pane="queue"><article class="sa-panel"><div class="sa-table-wrap"><table><thead><tr><th>Tipo</th><th>Motivo</th><th>Risco</th><th>Status</th><th>Data</th><th></th></tr></thead><tbody id="moderationQueueBody"></tbody></table></div></article></div>
+</section>
+<!-- SUPORTE -->
+<section class="sa-page" data-section="suporte">
+<div class="sa-page-intro"><div><span>CUSTOMER SUCCESS</span><h2>Central de suporte</h2><p>Atendimento de clientes e hamburguerias com prioridade e SLA visual.</p></div></div>
+<div class="sa-filterbar"><label><i class="fa-solid fa-magnifying-glass"></i><input id="supportSearch" placeholder="Protocolo, assunto ou usuário..." type="search"/></label><select aria-label="Filtrar chamados por status" id="supportStatusFilter"><option value="">Todos</option><option value="aberto">Abertos</option><option value="em_atendimento">Em atendimento</option><option value="aguardando_usuario">Aguardando usuário</option><option value="resolvido">Resolvidos</option></select></div>
+<div class="sa-ticket-grid" id="supportGrid"></div>
+<div class="gb31-shell" id="gb31SuperSupport" style="margin-top:16px"></div>
+</section>
+
+<!-- DISPUTAS V31 -->
+<section class="sa-page" data-section="disputas">
+  <div class="sa-page-intro"><div><span>TRUST &amp; SAFETY</span><h2>Disputas de pedidos</h2><p>Analise evidências, acompanhe conversas e registre uma decisão final rastreável.</p></div></div>
+  <div class="gb31-shell" id="gb31SuperDisputes"></div>
+</section>
+<!-- ANTIFRAUDE V31 -->
+<section class="sa-page" data-section="antifraude">
+  <div class="sa-page-intro"><div><span>RISK CENTER</span><h2>Central antifraude</h2><p>Fila visual de sinais de risco com revisão humana obrigatória.</p></div></div>
+  <div class="gb31-shell" id="gb31SuperFraud"></div>
+</section>
+<!-- COMUNICAÇÃO -->
+<section class="sa-page" data-section="notificacoes">
+<div class="sa-page-intro"><div><span>COMUNICAÇÃO</span><h2>Central de mensagens</h2><p>Prepare avisos globais, campanhas, manutenção e comunicação segmentada.</p></div><button class="sa-btn primary" id="newNotificationButton" type="button"><i class="fa-solid fa-paper-plane"></i> Nova mensagem</button></div>
+<article class="sa-panel"><div class="sa-table-wrap"><table><thead><tr><th>Mensagem</th><th>Alvo</th><th>Tipo</th><th>Status</th><th>Agendada</th><th>Criada</th></tr></thead><tbody id="notificationsTableBody"></tbody></table></div></article>
+</section>
+<!-- SISTEMA -->
+<section class="sa-page" data-section="sistema">
+<div class="sa-page-intro"><div><span>OBSERVABILIDADE</span><h2>Saúde do sistema</h2><p>Diagnóstico operacional do frontend, Supabase, Storage, PWA e componentes críticos.</p></div><button class="sa-btn secondary" id="runDiagnostics" type="button"><i class="fa-solid fa-stethoscope"></i> Executar diagnóstico</button></div>
+<div class="sa-health-grid" id="healthGrid"></div>
+<article class="sa-panel" id="retentionStatusCard">
+<div class="sa-panel-head"><div><span>LGPD · RETENÇÃO</span><h3>Retenção automática de dados</h3></div><button class="sa-btn tiny" id="refreshRetentionStatus" type="button"><i class="fa-solid fa-rotate"></i> Atualizar</button></div>
+<div class="sa-retention-grid" id="retentionStatusGrid"></div>
+<small class="sa-panel-note" id="retentionLastRun">Carregando política de retenção...</small>
+</article>
+<div class="sa-dashboard-grid"><article class="sa-panel wide"><div class="sa-panel-head"><div><span>ALERTAS INTERNOS</span><h3>Central de alertas</h3></div><button class="sa-btn tiny" id="newAlertButton" type="button">Criar alerta</button></div><div class="sa-alert-list large" id="systemAlerts"></div></article><article class="sa-panel"><div class="sa-panel-head"><div><span>APP</span><h3>Prontidão</h3></div></div><div class="sa-readiness" id="appReadiness"></div></article></div>
+</section>
+
+<!-- INCIDENTES V31 -->
+<section class="sa-page" data-section="incidentes">
+  <div class="gb31-shell" id="gb31SuperIncidents"></div>
+</section>
+<!-- FLAGS -->
+<section class="sa-page" data-section="flags">
+<div class="sa-page-intro"><div><span>RELEASE CONTROL</span><h2>Feature flags</h2><p>Ative recursos progressivamente sem precisar desmontar a experiência atual.</p></div></div>
+<div class="sa-flag-grid" id="flagsGrid"></div>
+</section>
+<!-- AUDITORIA -->
+<section class="sa-page" data-section="auditoria">
+<div class="sa-page-intro"><div><span>GOVERNANÇA</span><h2>Auditoria da plataforma</h2><p>Registro de ações sensíveis realizadas no Command Center.</p></div><button class="sa-btn secondary" id="exportAudit" type="button"><i class="fa-solid fa-file-shield"></i> Exportar</button></div>
+<article class="sa-panel"><div class="sa-table-wrap"><table><thead><tr><th>Ação</th><th>Entidade</th><th>Detalhes</th><th>Super Admin</th><th>Data</th></tr></thead><tbody id="auditTableBody"></tbody></table></div></article>
+<div class="gb31-shell" id="gb31SuperAudit" style="margin-top:16px"></div>
+</section>
+<!-- SECURITY CENTER FASE 2 -->
+<section class="sa-page" data-section="seguranca"><div id="gb40SecurityRoot" class="gbp2-shell"><div class="gbp2-skeleton"></div></div></section>
+<!-- BACKUP / DR -->
+<section class="sa-page" data-section="backups"><div id="gb37BackupRoot" class="gbp2-shell"><div class="gbp2-skeleton"></div></div></section>
+<!-- CRÉDITOS GO-BURGER -->
+<section class="sa-page" data-section="creditos" hidden aria-hidden="true"><div id="gb36CreditsAdminRoot" class="gbp2-shell"><div class="gbp2-skeleton"></div></div></section>
+<!-- EQUIPE -->
+<section class="sa-page" data-section="equipe">
+<div class="sa-page-intro"><div><span>ACESSO INTERNO</span><h2>Equipe Go-burger</h2><p>Controle de perfis administrativos da plataforma e níveis de acesso.</p></div><button class="sa-btn primary" id="addTeamButton" type="button"><i class="fa-solid fa-user-plus"></i> Adicionar membro</button></div>
+<div class="sa-team-grid" id="teamGrid"></div>
+</section>
+<!-- CONFIG -->
+<section class="sa-page" data-section="configuracoes">
+<div class="sa-page-intro"><div><span>PLATAFORMA</span><h2>Configurações da Go-burger</h2><p>Marca, suporte, manutenção e regras globais de operação.</p></div></div>
+<form class="sa-settings-form" id="platformSettingsForm">
+<article class="sa-panel"><div class="sa-panel-head"><div><span>IDENTIDADE</span><h3>Marca e suporte</h3></div></div><div class="sa-form-grid"><label><span>Nome da plataforma</span><input name="nome" required="" value="Go-burger"/></label><label><span>Slogan</span><input name="slogan"/></label><label><span>E-mail de suporte</span><input name="suporte_email" type="email"/></label><label><span>WhatsApp de suporte</span><input name="suporte_whatsapp"/></label><label><span>Site oficial</span><input name="site_url" type="url"/></label><label><span>Instagram</span><input name="instagram"/></label></div></article>
+<article class="sa-panel"><div class="sa-panel-head"><div><span>REGRAS</span><h3>Operação do marketplace</h3></div></div><div class="sa-form-grid"><input name="comissao_padrao" type="hidden" value="0"/><label><span>Nota mínima para destaque</span><input max="5" min="0" name="avaliacao_min_destaque" step="0.1" type="number"/></label><label><span>Pedidos mínimos no ranking</span><input min="0" name="pedidos_min_ranking" type="number"/></label><label><span>Raio padrão de busca (km)</span><input min="1" name="raio_busca_padrao_km" step="0.1" type="number"/></label></div><div class="sa-switch-list"><label><span><strong>Aprovação manual de parceiros</strong><small>Novas hamburguerias precisam passar pelo Command Center.</small></span><input name="aprovacao_manual" type="checkbox"/><i></i></label><label><span><strong>Novas hamburguerias</strong><small>Controla novas solicitações de parceiros. O cadastro de clientes é independente.</small></span><input name="novos_cadastros_ativos" type="checkbox"/><i></i></label><label><span><strong>Cadastros de clientes</strong><small>Permite criar novas contas de clientes sem depender das solicitações de parceiros.</small></span><input name="user_signups_enabled" type="checkbox"/><i></i></label><label><span><strong>Solicitações de entregadores</strong><small>Permite que entregadores enviem novos cadastros para análise.</small></span><input name="driver_applications_enabled" type="checkbox"/><i></i></label><label class="danger-switch"><span><strong>Modo manutenção</strong><small>Use apenas em manutenção programada.</small></span><input name="manutencao" type="checkbox"/><i></i></label></div><label class="sa-full-field"><span>Mensagem de manutenção</span><textarea name="manutencao_mensagem" rows="3"></textarea></label></article>
+<div class="sa-form-save"><span id="settingsSaveStatus">Configurações sincronizadas com a Go-burger.</span><button class="sa-btn primary" type="submit"><i class="fa-solid fa-cloud-arrow-up"></i> Salvar configurações</button></div>
+</form>
+</section>
+</main>
+</div>
+</div>
+<div class="sa-overlay" id="saOverlay"></div>
+<!-- MODAL GENÉRICO -->
+<div aria-hidden="true" class="sa-modal" id="entityModal">
+<div class="sa-modal-card large">
+<button aria-label="Fechar janela" class="sa-modal-close" data-close-modal="entityModal" type="button"><i class="fa-solid fa-xmark"></i></button>
+<div class="sa-modal-content" id="entityModalContent"></div>
+</div>
+</div>
+<!-- PLANO -->
+<div aria-hidden="true" class="sa-modal" id="planModal"><div class="sa-modal-card large"><button aria-label="Fechar janela" class="sa-modal-close" data-close-modal="planModal" type="button"><i class="fa-solid fa-xmark"></i></button><div class="sa-modal-head"><span>CATÁLOGO DE PLANOS</span><h2 id="planModalTitle">Novo plano</h2></div><form class="sa-form-grid modal-grid" id="planForm"><input name="id" type="hidden"/><label class="span-2"><span>Nome</span><input name="nome" required=""/></label><label><span>Slug</span><input name="slug" required=""/></label><label><span>Ordem</span><input name="ordem" type="number" value="0"/></label><label><span>Preço mensal · rascunho</span><input min="0" name="preco_mensal" required="" step="0.01" type="number"/></label><label><span>Preço anual · rascunho</span><input min="0" name="preco_anual" step="0.01" type="number"/></label><label><span>Comissão planejada (%)</span><input max="100" min="0" name="comissao_percentual" step="0.001" type="number"/></label><label><span>Trial (dias)</span><input min="0" name="trial_dias" type="number" value="0"/></label><label><span>Limite produtos <small>vazio = ilimitado</small></span><input min="0" name="limite_produtos" type="number"/></label><label><span>Limite usuários <small>vazio = ilimitado</small></span><input min="0" name="limite_usuarios" type="number"/></label><label><span>Limite banners <small>vazio = ilimitado</small></span><input min="0" name="limite_banners" type="number"/></label><label class="span-2"><span>Descrição</span><textarea name="descricao" rows="3"></textarea></label><label><span>Badge comercial</span><input name="badge_texto" maxlength="32" placeholder="Ex.: Mais escolhido"></label><label><span>Tipo do badge</span><select name="badge_tipo"><option value="">Sem badge</option><option value="popular">Popular</option><option value="recomendado">Recomendado</option><option value="economia">Economia</option><option value="premium">Premium</option><option value="novo">Novo</option></select></label><label class="check-field span-2"><input name="recomendado_manual" type="checkbox"> Marcar como recomendado manualmente</label><div class="sa-plan-editor-critical"><i class="fa-solid fa-shield-halved"></i> Alterações de preço, comissão, limites ou status exigem confirmação explícita e Super Admin AAL2. Reduções que prejudiquem lojas são bloqueadas.</div><div class="sa-plan-resource-editor"><strong>Recursos incluídos</strong><div class="sa-plan-resource-grid" id="planResourcesGrid"></div></div><label class="check-field"><input checked="" name="ativo" type="checkbox"/> Plano ativo</label><label class="check-field"><input name="destaque" type="checkbox"/> Destacar plano</label><div class="sa-plan-editor-note"><i class="fa-solid fa-lock"></i> O editor altera apenas o catálogo. Cobranças reais e comissão efetiva continuam bloqueadas pelo backend.</div><button class="sa-btn primary span-2" type="submit"><i class="fa-solid fa-floppy-disk"></i> Salvar plano</button></form></div></div>
+<!-- CATEGORIA -->
+<div aria-hidden="true" class="sa-modal" id="categoryModal"><div class="sa-modal-card"><button aria-label="Fechar janela" class="sa-modal-close" data-close-modal="categoryModal" type="button"><i class="fa-solid fa-xmark"></i></button><div class="sa-modal-head"><span>MARKETPLACE</span><h2 id="categoryModalTitle">Nova categoria</h2></div><form class="sa-form-grid modal-grid" id="categoryForm"><input name="id" type="hidden"/><label><span>Nome</span><input name="nome" required=""/></label><label><span>Slug</span><input name="slug" required=""/></label><label><span>Ícone Font Awesome</span><input name="icone" placeholder="fa-burger"/></label><label><span>Ordem</span><input name="ordem" type="number" value="0"/></label><label class="span-2"><span>Descrição</span><textarea name="descricao" rows="3"></textarea></label><label class="check-field"><input checked="" name="ativo" type="checkbox"/> Ativa</label><label class="check-field"><input name="destaque" type="checkbox"/> Destaque</label><button class="sa-btn primary span-2" type="submit">Salvar categoria</button></form></div></div>
+<!-- BANNER -->
+<div aria-hidden="true" class="sa-modal" id="bannerModal"><div class="sa-modal-card"><button aria-label="Fechar janela" class="sa-modal-close" data-close-modal="bannerModal" type="button"><i class="fa-solid fa-xmark"></i></button><div class="sa-modal-head"><span>VITRINE GLOBAL</span><h2 id="bannerModalTitle">Novo banner</h2></div><form class="sa-form-grid modal-grid" id="bannerForm"><input name="id" type="hidden"/><label class="span-2"><span>Título</span><input name="titulo" required=""/></label><label class="span-2"><span>Subtítulo</span><input name="subtitulo"/></label><label class="span-2"><span>Imagem do banner</span><div class="sa-upload-field"><input accept="image/png,image/jpeg,image/webp" id="globalBannerFile" name="imagem_arquivo" type="file"/><div class="sa-upload-help"><i class="fa-solid fa-cloud-arrow-up"></i><div><strong>Enviar para a Go-burger</strong><small>PNG, JPG ou WEBP • até 5 MB</small></div></div></div></label><label class="span-2"><span>URL da imagem</span><input name="imagem_url" placeholder="Preenchida automaticamente após o upload" type="url"/></label><div class="sa-banner-upload-preview span-2" id="globalBannerPreview"><i class="fa-regular fa-image"></i><span>Prévia do banner</span></div><label><span>Link</span><select name="link_tipo"><option value="nenhum">Nenhum</option><option value="loja">Loja</option><option value="categoria">Categoria</option><option value="url">URL</option></select></label><label><span>Destino</span><input name="link_valor"/></label><label><span>Público</span><select name="publico"><option value="todos">Todos</option><option value="clientes">Clientes</option><option value="parceiros">Parceiros</option></select></label><label><span>Ordem</span><input name="ordem" type="number" value="0"/></label><label class="check-field"><input checked="" name="ativo" type="checkbox"/> Banner ativo</label><button class="sa-btn primary span-2" type="submit">Salvar banner</button></form></div></div>
+<!-- CAMPANHA -->
+<div aria-hidden="true" class="sa-modal" id="campaignModal"><div class="sa-modal-card"><button aria-label="Fechar janela" class="sa-modal-close" data-close-modal="campaignModal" type="button"><i class="fa-solid fa-xmark"></i></button><div class="sa-modal-head"><span>GROWTH</span><h2>Nova campanha</h2></div><form class="sa-form-grid modal-grid" id="campaignForm"><label class="span-2"><span>Nome</span><input name="nome" required=""/></label><label><span>Tipo</span><select name="tipo"><option value="marketing">Marketing</option><option value="retencao">Retenção</option><option value="aquisicao">Aquisição</option><option value="sazonal">Sazonal</option><option value="patrocinada">Patrocinada</option><option value="operacional">Operacional</option></select></label><label><span>Público</span><select name="publico"><option value="todos">Todos</option><option value="clientes">Clientes</option><option value="parceiros">Parceiros</option><option value="lojas">Lojas</option></select></label><label class="span-2"><span>Título</span><input name="titulo"/></label><label class="span-2"><span>Mensagem</span><textarea name="mensagem" rows="4"></textarea></label><label><span>Início</span><input name="inicia_em" type="datetime-local"/></label><label><span>Fim</span><input name="termina_em" type="datetime-local"/></label><button class="sa-btn primary span-2" type="submit">Criar campanha</button></form></div></div>
+<!-- NOTIFICAÇÃO -->
+<div aria-hidden="true" class="sa-modal" id="notificationModal"><div class="sa-modal-card"><button aria-label="Fechar janela" class="sa-modal-close" data-close-modal="notificationModal" type="button"><i class="fa-solid fa-xmark"></i></button><div class="sa-modal-head"><span>COMUNICAÇÃO</span><h2>Nova mensagem</h2></div><form class="sa-form-grid modal-grid" id="notificationForm"><label><span>Alvo</span><select name="alvo"><option value="todos">Todos</option><option value="clientes">Clientes</option><option value="parceiros">Parceiros</option><option value="loja">Uma loja</option></select></label><label><span>Tipo</span><select name="tipo"><option value="info">Informação</option><option value="sucesso">Sucesso</option><option value="alerta">Alerta</option><option value="promocao">Promoção</option><option value="manutencao">Manutenção</option></select></label><label class="span-2"><span>Título</span><input name="titulo" required=""/></label><label class="span-2"><span>Mensagem</span><textarea name="mensagem" required="" rows="4"></textarea></label><label><span>Loja (opcional)</span><select id="notificationStoreSelect" name="loja_id"><option value="">Todas / não se aplica</option></select></label><label><span>Agendar</span><input name="agendada_para" type="datetime-local"/></label><button class="sa-btn primary span-2" type="submit">Salvar mensagem</button></form></div></div>
+<!-- EQUIPE -->
+<div aria-hidden="true" class="sa-modal" id="teamModal"><div class="sa-modal-card"><button aria-label="Fechar janela" class="sa-modal-close" data-close-modal="teamModal" type="button"><i class="fa-solid fa-xmark"></i></button><div class="sa-modal-head"><span>ACESSO INTERNO</span><h2>Adicionar à equipe</h2></div><form class="sa-form-grid modal-grid" id="teamForm"><label class="span-2"><span>Usuário</span><select id="teamUserSelect" name="user_id" required=""><option value="">Selecione um usuário</option></select></label><label class="span-2"><span>Nível</span><select name="nivel"><option value="super_admin">Super Admin</option><option value="operacoes">Operações</option><option value="financeiro">Financeiro</option><option value="suporte">Suporte</option><option value="moderacao">Moderação</option><option value="marketing">Marketing</option><option value="leitura">Somente leitura</option></select></label><button class="sa-btn primary span-2" type="submit">Adicionar membro</button></form></div></div>
+<div aria-live="polite" class="sa-toast-wrap" id="saToastWrap"></div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.111.0"></script>
+<script src="superadmin.js?v=701"></script>
+<script src="superadmin-growth.js?v=605"></script>
+<script src="superadmin-cases.js?v=605"></script>
+<script src="superadmin-phase2.js?v=605"></script>
+<script defer="" src="../shared/app-ui.js?v=88"></script>
+  <script src="../shared/release-88.js?v=88" defer></script>
+  <script src="../shared/redesign-89.js?v=89" defer></script>
+  <script src="../shared/css-master-90-108.js?v=108" defer></script>
+  <script src="../shared/final-109-600.js?v=600" defer></script>
+  <script src="../shared/final-runtime-611.js?v=611"></script>
+</body>
+</html>

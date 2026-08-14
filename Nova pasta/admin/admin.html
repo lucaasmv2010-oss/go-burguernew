@@ -1,0 +1,1855 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' data: https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: blob: https://ethlgaszdextwckdwgsf.supabase.co; connect-src 'self' https://ethlgaszdextwckdwgsf.supabase.co wss://ethlgaszdextwckdwgsf.supabase.co; frame-src 'self'; worker-src 'self' blob:; manifest-src 'self'; media-src 'self' blob: https://ethlgaszdextwckdwgsf.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+<meta content="strict-origin-when-cross-origin" name="referrer"/>
+<meta content="nosniff" http-equiv="X-Content-Type-Options"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<meta content="#17100c" name="theme-color"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/>
+<meta content="Go-burger Parceiros" name="apple-mobile-web-app-title"/>
+<meta content="yes" name="mobile-web-app-capable"/>
+<meta content="telephone=no" name="format-detection"/>
+<meta name="robots" content="noindex,nofollow,noarchive">
+  <title>Go-burger | Painel da hamburgueria</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet"/>
+<link href="../manifest.webmanifest" rel="manifest"/>
+<link href="../assets/icons/icon-192.png" rel="apple-touch-icon"/>
+<link href="admin.css?v=88" rel="stylesheet"/>
+<link href="../shared/app-ui.css?v=88" rel="stylesheet"/>
+<link rel="stylesheet" href="../shared/growth.css?v=88">
+<link rel="stylesheet" href="../shared/case-center.css?v=88">
+<link rel="stylesheet" href="../shared/phase2.css?v=610">
+
+  <script src="../shared/theme.js?v=88"></script>
+  <link rel="stylesheet" href="../shared/theme.css?v=88">
+  <meta name="go-burger-release" content="89">
+  <link rel="stylesheet" href="../shared/release-88.css?v=88">
+  <link rel="stylesheet" href="../shared/redesign-89.css?v=89">
+  <link rel="stylesheet" href="../shared/css-master-90-108.css?v=108">
+  <meta name="go-burger-css-release" content="108">
+  <link rel="stylesheet" href="../shared/final-109-600.css?v=600">
+  <link rel="stylesheet" href="../shared/hotfix-604-modal.css?v=604">
+  <meta name="go-burger-hotfix" content="604-modal-layer">
+  <meta name="go-burger-final-release" content="600">
+  <link rel="stylesheet" href="../shared/hotfix-609-video-qa.css?v=609">
+  <link rel="stylesheet" href="../shared/final-ui-611.css?v=611">
+  <link rel="stylesheet" href="../shared/button-layout-6121.css?v=6121">
+  <link rel="stylesheet" href="../shared/plans-613.css?v=613">
+  <link rel="stylesheet" href="../shared/plans-623.css?v=623">
+  <link rel="stylesheet" href="../shared/plans-640.css?v=640">
+  <link rel="stylesheet" href="../shared/plans-commercial-660.css?v=660">
+  <link rel="stylesheet" href="../shared/plans-operations-680.css?v=680">
+  <link rel="stylesheet" href="../shared/plans-700.css?v=700">
+</head>
+<body class="gb-admin-page">
+<!-- =========================================================
+     LOGIN
+========================================================= -->
+<section class="auth" id="adminAuth">
+<div class="auth-orb orb-a"></div>
+<div class="auth-orb orb-b"></div>
+<div class="auth-shell">
+<div class="auth-hero">
+<span class="auth-chip"><i class="fa-solid fa-bolt"></i> Go-burger</span>
+<div class="auth-mark">🍔</div>
+<h1>Controle a operação inteira sem perder o ritmo.</h1>
+<p>Cardápio, cozinha, estoque, clientes, promoções, fidelidade, avaliações e performance em uma central comercial completa.</p>
+<div class="auth-features">
+<span><i class="fa-solid fa-kitchen-set"></i> Modo cozinha</span>
+<span><i class="fa-solid fa-wand-magic-sparkles"></i> Personalizações</span>
+<span><i class="fa-solid fa-bullhorn"></i> Marketing</span>
+<span><i class="fa-solid fa-chart-line"></i> Analytics</span>
+</div>
+</div>
+<div class="auth-card">
+<div class="auth-card-head">
+<span class="mini-logo">🍔</span>
+<div>
+<span class="eyebrow">ACESSO ADMINISTRATIVO</span>
+<h2>Entrar no Go-burger Parceiros</h2>
+<p>Use uma conta vinculada à gestão de uma hamburgueria da Go-burger.</p>
+</div>
+</div>
+<div class="auth-error" id="adminAuthErro" role="alert"></div>
+<form id="formAdminLogin" novalidate="">
+<label class="field">
+<span>E-mail</span>
+<div class="field-icon">
+<i class="fa-regular fa-envelope"></i>
+<input autocomplete="email" id="adminEmail" name="email" placeholder="seuemail@gmail.com" required="" type="email"/>
+</div>
+</label>
+<label class="field">
+<span>Senha</span>
+<div class="field-icon password-field">
+<i class="fa-solid fa-lock"></i>
+<input autocomplete="current-password" id="adminSenha" minlength="6" name="senha" placeholder="Sua senha" required="" type="password"/>
+<button aria-label="Mostrar senha" class="password-toggle" data-toggle-password="" type="button">
+<i class="fa-regular fa-eye"></i>
+</button>
+</div>
+</label>
+<div class="login-links">
+<button id="btnRecuperarSenha" type="button">Esqueci minha senha</button>
+<a href="../burger/index.html?modo=cliente" target="_top"><i class="fa-solid fa-store"></i> Abrir loja</a>
+</div>
+<button class="btn primary large" type="submit">
+<span>Entrar no painel</span>
+<i class="fa-solid fa-arrow-right"></i>
+</button>
+</form>
+<div class="auth-safe">
+<i class="fa-solid fa-shield-halved"></i>
+<span>Supabase Auth + RLS + sessão segura integrada ao Go-burger</span>
+</div>
+</div>
+</div>
+</section>
+<!-- =========================================================
+     ONBOARDING DE NOVO PARCEIRO
+========================================================= -->
+<section class="partner-onboarding hidden" id="partnerOnboarding">
+<div class="partner-orb partner-orb-a"></div>
+<div class="partner-orb partner-orb-b"></div>
+<div class="partner-onboarding-card">
+<span class="partner-chip"><i class="fa-solid fa-handshake"></i> SEJA PARCEIRO Go-burger</span>
+<div class="partner-icon">🍔</div>
+<h1 id="partnerOnboardingTitle">Sua hamburgueria pode entrar para a Go-burger.</h1>
+<p id="partnerOnboardingText">Envie seus dados para análise. A hamburgueria só será criada depois da autorização do Super Admin e continuará em rascunho até a aprovação final para publicação.</p>
+<div class="partner-request-status hidden" id="partnerRequestStatus"></div>
+<div class="partner-steps">
+<span><b>1</b><strong>Solicite</strong><small>Envie os dados do negócio</small></span>
+<span><b>2</b><strong>Aguarde</strong><small>Super Admin analisa a entrada</small></span>
+<span><b>3</b><strong>Complete</strong><small>Logo, capa e cardápio</small></span>
+<span><b>4</b><strong>Publique</strong><small>Nova autorização da Go-burger</small></span>
+</div>
+<div class="partner-actions">
+<button class="btn primary large" id="btnOnboardingNovaHamburgueria" type="button"><i class="fa-solid fa-paper-plane"></i> Enviar solicitação</button>
+<button class="btn secondary" id="btnOnboardingVoltar" type="button"><i class="fa-solid fa-arrow-left"></i> Voltar para pedir</button>
+</div>
+<small class="partner-safe"><i class="fa-solid fa-shield-halved"></i> Nenhuma hamburgueria é criada automaticamente · entrada e publicação dependem de aprovação manual</small>
+</div>
+</section>
+<!-- =========================================================
+     APP
+========================================================= -->
+<div class="app hidden" id="adminApp">
+<aside class="sidebar" id="sidebar">
+<div>
+<button class="brand" data-page="dashboard" type="button">
+<span class="brand-mark">🍔</span>
+<span>
+<strong id="sidebarNomeLoja">Hamburgueria</strong>
+<small>Go-burger · PARCEIROS</small>
+</span>
+</button>
+<div class="nav-label">OPERAÇÃO</div>
+<nav class="side-nav">
+<button class="active" data-page="dashboard" type="button"><i class="fa-solid fa-grid-2"></i><span>Dashboard</span></button>
+<button data-page="operacao" type="button"><i class="fa-solid fa-kitchen-set"></i><span>Operação</span><b class="nav-badge zero" id="badgeOperacao">0</b></button>
+<button data-page="pedidos" type="button"><i class="fa-solid fa-receipt"></i><span>Pedidos</span><b class="nav-badge zero" id="badgePedidos">0</b></button>
+<button data-page="estoque" type="button"><i class="fa-solid fa-boxes-stacked"></i><span>Estoque</span><span class="nav-dot hidden" id="dotEstoque"></span></button>
+</nav>
+<div class="nav-label">CARDÁPIO</div>
+<nav class="side-nav">
+<button data-page="produtos" type="button"><i class="fa-solid fa-burger"></i><span>Produtos</span></button>
+<button data-page="personalizacao" type="button"><i class="fa-solid fa-sliders"></i><span>Personalização</span></button>
+<button data-page="marketing" type="button"><i class="fa-solid fa-bullhorn"></i><span>Marketing</span></button>
+<button data-page="cupons" type="button"><i class="fa-solid fa-ticket"></i><span>Cupons PRO</span></button>
+</nav>
+<div class="nav-label">CLIENTES</div>
+<nav class="side-nav">
+<button data-page="clientes" type="button"><i class="fa-solid fa-users"></i><span>CRM Clientes</span></button>
+<button data-page="fidelidade" type="button"><i class="fa-solid fa-star"></i><span>Fidelidade</span></button>
+<button data-page="avaliacoes" type="button"><i class="fa-solid fa-star-half-stroke"></i><span>Avaliações</span><b class="nav-badge zero" id="badgeAvaliacoes">0</b></button>
+</nav>
+<div class="nav-label">GESTÃO</div>
+<nav class="side-nav">
+<button data-page="entregas" type="button"><i class="fa-solid fa-motorcycle"></i><span>Entrega &amp; horários</span></button>
+<button class="nav-featured" data-page="hamburgueria" type="button"><i class="fa-solid fa-store"></i><span>Minha hamburgueria</span><b class="nav-badge nav-badge-new">NOVO</b></button>
+<button data-page="equipe" type="button"><i class="fa-solid fa-user-group"></i><span>Equipe da loja</span></button>
+<button data-page="relatorios" type="button"><i class="fa-solid fa-chart-line"></i><span>Relatórios</span></button>
+<button class="nav-featured" data-page="planos" type="button"><i class="fa-solid fa-gem"></i><span>Planos &amp; assinatura</span><b class="nav-badge nav-badge-new">PLANOS</b></button>
+<button hidden aria-hidden="true" data-page="financeiro" type="button"><i class="fa-solid fa-wallet"></i><span>Financeiro &amp; plano</span></button>
+<button data-page="entregadores" type="button"><i class="fa-solid fa-person-biking"></i><span>Entregadores</span></button>
+<button data-page="notificacoes" type="button"><i class="fa-regular fa-bell"></i><span>Notificações</span><b class="nav-badge zero" id="badgeNotificacoesMenu">0</b></button>
+<button data-page="confianca" type="button"><i class="fa-solid fa-shield-halved"></i><span>Suporte &amp; confiança</span><b class="nav-badge zero" id="gb31AdminSupportBadge">0</b></button>
+<button class="nav-featured" data-page="ativacao" type="button"><i class="fa-solid fa-wand-magic-sparkles"></i><span>Ativação &amp; saúde</span><b class="nav-badge nav-badge-new">PRO</b></button>
+<button data-page="erp" type="button"><i class="fa-solid fa-boxes-stacked"></i><span>ERP &amp; CMV</span></button>
+<button data-page="inteligencia" type="button"><i class="fa-solid fa-brain"></i><span>Inteligência</span></button>
+<button data-page="mensagens" type="button"><i class="fa-solid fa-comments"></i><span>Chat de pedidos</span></button>
+<button data-page="salao" type="button"><i class="fa-solid fa-qrcode"></i><span>Salão &amp; mesas</span></button>
+<button data-page="configuracoes" type="button"><i class="fa-solid fa-gear"></i><span>Configurações</span></button>
+<button data-page="diagnostico" type="button"><i class="fa-solid fa-stethoscope"></i><span>Diagnóstico</span></button>
+</nav>
+</div>
+<div class="sidebar-footer">
+<div class="live-state">
+<span class="live-dot" id="realtimeDot"></span>
+<div>
+<strong>Tempo real</strong>
+<small id="statusRealtime">Conectando...</small>
+</div>
+</div>
+<button class="logout" id="btnSair" type="button"><i class="fa-solid fa-right-from-bracket"></i><span>Sair</span></button>
+</div>
+</aside>
+<div class="mobile-overlay" id="mobileOverlay"></div>
+<main class="main">
+<header class="topbar">
+<div class="topbar-title">
+<button aria-label="Abrir menu" class="icon-btn mobile-menu" id="menuMobile" type="button"><i class="fa-solid fa-bars"></i></button>
+<div>
+<span class="eyebrow" id="pageEyebrow">CENTRAL</span>
+<h1 id="pageTitle">Dashboard</h1>
+<p id="pageSubtitle">Visão executiva e operação em tempo real.</p>
+</div>
+</div>
+<div class="global-search">
+<i class="fa-solid fa-magnifying-glass"></i>
+<input aria-label="Busca global" id="buscaGlobal" placeholder="Buscar pedido, produto, cliente, cupom..." type="search"/>
+<kbd>Enter</kbd>
+</div>
+<div class="store-context" id="adminLojaContext">
+<i class="fa-solid fa-store"></i>
+<div>
+<small>HAMBURGUERIA</small>
+<strong id="adminLojaContextLabel">Hamburgueria</strong>
+</div>
+<select aria-label="Selecionar hamburgueria" id="adminLojaSelect"></select>
+</div>
+<div class="topbar-actions">
+<button class="icon-btn" id="btnSom" title="Som de novos pedidos" type="button"><i class="fa-solid fa-volume-high"></i></button>
+<button class="icon-btn" id="btnTema" title="Alternar tema" type="button" data-gb-theme-toggle><i class="fa-regular fa-moon"></i></button>
+<button class="icon-btn" id="btnAtualizar" title="Atualizar" type="button"><i class="fa-solid fa-rotate"></i></button>
+<button class="icon-btn store-preview-shortcut" id="btnEstudioLoja" title="Estúdio da hamburgueria" type="button"><i class="fa-solid fa-wand-magic-sparkles"></i></button>
+<button aria-label="Cadastrar nova hamburgueria" class="icon-btn store-create-shortcut" id="btnNovaHamburgueria" title="Cadastrar nova hamburgueria" type="button"><i class="fa-solid fa-store-circle-plus"></i></button>
+<button class="icon-btn notification-trigger" id="btnNotificacoes" title="Notificações" type="button">
+<i class="fa-regular fa-bell"></i>
+<b class="notification-badge zero" id="badgeNotificacoes">0</b>
+</button>
+<button class="profile-trigger" id="perfilAdmin" type="button">
+<span class="avatar-admin">AD</span>
+<span>
+<strong>Administrador</strong>
+<small>Online</small>
+</span>
+<i class="fa-solid fa-chevron-down"></i>
+</button>
+</div>
+</header>
+<!-- =====================================================
+         DASHBOARD
+    ====================================================== -->
+<section class="page active" data-section="dashboard">
+<div class="hero">
+<div class="hero-copy">
+<span class="hero-chip"><i class="fa-solid fa-fire"></i> OPERAÇÃO AO VIVO</span>
+<h2>Olá, <span id="nomeAdminDashboard">Administrador</span>.</h2>
+<p id="heroResumo">Carregando sua operação...</p>
+<div class="hero-actions">
+<button class="btn primary" data-page="operacao" type="button"><i class="fa-solid fa-kitchen-set"></i> Abrir operação</button>
+<button class="btn ghost-light" id="btnAbrirLojaDashboard" type="button"><i class="fa-solid fa-arrow-up-right-from-square"></i> Ver loja</button>
+</div>
+</div>
+<div class="store-state-card">
+<small>STATUS DA LOJA</small>
+<strong id="dashboardLojaStatus">Verificando...</strong>
+<span id="dashboardTempoEntrega">—</span>
+<button id="btnToggleLojaRapido" type="button">Alterar status</button>
+</div>
+<div class="hero-burger">🍔</div>
+</div>
+<div class="kpi-grid">
+<article class="kpi"><span class="kpi-icon orange"><i class="fa-solid fa-receipt"></i></span><div><small>Pedidos hoje</small><strong id="kpiPedidosHoje">0</strong><p id="kpiPedidosComparacao">Sem comparação</p></div></article>
+<article class="kpi"><span class="kpi-icon green"><i class="fa-solid fa-sack-dollar"></i></span><div><small>Faturamento hoje</small><strong id="kpiFaturamentoHoje">R$ 0,00</strong><p id="kpiFaturamentoComparacao">Sem comparação</p></div></article>
+<article class="kpi"><span class="kpi-icon blue"><i class="fa-solid fa-clock"></i></span><div><small>Em andamento</small><strong id="kpiAndamento">0</strong><p>Fila operacional</p></div></article>
+<article class="kpi"><span class="kpi-icon purple"><i class="fa-solid fa-chart-simple"></i></span><div><small>Ticket médio</small><strong id="kpiTicket">R$ 0,00</strong><p>Pedidos válidos</p></div></article>
+<article class="kpi"><span class="kpi-icon red"><i class="fa-solid fa-box-open"></i></span><div><small>Estoque crítico</small><strong id="kpiEstoque">0</strong><p>No limite configurado</p></div></article>
+<article class="kpi"><span class="kpi-icon amber"><i class="fa-solid fa-user-plus"></i></span><div><small>Novos clientes</small><strong id="kpiNovosClientes">0</strong><p>Últimos 30 dias</p></div></article>
+</div>
+<div class="dashboard-grid">
+<article class="panel chart-panel">
+<div class="panel-head">
+<div><span class="eyebrow">VENDAS</span><h3>Faturamento</h3><p>Evolução das vendas no período.</p></div>
+<select aria-label="Período do gráfico" id="periodoGrafico">
+<option value="7">7 dias</option>
+<option value="30">30 dias</option>
+<option value="mes">Este mês</option>
+</select>
+</div>
+<div class="chart-wrap"><canvas id="graficoVendas"></canvas></div>
+</article>
+<article class="panel">
+<div class="panel-head">
+<div><span class="eyebrow">OPERAÇÃO</span><h3>Fila atual</h3><p>Pedidos por etapa.</p></div>
+<button class="text-btn" data-page="operacao" type="button">Gerenciar</button>
+</div>
+<div class="status-stack" id="resumoStatusDashboard"></div>
+</article>
+</div>
+<div class="dashboard-grid secondary">
+<article class="panel">
+<div class="panel-head">
+<div><span class="eyebrow">RECENTES</span><h3>Últimos pedidos</h3><p>Entradas mais recentes.</p></div>
+<button class="text-btn" data-page="pedidos" type="button">Ver todos</button>
+</div>
+<div class="recent-list" id="pedidosRecentes"></div>
+</article>
+<article class="panel">
+<div class="panel-head">
+<div><span class="eyebrow">ATENÇÃO</span><h3>Alertas</h3><p>O que merece ação agora.</p></div>
+</div>
+<div class="alert-list" id="dashboardAlertas"></div>
+</article>
+</div>
+<article class="panel quick-panel">
+<div class="panel-head"><div><span class="eyebrow">ATALHOS</span><h3>Ações rápidas</h3></div></div>
+<div class="quick-grid">
+<button data-action="novo-produto" type="button"><i class="fa-solid fa-plus"></i><span>Novo produto</span><small>Criar item do cardápio</small></button>
+<button data-action="novo-grupo" type="button"><i class="fa-solid fa-list-check"></i><span>Novo adicional</span><small>Grupo de personalização</small></button>
+<button data-action="novo-banner" type="button"><i class="fa-solid fa-bullhorn"></i><span>Novo banner</span><small>Campanha na loja</small></button>
+<button data-action="novo-cupom" type="button"><i class="fa-solid fa-ticket"></i><span>Novo cupom</span><small>Campanha de desconto</small></button>
+<button data-page="estoque" type="button"><i class="fa-solid fa-boxes-stacked"></i><span>Ajustar estoque</span><small>Reposição rápida</small></button>
+<button data-action="exportar-pedidos" type="button"><i class="fa-solid fa-file-csv"></i><span>Exportar pedidos</span><small>Baixar CSV</small></button>
+</div>
+</article>
+</section>
+<!-- =====================================================
+         OPERAÇÃO / COZINHA
+    ====================================================== -->
+<section class="page" data-section="operacao">
+<div class="page-toolbar">
+<div>
+<span class="eyebrow">COZINHA &amp; EXPEDIÇÃO</span>
+<h2>Central de operação</h2>
+<p>Kanban ao vivo com tempo de espera, observações e avanço rápido.</p>
+</div>
+<div class="toolbar-actions">
+<button aria-pressed="false" class="btn secondary" id="btnAutoPrint" type="button"><i class="fa-solid fa-print"></i> Impressão automática: OFF</button>
+<button class="btn secondary" id="btnModoCozinha" type="button"><i class="fa-solid fa-expand"></i> Modo cozinha</button>
+<button class="btn secondary" id="btnAtualizarOperacao" type="button"><i class="fa-solid fa-rotate"></i> Atualizar</button>
+</div>
+</div>
+<div class="operation-board" id="operationBoard"></div>
+</section>
+<!-- =====================================================
+         PEDIDOS
+    ====================================================== -->
+<section class="page" data-section="pedidos">
+<article class="panel">
+<div class="page-toolbar compact">
+<div><span class="eyebrow">VENDAS</span><h2>Pedidos</h2><p>Busca, filtros, impressão e gestão completa do pedido.</p></div>
+<div class="toolbar-actions">
+<button class="btn secondary" id="btnExportarPedidos" type="button"><i class="fa-solid fa-file-csv"></i> CSV</button>
+<button class="btn secondary" id="btnAbrirLoja" type="button"><i class="fa-solid fa-store"></i> Loja</button>
+</div>
+</div>
+<div class="filters orders-filters">
+<div class="search-field"><i class="fa-solid fa-magnifying-glass"></i><input aria-label="Pesquisar pedidos" id="pesquisaPedido" placeholder="Pedido, cliente, telefone..." type="search"/></div>
+<select aria-label="Filtrar pedidos por status" id="filtroStatusPedido">
+<option value="">Todos os status</option>
+<option>Recebido</option><option>Em preparo</option><option>Pronto</option><option>Saiu para entrega</option><option>Concluído</option><option>Cancelado</option>
+</select>
+<select aria-label="Filtrar pedidos por pagamento" id="filtroPagamentoPedido">
+<option value="">Todo pagamento</option><option>PIX</option><option>Cartão</option><option>Dinheiro</option>
+</select>
+<select aria-label="Filtrar por entrega ou retirada" id="filtroTipoEntregaPedido">
+<option value="">Entrega + retirada</option><option>Entrega</option><option>Retirada</option>
+</select>
+<select aria-label="Filtrar pedidos por período" id="filtroPeriodoPedido">
+<option value="">Todo período</option><option value="hoje">Hoje</option><option value="7">7 dias</option><option value="30">30 dias</option>
+</select>
+</div>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Pedido</th><th>Cliente</th><th>Tipo</th><th>Total</th><th>Pagamento</th><th>Data</th><th>Status</th><th>Ações</th></tr></thead>
+<tbody id="tabelaPedidos"></tbody>
+</table>
+</div>
+</article>
+</section>
+<!-- =====================================================
+         PRODUTOS
+    ====================================================== -->
+<section class="page" data-section="produtos">
+<article class="panel">
+<div class="page-toolbar compact">
+<div><span class="eyebrow">CARDÁPIO</span><h2>Produtos</h2><p>Preço, imagem, destaque, ordenação e estoque.</p></div>
+<div class="toolbar-actions">
+<button class="btn secondary" id="btnExportarProdutos" type="button"><i class="fa-solid fa-file-csv"></i> CSV</button>
+<button class="btn primary" id="btnNovoProduto" type="button"><i class="fa-solid fa-plus"></i> Novo produto</button>
+</div>
+</div>
+<div class="filters product-filters">
+<div class="search-field"><i class="fa-solid fa-magnifying-glass"></i><input aria-label="Pesquisar produtos" id="pesquisaProduto" placeholder="Pesquisar produto..." type="search"/></div>
+<select aria-label="Filtrar por categoria" id="filtroCategoria"><option value="">Todas as categorias</option></select>
+<select aria-label="Filtrar produto por status" id="filtroStatusProduto"><option value="">Todos</option><option value="Disponível">Disponível</option><option value="Indisponível">Indisponível</option><option value="Desativado">Desativado</option></select>
+<select aria-label="Filtrar produtos em destaque" id="filtroDestaqueProduto"><option value="">Todos</option><option value="destaque">Destaques</option><option value="novidade">Novidades</option></select>
+</div>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Produto</th><th>Categoria</th><th>Preço</th><th>Estoque</th><th>Exibição</th><th>Status</th><th>Ações</th></tr></thead>
+<tbody id="tabelaProdutos"></tbody>
+</table>
+</div>
+</article>
+</section>
+<!-- =====================================================
+         PERSONALIZAÇÃO
+    ====================================================== -->
+<section class="page" data-section="personalizacao">
+<div class="page-toolbar">
+<div><span class="eyebrow">ADICIONAIS</span><h2>Personalização do cardápio</h2><p>Crie grupos reutilizáveis, opções pagas e ingredientes removíveis.</p></div>
+<button class="btn primary" id="btnNovoGrupo" type="button"><i class="fa-solid fa-plus"></i> Novo grupo</button>
+</div>
+<div class="split-grid">
+<article class="panel">
+<div class="panel-head"><div><span class="eyebrow">GRUPOS</span><h3>Grupos de adicionais</h3><p>Ex.: Escolha a carne, Adicionais, Molhos.</p></div></div>
+<div class="management-list" id="listaGruposAdicionais"></div>
+</article>
+<article class="panel">
+<div class="panel-head"><div><span class="eyebrow">PRODUTOS</span><h3>Personalização por produto</h3><p>Vincule grupos e ingredientes aos produtos.</p></div></div>
+<div class="filters single-filter"><div class="search-field"><i class="fa-solid fa-magnifying-glass"></i><input aria-label="Pesquisar produto para personalização" id="pesquisaPersonalizacaoProduto" placeholder="Pesquisar produto..." type="search"/></div></div>
+<div class="management-list" id="listaProdutosPersonalizacao"></div>
+</article>
+</div>
+</section>
+<!-- =====================================================
+         ESTOQUE
+    ====================================================== -->
+<section class="page" data-section="estoque">
+<div class="page-toolbar">
+<div><span class="eyebrow">INVENTÁRIO</span><h2>Estoque profissional</h2><p>Limite mínimo, ajuste com motivo e histórico de movimentações.</p></div>
+<div class="stock-summary">
+<span><strong id="estoqueTotalSkus">0</strong> produtos</span>
+<span><strong id="estoqueCriticos">0</strong> críticos</span>
+<span><strong id="estoqueZerados">0</strong> zerados</span>
+</div>
+</div>
+<article class="panel">
+<div class="filters stock-filters">
+<div class="search-field"><i class="fa-solid fa-magnifying-glass"></i><input aria-label="Pesquisar estoque" id="pesquisaEstoque" placeholder="Pesquisar no estoque..." type="search"/></div>
+<select aria-label="Filtrar situação do estoque" id="filtroEstoque"><option value="">Todos</option><option value="critico">Crítico</option><option value="zerado">Zerado</option><option value="ok">Saudável</option></select>
+</div>
+<div class="stock-grid" id="estoqueGrid"></div>
+</article>
+<article class="panel top-gap">
+<div class="panel-head"><div><span class="eyebrow">HISTÓRICO</span><h3>Movimentações recentes</h3><p>Alterações registradas pelo banco.</p></div></div>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Data</th><th>Produto</th><th>Movimento</th><th>Antes</th><th>Depois</th><th>Motivo</th></tr></thead>
+<tbody id="tabelaEstoqueMovimentos"></tbody>
+</table>
+</div>
+</article>
+</section>
+<!-- =====================================================
+         MARKETING
+    ====================================================== -->
+<section class="page" data-section="marketing">
+<div class="page-toolbar">
+<div><span class="eyebrow">CAMPANHAS</span><h2>Marketing</h2><p>Banners promocionais e ofertas de upsell controladas pelo Admin.</p></div>
+<div class="toolbar-actions">
+<button class="btn secondary" id="btnNovoUpsell" type="button"><i class="fa-solid fa-arrow-trend-up"></i> Novo upsell</button>
+<button class="btn primary" id="btnNovoBanner" type="button"><i class="fa-solid fa-plus"></i> Novo banner</button>
+</div>
+</div>
+<div class="split-grid">
+<article class="panel">
+<div class="panel-head"><div><span class="eyebrow">BANNERS</span><h3>Campanhas da Home</h3><p>Artes, validade e destino.</p></div></div>
+<div class="banner-grid" id="listaBanners"></div>
+</article>
+<article class="panel">
+<div class="panel-head"><div><span class="eyebrow">UPSELL</span><h3>Sugestões inteligentes</h3><p>Ofertas acionadas por produto ou categoria.</p></div></div>
+<div class="management-list" id="listaUpsells"></div>
+</article>
+</div>
+</section>
+<!-- =====================================================
+         CUPONS
+    ====================================================== -->
+<section class="page" data-section="cupons">
+<article class="panel">
+<div class="page-toolbar compact">
+<div><span class="eyebrow">PROMOÇÕES</span><h2>Cupons PRO</h2><p>Percentual, valor fixo, frete grátis, validade e limites.</p></div>
+<button class="btn primary" id="btnNovoCupom" type="button"><i class="fa-solid fa-plus"></i> Novo cupom</button>
+</div>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Código</th><th>Benefício</th><th>Regras</th><th>Usos</th><th>Validade</th><th>Status</th><th>Ações</th></tr></thead>
+<tbody id="tabelaCupons"></tbody>
+</table>
+</div>
+</article>
+</section>
+<!-- =====================================================
+         CLIENTES / CRM
+    ====================================================== -->
+<section class="page" data-section="clientes">
+<div class="page-toolbar">
+<div><span class="eyebrow">CRM</span><h2>Clientes</h2><p>Frequência, gasto, ticket, pontos e segmentação.</p></div>
+<div class="counter-pill"><i class="fa-solid fa-users"></i><span id="contadorClientes">0 clientes</span></div>
+</div>
+<article class="panel">
+<div class="filters client-filters">
+<div class="search-field"><i class="fa-solid fa-magnifying-glass"></i><input aria-label="Pesquisar clientes" id="pesquisaCliente" placeholder="Nome, e-mail ou celular..." type="search"/></div>
+<select aria-label="Filtrar segmento de clientes" id="filtroSegmentoCliente"><option value="">Todos os segmentos</option><option value="novo">Novo</option><option value="recorrente">Recorrente</option><option value="vip">VIP</option><option value="inativo">Inativo</option></select>
+</div>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Cliente</th><th>Segmento</th><th>Pedidos</th><th>Total gasto</th><th>Ticket</th><th>Pontos</th><th>Último pedido</th><th>Ações</th></tr></thead>
+<tbody id="tabelaClientes"></tbody>
+</table>
+</div>
+</article>
+</section>
+<!-- =====================================================
+         FIDELIDADE
+    ====================================================== -->
+<section class="page" data-section="fidelidade">
+<div class="page-toolbar">
+<div><span class="eyebrow">RETENÇÃO</span><h2>Programa de fidelidade</h2><p>Pontos por compra, recompensas e ajustes administrativos.</p></div>
+<button class="btn primary" id="btnNovaRecompensa" type="button"><i class="fa-solid fa-plus"></i> Nova recompensa</button>
+</div>
+<div class="loyalty-cards">
+<article><small>Programa</small><strong id="fidelidadeStatus">Desativado</strong><span id="fidelidadeRegra">—</span></article>
+<article><small>Pontos emitidos</small><strong id="fidelidadePontosEmitidos">0</strong><span>Saldo histórico positivo</span></article>
+<article><small>Clientes com pontos</small><strong id="fidelidadeClientesAtivos">0</strong><span>Com saldo acima de zero</span></article>
+<article><small>Recompensas ativas</small><strong id="fidelidadeRecompensasAtivas">0</strong><span>Disponíveis para resgate</span></article>
+<article><small>Benefícios disponíveis</small><strong id="fidelidadeResgatesAtivos">0</strong><span>Resgatados e ainda não usados</span></article>
+</div>
+<div class="split-grid top-gap">
+<article class="panel">
+<div class="panel-head"><div><span class="eyebrow">RECOMPENSAS</span><h3>Catálogo de recompensas</h3></div></div>
+<div class="management-list" id="listaRecompensas"></div>
+</article>
+<article class="panel">
+<div class="panel-head"><div><span class="eyebrow">MOVIMENTOS</span><h3>Últimos pontos</h3></div></div>
+<div class="management-list" id="listaMovimentosFidelidade"></div>
+</article>
+</div>
+<article class="panel top-gap">
+<div class="panel-head"><div><span class="eyebrow">RESGATES</span><h3>Benefícios trocados por pontos</h3><p>Acompanhe códigos disponíveis, usados e cancelados.</p></div></div>
+<div class="management-list" id="listaResgatesFidelidade"></div>
+</article>
+</section>
+<!-- =====================================================
+         AVALIAÇÕES
+    ====================================================== -->
+<section class="page" data-section="avaliacoes">
+<div class="page-toolbar">
+<div><span class="eyebrow">QUALIDADE</span><h2>Avaliações</h2><p>Notas, comentários e moderação.</p></div>
+<div class="rating-summary">
+<strong id="mediaAvaliacoes">0,0</strong>
+<span class="stars">★★★★★</span>
+<small id="totalAvaliacoes">0 avaliações</small>
+</div>
+</div>
+<div class="reviews-grid" id="listaAvaliacoes"></div>
+</section>
+<!-- =====================================================
+         ENTREGAS & HORÁRIOS
+    ====================================================== -->
+<section class="page" data-section="entregas">
+<div class="page-toolbar">
+<div><span class="eyebrow">LOGÍSTICA</span><h2>Entrega &amp; horários</h2><p>Bairros, taxas, pedido mínimo e expediente.</p></div>
+<button class="btn primary" id="btnNovoBairro" type="button"><i class="fa-solid fa-plus"></i> Novo bairro</button>
+</div>
+<div class="split-grid">
+<article class="panel">
+<div class="panel-head"><div><span class="eyebrow">ÁREAS</span><h3>Bairros de entrega</h3><p>Taxa e mínimo por região.</p></div></div>
+<div class="management-list" id="listaBairros"></div>
+</article>
+<article class="panel">
+<div class="panel-head"><div><span class="eyebrow">EXPEDIENTE</span><h3>Horários de funcionamento</h3><p>Dois turnos opcionais por dia.</p></div></div>
+<form class="hours-form" id="formHorarios"></form>
+<button class="btn primary full-width top-gap-sm" id="btnSalvarHorarios" type="button"><i class="fa-solid fa-floppy-disk"></i> Salvar horários</button>
+</article>
+</div>
+</section>
+<!-- =====================================================
+         RELATÓRIOS
+    ====================================================== -->
+<section class="page" data-section="relatorios">
+<div class="page-toolbar">
+<div><span class="eyebrow">ANALYTICS</span><h2>Relatórios</h2><p>Vendas, clientes, produtos, pagamentos e horários de pico.</p></div>
+<div class="toolbar-actions">
+<select aria-label="Período dos relatórios" class="toolbar-select" id="periodoRelatorios"><option value="7">7 dias</option><option selected="" value="30">30 dias</option><option value="mes">Este mês</option><option value="tudo">Todo período</option></select>
+<button class="btn secondary" id="btnExportarRelatorio" type="button"><i class="fa-solid fa-download"></i> Exportar</button>
+</div>
+</div>
+<div class="report-kpis">
+<article><small>Faturamento</small><strong id="relFaturamento">R$ 0,00</strong></article>
+<article><small>Pedidos</small><strong id="relPedidos">0</strong></article>
+<article><small>Ticket médio</small><strong id="relTicket">R$ 0,00</strong></article>
+<article><small>Itens vendidos</small><strong id="relItens">0</strong></article>
+<article><small>Cancelamentos</small><strong id="relCancelamentos">0</strong></article>
+<article><small>Lucro estimado</small><strong id="relLucro">R$ 0,00</strong></article>
+<article><small>Tempo médio de preparo</small><strong id="relTempoPreparo">—</strong></article>
+</div>
+<div class="reports-grid">
+<article class="panel"><div class="panel-head"><div><span class="eyebrow">PRODUTOS</span><h3>Mais vendidos</h3></div></div><div class="ranking-list" id="rankingProdutos"></div></article>
+<article class="panel"><div class="panel-head"><div><span class="eyebrow">CLIENTES</span><h3>Top clientes</h3></div></div><div class="ranking-list" id="rankingClientes"></div></article>
+<article class="panel"><div class="panel-head"><div><span class="eyebrow">PAGAMENTOS</span><h3>Formas de pagamento</h3></div></div><div class="summary-list" id="resumoPagamentos"></div></article>
+<article class="panel"><div class="panel-head"><div><span class="eyebrow">HORÁRIOS</span><h3>Picos de pedidos</h3></div></div><div class="ranking-list" id="horariosPico"></div></article>
+</div>
+</section>
+<section class="page" data-section="planos">
+<div class="page-toolbar gb-plans-toolbar">
+<div><span class="eyebrow">GO-BURGER PARA PARCEIROS</span><h2>Planos &amp; assinatura</h2><p>Compare os planos, escolha o ciclo e gerencie a assinatura da sua hamburgueria.</p></div>
+<span class="gb-plans-finance-state" id="plansFinanceState"><i class="fa-solid fa-lock"></i> Cobrança real bloqueada</span>
+</div>
+<div class="report-kpis gb-plans-kpis">
+<article><small>Plano atual</small><strong id="plansCurrentName">—</strong></article>
+<article><small>Status</small><strong id="plansSubscriptionStatus">—</strong></article>
+<article><small>Ciclo atual</small><strong id="plansCurrentCycle">—</strong></article>
+<article><small>Seleção pendente</small><strong id="plansPendingStatus">Nenhuma</strong></article>
+</div>
+<div class="gb-plans-cycle-row">
+<div>
+<span class="eyebrow">FORMA DE CONTRATAÇÃO</span>
+<h3>Escolha como deseja comparar</h3>
+</div>
+<div class="gb-plans-cycle-toggle" id="plansCycleToggle" role="group" aria-label="Ciclo do plano">
+<button class="active" type="button" data-plan-cycle="mensal">Mensal</button>
+<button type="button" data-plan-cycle="anual">Anual <span>economize</span></button>
+</div>
+</div>
+<article class="gb-plan-terms-card" id="plansTermsPanel">
+  <input id="plansTermsAccept" type="checkbox" aria-label="Aceito as condições da seleção do plano" aria-describedby="plansTermsText">
+  <div><strong>Condições da seleção de plano</strong><p id="plansTermsText">Carregando versão aplicável...</p><small id="plansLatestAcceptance"></small></div>
+  <span class="gb-plan-terms-version" id="plansTermsVersion">—</span>
+</article>
+<div id="plansPortalError" aria-live="polite"></div>
+<div class="gb-plans-current" id="plansCurrentPanel" aria-live="polite"></div>
+<div class="gb-trial-banner hidden" id="plansTrialBanner" role="status"></div>
+<div class="gb-plans-pending hidden" id="plansPendingBanner" role="status"></div>
+<div class="plan-usage-grid gb-plans-usage" id="plansUsageGrid" aria-label="Uso atual do plano"></div>
+<div class="gb-plans-grid" id="plansCatalogGrid"></div>
+<div class="gb-plan-tools-grid">
+<article class="panel gb-plan-simulator"><div class="panel-head"><div><span class="eyebrow">SIMULADOR</span><h3>Qual plano faz mais sentido?</h3><p>Use um faturamento mensal estimado apenas para comparar o custo planejado.</p></div></div><form id="plansSimulatorForm" class="gb-plan-sim-form"><label><span>Faturamento mensal estimado</span><input id="plansRevenueEstimate" type="number" min="0" step="100" placeholder="Ex.: 10000"></label><button class="btn secondary" type="submit"><i class="fa-solid fa-calculator"></i> Simular</button></form><div id="plansRecommendation" class="gb-plan-recommendation"></div><div id="plansSimulationResults" class="gb-plan-sim-results"></div></article>
+<article class="panel gb-plan-history-panel"><div class="panel-head"><div><span class="eyebrow">HISTÓRICO</span><h3>Movimentações do plano</h3><p>Trials, ativações e mudanças registradas.</p></div></div><div id="plansHistory" class="gb-plan-history"></div></article>
+</div>
+<div class="gb-plan-commercial-grid">
+  <article class="panel gb-plan-commercial-card">
+    <div class="panel-head"><div><span class="eyebrow">BENEFÍCIOS COMERCIAIS</span><h3>Promoções, ofertas e cupom de assinatura</h3><p>Veja condições disponíveis e simule o valor. Nenhuma cobrança real é criada.</p></div><span class="gb-plan-commercial-badge"><i class="fa-solid fa-flask"></i> SANDBOX</span></div>
+    <div id="plansPublicPromotions" class="gb-plan-promo-list"></div>
+    <div id="plansPersonalOffers" class="gb-plan-offer-list top-gap-sm"></div>
+    <form id="plansCouponPreviewForm" class="gb-plan-coupon-form top-gap-sm">
+      <label><span>Plano</span><select id="plansCouponPlan" required></select></label>
+      <label><span>Cupom</span><input id="plansCouponCode" autocomplete="off" maxlength="40" placeholder="Ex.: BEMVINDO10"></label>
+      <button class="btn secondary span-2" type="submit"><i class="fa-solid fa-ticket"></i> Simular condição</button>
+    </form>
+    <div id="plansCouponPreviewResult" class="gb-plan-coupon-result" aria-live="polite"></div>
+  </article>
+  <article class="panel gb-plan-commercial-card">
+    <div class="panel-head"><div><span class="eyebrow">GESTÃO DA ASSINATURA</span><h3>Pausa, cancelamento e reativação</h3><p>Solicitações ficam registradas sem alterar cobranças reais nesta release.</p></div></div>
+    <div id="plansBillingStatus" class="gb-plan-manage-status"></div>
+    <div class="gb-plan-manage-actions">
+      <button class="btn secondary" id="plansPauseButton" type="button"><i class="fa-solid fa-pause"></i> Solicitar pausa</button>
+      <button class="btn secondary" id="plansReactivateButton" type="button"><i class="fa-solid fa-rotate-left"></i> Reativar</button>
+      <button class="btn danger" id="plansCancelButton" type="button"><i class="fa-solid fa-ban"></i> Solicitar cancelamento</button>
+    </div>
+    <div id="plansRetentionOptions" class="gb-plan-promo-list top-gap-sm"></div>
+  </article>
+</div>
+<div class="gb-plan-commercial-grid">
+  <article class="panel gb-plan-commercial-card">
+    <div class="panel-head"><div><span class="eyebrow">DADOS FISCAIS · PREPARAÇÃO</span><h3>Perfil para faturamento futuro</h3><p>Os dados ficam privados e o documento volta mascarado para a interface.</p></div></div>
+    <form id="plansFiscalForm" class="gb-plan-fiscal-form">
+      <label><span>Tipo</span><select name="tipo_pessoa"><option value="juridica">Pessoa jurídica</option><option value="fisica">Pessoa física</option></select></label>
+      <label><span>CPF/CNPJ</span><input name="documento" inputmode="numeric" autocomplete="off" placeholder="Informe somente para salvar/alterar"></label>
+      <label class="span-2"><span>Razão social / nome</span><input name="razao_social"></label>
+      <label class="span-2"><span>E-mail fiscal</span><input name="email_fiscal" type="email"></label>
+      <label><span>Inscrição estadual</span><input name="inscricao_estadual"></label>
+      <label><span>Inscrição municipal</span><input name="inscricao_municipal"></label>
+      <label class="span-2"><span>Endereço fiscal</span><input name="endereco_linha" placeholder="Rua, número, bairro, cidade/UF e CEP"></label>
+      <button class="btn secondary span-2" type="submit"><i class="fa-solid fa-file-invoice"></i> Salvar preparação fiscal</button>
+    </form>
+    <p class="gb-plan-fiscal-note" id="plansFiscalStatus">Dados fiscais ainda não preenchidos.</p>
+  </article>
+  <article class="panel gb-plan-commercial-card">
+    <div class="panel-head"><div><span class="eyebrow">FATURAS & PAGAMENTOS</span><h3>Histórico preparado</h3><p>Somente registros de sandbox aparecem nesta área enquanto produção estiver bloqueada.</p></div></div>
+    <div class="table-wrap gb-plan-invoices"><table><thead><tr><th>Referência</th><th>Total</th><th>Status</th><th>Vencimento</th></tr></thead><tbody id="plansSandboxInvoicesBody"></tbody></table></div>
+  </article>
+</div>
+<article class="gb-plan-recovery-card ok" id="plansRecoveryPanel" aria-live="polite">
+  <i class="fa-solid fa-shield-heart"></i><div><strong>Recuperação de pagamento · preparação</strong><p>Nenhuma pendência de sandbox identificada.</p></div>
+</article>
+<div class="gb-plan-v1-grid top-gap" id="plansP700Panel">
+  <article class="panel gb-plan-v1-card"><div class="panel-head"><div><span class="eyebrow">P681–P700 · PLANOS 1.0</span><h3>Central final do plano</h3><p>Cache seguro, entitlements, add-ons, concorrência e piloto sem cobrança.</p></div><span class="gb-plan-commercial-badge"><i class="fa-solid fa-shield-halved"></i> BILLING OFF</span></div><div id="plansP700Status"></div><p id="plansCacheP700" class="gb-plan-v1-cache"></p><p id="plansPilotP700" class="gb-plan-v1-pilot"></p></article>
+  <article class="panel gb-plan-v1-card"><div class="panel-head"><div><span class="eyebrow">ENTITLEMENTS</span><h3>Limites efetivos</h3><p>Plano base + cortesias/add-ons sandbox + recursos beta.</p></div></div><div id="plansEntitlementsP700" class="gb-entitlements"></div><div id="plansAddonsP700" class="gb-plan-addon-list"></div></article>
+</div>
+<details class="gb-plan-sandbox-details">
+  <summary><i class="fa-solid fa-code"></i> Ambiente técnico de teste · checkout e conciliação sandbox</summary>
+  <div class="gb-plan-sandbox-body">
+    <div class="gb-plan-sandbox-warning"><i class="fa-solid fa-triangle-exclamation"></i><div><strong>Não cobra dinheiro.</strong><p>Este fluxo cria apenas intenção e fatura internas de teste. Nenhuma chamada ao provedor produtivo é feita.</p></div></div>
+    <form id="plansSandboxCheckoutForm" class="gb-plan-sandbox-form">
+      <label><span>Plano de teste</span><select id="plansSandboxPlan" required></select></label>
+      <label><span>Provedor simulado</span><select id="plansSandboxProvider"><option value="mock">Mock interno</option><option value="mercado_pago">Mercado Pago · adapter sandbox (sem chamada externa)</option></select></label>
+      <label class="span-2"><span>Cupom opcional</span><input id="plansSandboxCoupon" placeholder="Código de cupom"></label>
+      <button class="btn secondary" type="submit"><i class="fa-solid fa-flask"></i> Criar checkout sandbox</button>
+      <button class="btn secondary" id="plansReconcileSandbox" type="button"><i class="fa-solid fa-scale-balanced"></i> Conciliar sandbox</button>
+      <button class="btn secondary span-2" id="plansSandboxE2E" type="button"><i class="fa-solid fa-vial-circle-check"></i> Executar E2E sandbox P694</button>
+    </form>
+    <div id="plansSandboxResult" class="gb-plan-coupon-result" aria-live="polite"></div>
+  </div>
+</details>
+<article class="panel top-gap gb-plans-comparison-panel">
+<div class="panel-head"><div><span class="eyebrow">COMPARAÇÃO</span><h3>Compare os limites principais</h3><p>Os limites oficiais são os campos de plano usados pelo backend.</p></div></div>
+<div class="table-wrap"><table class="gb-plans-compare"><thead><tr><th>Plano</th><th>Produtos</th><th>Equipe</th><th>Banners</th><th>Trial</th><th>Comissão planejada</th></tr></thead><tbody id="plansCompareBody"></tbody></table></div>
+<div class="gb-feature-matrix-wrap"><h4>Recursos por plano</h4><div class="table-wrap"><table class="gb-feature-matrix" id="plansFeatureMatrix"></table></div></div>
+</article>
+<article class="panel top-gap gb-plans-note">
+<i class="fa-solid fa-circle-info"></i>
+<div><strong>Como funciona nesta versão</strong><p>O plano Grátis pode ser ativado imediatamente. Nos planos pagos, o botão <b>Assinar</b> registra sua escolha com preço e ciclo, mas não cria cobrança enquanto o financeiro da Go-burger estiver bloqueado. Quando o financeiro for liberado, essa seleção poderá seguir para o checkout.</p></div>
+</article>
+</section>
+<section class="page" hidden aria-hidden="true" data-section="financeiro">
+<div class="page-toolbar">
+<div><span class="eyebrow">SAAS + PAGAMENTOS</span><h2>Financeiro &amp; plano</h2><p>Assinatura, faturas, cobrança e pagamentos online.</p></div>
+<a class="btn secondary" href="../legal/termos-parceiros.html" rel="noopener" target="_blank"><i class="fa-solid fa-file-contract"></i> Termos do parceiro</a>
+</div>
+<div class="report-kpis">
+<article><small>Plano atual</small><strong id="financePlanName">—</strong></article>
+<article><small>Mensalidade</small><strong id="financeMonthlyValue">R$ 0,00</strong></article>
+<article><small>Status</small><strong id="financeSubscriptionStatus">—</strong></article>
+<article><small>Próxima cobrança</small><strong id="financeNextBilling">—</strong></article>
+<article><small>Comissão</small><strong id="financeCommission">0%</strong></article>
+<article><small>Pagamento online</small><strong id="financeGatewayStatus">Não conectado</strong></article>
+<article><small>Conciliação · 30d</small><strong id="financeReconciliationStatus">—</strong></article>
+<article><small>Comissão gerada · 30d</small><strong id="financeCommissionTotal">R$ 0,00</strong></article>
+</div>
+<article class="panel top-gap-sm">
+<div class="panel-head"><div><span class="eyebrow">PLANOS GO-BURGER</span><h3>Escolha o plano da hamburgueria</h3></div></div>
+<div class="plan-usage-grid" id="planUsageGrid" aria-label="Uso atual do plano"></div>
+<div class="admin-plan-grid" id="availablePlansGrid"></div>
+</article>
+<div class="reports-grid">
+<article class="panel"><div class="panel-head"><div><span class="eyebrow">ASSINATURA</span><h3>Gestão do plano</h3></div></div><div class="summary-list" id="subscriptionSummary"></div>
+<div class="toolbar-actions top-gap subscription-actions">
+<button class="btn primary" id="btnEnableRecurringBilling" type="button"><i class="fa-solid fa-arrows-rotate"></i> Ativar cobrança automática</button>
+<button class="btn secondary hidden" id="btnSyncRecurringBilling" type="button"><i class="fa-solid fa-rotate"></i> Sincronizar cobrança</button>
+<button class="btn danger" id="btnCancelSubscription" type="button"><i class="fa-solid fa-ban"></i> Solicitar cancelamento</button>
+</div></article>
+<article class="panel payment-connect-card">
+<div class="panel-head">
+<div><span class="eyebrow">MERCADO PAGO</span><h3>Conta de pagamentos</h3></div>
+<span class="payment-connect-badge" id="paymentConnectBadge">Não conectado</span>
+</div>
+<div class="summary-list" id="sellerAccountSummary"></div>
+<div class="payment-connect-actions">
+<button class="btn primary" id="btnConnectMercadoPago" type="button">
+<i class="fa-solid fa-link"></i>
+              Conectar Mercado Pago
+            </button>
+<button class="btn danger hidden" id="btnDisconnectMercadoPago" type="button">
+<i class="fa-solid fa-link-slash"></i>
+              Desconectar
+            </button>
+</div>
+<p class="panel-helper">Conexão OAuth com PKCE. O token do parceiro é guardado no Vault do backend e nunca fica exposto no navegador.</p>
+</article>
+</div>
+<article class="panel top-gap"><div class="panel-head"><div><span class="eyebrow">FATURAS</span><h3>Histórico da assinatura</h3></div></div><div class="table-wrap"><table><thead><tr><th>Referência</th><th>Competência</th><th>Vencimento</th><th>Total</th><th>Status</th></tr></thead><tbody id="financeInvoicesBody"></tbody></table></div></article>
+<article class="panel top-gap" id="printerSettingsCard">
+<div class="panel-head"><div><span class="eyebrow">IMPRESSÃO</span><h3>Impressora da cozinha</h3></div><button class="btn secondary small" id="btnPrinterTest" type="button"><i class="fa-solid fa-print"></i> Imprimir teste</button></div>
+<div class="form-grid">
+<label class="field"><span>Largura do papel</span><select id="printerPaperWidth"><option value="80">80 mm · recomendado</option><option value="58">58 mm · compacto</option></select></label>
+<label class="field"><span>Modo de impressão</span><select id="printerMode"><option value="browser">Navegador · compatível com qualquer impressora</option><option value="serial">ESC/POS via Web Serial · impressão direta</option></select></label>
+<label class="field"><span>Baud rate (Serial)</span><select id="printerBaud"><option value="9600">9600</option><option value="19200">19200</option><option value="38400">38400</option><option value="57600">57600</option><option value="115200">115200</option></select></label>
+<div class="field"><span>Conexão direta</span><button class="btn secondary small" id="btnPrinterConnect" type="button"><i class="fa-solid fa-plug"></i> Conectar impressora</button></div>
+<label class="switch-row"><input id="printerAutoPrint" type="checkbox"/><span><strong>Imprimir novos pedidos automaticamente</strong><small>No modo Serial, imprime direto após a impressora já ter sido autorizada neste navegador.</small></span></label>
+</div>
+<p class="panel-helper">O modo Navegador funciona com qualquer driver. O modo ESC/POS via Web Serial pode imprimir sem abrir a janela de impressão em Chrome/Edge compatíveis; exige autorização do dispositivo e teste físico da impressora.</p>
+</article>
+<article class="panel top-gap"><div class="panel-head"><div><span class="eyebrow">PEDIDOS ONLINE</span><h3>Transações recentes</h3></div><button class="btn secondary small" id="btnExportFinancial" type="button"><i class="fa-solid fa-file-csv"></i> Exportar</button></div><div class="table-wrap"><table><thead><tr><th>Pedido</th><th>Valor</th><th>Comissão</th><th>Líquido loja</th><th>Status</th><th>Data</th></tr></thead><tbody id="financeTransactionsBody"></tbody></table></div></article>
+</section>
+<section class="page" data-section="entregadores">
+<div class="page-toolbar">
+<div><span class="eyebrow">LOGÍSTICA</span><h2>Entregadores</h2><p>Cadastre equipe, envie convites, ofereça entregas e acompanhe rotas.</p></div>
+<div class="toolbar-actions"><button class="btn primary" id="btnInviteDriver" type="button"><i class="fa-solid fa-paper-plane"></i> Convidar entregador</button><a class="btn secondary" href="../entregador/entregador.html" rel="noopener" target="_blank"><i class="fa-solid fa-mobile-screen-button"></i> Abrir painel</a></div>
+</div>
+<div class="reports-grid">
+<article class="panel">
+<div class="panel-head"><div><span class="eyebrow">CADASTRO</span><h3>Novo entregador</h3></div></div>
+<form class="form-grid" id="driverForm">
+<label class="field full"><span>Membro da equipe (papel entregador)</span><select id="driverUserSelect" name="user_id"><option value="">Sem conta vinculada</option></select></label>
+<label class="field"><span>Nome</span><input name="nome" required=""/></label>
+<label class="field"><span>Celular</span><input name="telefone" type="tel"/></label>
+<label class="field"><span>Veículo</span><input name="veiculo" placeholder="Moto, bicicleta..."/></label>
+<label class="field"><span>Placa</span><input maxlength="10" name="placa"/></label>
+<button class="btn primary" type="submit"><i class="fa-solid fa-user-plus"></i> Salvar entregador</button>
+</form>
+</article>
+<article class="panel">
+<div class="panel-head"><div><span class="eyebrow">ATRIBUIÇÃO</span><h3>Enviar pedido para entrega</h3></div></div>
+<form class="form-grid" id="assignDeliveryForm">
+<label class="field full"><span>Pedido</span><select id="assignDeliveryOrder" name="pedido_id" required=""></select></label>
+<label class="field full"><span>Entregador</span><select id="assignDeliveryDriver" name="entregador_id" required=""></select></label>
+<button class="btn primary" type="submit"><i class="fa-solid fa-route"></i> Atribuir entrega</button>
+</form>
+</article>
+</div>
+<article class="panel top-gap"><div class="panel-head"><div><span class="eyebrow">EQUIPE</span><h3>Entregadores cadastrados</h3></div><a class="btn secondary small" href="../entregador/cadastro.html" target="_blank" rel="noopener"><i class="fa-solid fa-id-card"></i> Página de cadastro</a></div><div class="driver-grid" id="driversGrid"></div></article>
+<article class="panel top-gap"><div class="panel-head"><div><span class="eyebrow">CONVITES</span><h3>Convites enviados</h3></div><small class="panel-helper">O entregador aceita o convite com a própria conta Go-burger.</small></div><div class="driver-invites" id="driverInvitesList"></div></article>
+<article class="panel top-gap"><div class="panel-head"><div><span class="eyebrow">ROTAS</span><h3>Entregas atuais</h3></div></div><div class="table-wrap"><table><thead><tr><th>Pedido</th><th>Entregador</th><th>Status</th><th>Distância</th><th>Previsão</th></tr></thead><tbody id="deliveriesBody"></tbody></table></div></article>
+</section>
+<!-- =====================================================
+         NOTIFICAÇÕES
+    ====================================================== -->
+<section class="page" data-section="notificacoes">
+<div class="page-toolbar">
+<div><span class="eyebrow">CENTRAL</span><h2>Notificações</h2><p>Pedidos, estoque, avaliações e alertas operacionais.</p></div>
+<button class="btn secondary" id="btnMarcarTodasLidas" type="button"><i class="fa-solid fa-check-double"></i> Marcar todas como lidas</button>
+</div>
+<div class="notifications-page-list" id="listaNotificacoes"></div>
+</section>
+<!-- =====================================================
+         ESTÚDIO DA HAMBURGUERIA — GO-BURGER
+         IDENTIDADE + MARKETPLACE + INTEGRAÇÃO REAL
+    ====================================================== -->
+<section class="page store-studio-page" data-section="hamburgueria">
+<div class="store-studio-shell">
+<div class="studio-hero">
+<div class="studio-hero-glow studio-glow-a"></div>
+<div class="studio-hero-glow studio-glow-b"></div>
+<div class="studio-hero-copy">
+<span class="studio-kicker"><i class="fa-solid fa-sparkles"></i> ESTÚDIO DA HAMBURGUERIA</span>
+<h2>Deixe sua loja com cara de <span>marca grande.</span></h2>
+<p>Personalize presença, informações públicas e identidade visual em uma experiência pensada para celular, web e futura publicação nas lojas de aplicativos.</p>
+<div class="studio-hero-actions">
+<button class="btn premium-btn" id="btnPreviewMobileLoja" type="button">
+<i class="fa-solid fa-mobile-screen-button"></i>
+                Prévia no celular
+              </button>
+<button class="btn studio-outline-btn" id="btnAbrirLojaStudio" type="button">
+<i class="fa-solid fa-arrow-up-right-from-square"></i>
+                Abrir página pública
+              </button>
+</div>
+<div aria-label="Recursos da interface" class="studio-feature-pills">
+<span><i class="fa-solid fa-bolt"></i> Prévia instantânea</span>
+<span><i class="fa-solid fa-shield-heart"></i> Visual confiável</span>
+<span><i class="fa-solid fa-mobile-screen"></i> Mobile first</span>
+<span><i class="fa-solid fa-palette"></i> Identidade própria</span>
+</div>
+</div>
+<div class="studio-hero-score">
+<div class="studio-progress-ring" id="studioProgressRing" style="--progress: 0">
+<div>
+<strong id="studioProgressValue">0%</strong>
+<span>perfil pronto</span>
+</div>
+</div>
+<p>Complete as informações essenciais para deixar a hamburgueria pronta para aparecer no marketplace.</p>
+</div>
+</div>
+<div class="studio-workspace">
+<aside aria-label="Seções da hamburgueria" class="studio-nav-card">
+<div class="studio-nav-head">
+<span class="studio-mini-mark">🍔</span>
+<div>
+<small>EDIÇÃO VISUAL</small>
+<strong>Perfil da loja</strong>
+</div>
+</div>
+<div class="studio-nav-list" role="tablist">
+<button class="studio-tab active" data-studio-tab="identidade" type="button">
+<span><i class="fa-solid fa-wand-magic-sparkles"></i></span>
+<div><strong>Identidade</strong><small>Nome, logo e capa</small></div>
+<i class="fa-solid fa-chevron-right"></i>
+</button>
+<button class="studio-tab" data-studio-tab="informacoes" type="button">
+<span><i class="fa-solid fa-circle-info"></i></span>
+<div><strong>Informações</strong><small>Descrição e contatos</small></div>
+<i class="fa-solid fa-chevron-right"></i>
+</button>
+<button class="studio-tab" data-studio-tab="localizacao" type="button">
+<span><i class="fa-solid fa-location-dot"></i></span>
+<div><strong>Localização</strong><small>Endereço e região</small></div>
+<i class="fa-solid fa-chevron-right"></i>
+</button>
+<button class="studio-tab" data-studio-tab="presenca" type="button">
+<span><i class="fa-solid fa-globe"></i></span>
+<div><strong>Presença digital</strong><small>URL, status e destaque</small></div>
+<i class="fa-solid fa-chevron-right"></i>
+</button>
+<button class="studio-tab" data-studio-tab="recomendados" type="button">
+<span><i class="fa-solid fa-gem"></i></span>
+<div><strong>Recomendados</strong><small>Recursos premium futuros</small></div>
+<i class="fa-solid fa-chevron-right"></i>
+</button>
+</div>
+<div class="studio-safety-note">
+<i class="fa-solid fa-flask"></i>
+<div>
+<strong>Modo conectado</strong>
+<small>As alterações são validadas e salvas na hamburgueria selecionada.</small>
+</div>
+</div>
+</aside>
+<div class="studio-editor-column">
+<form id="formStudioHamburgueria" novalidate="">
+<div class="studio-pane active" data-studio-pane="identidade">
+<article class="studio-card studio-cover-card">
+<div class="studio-card-head">
+<div>
+<span class="eyebrow">PRIMEIRA IMPRESSÃO</span>
+<h3>Logo e capa</h3>
+<p>A capa apresenta a personalidade da loja. A logo aparece no marketplace, carrinho e pedidos.</p>
+</div>
+<span class="studio-recommended"><i class="fa-solid fa-star"></i> Essencial</span>
+</div>
+<div class="cover-editor">
+<div class="cover-stage" id="studioCoverStage">
+<div class="cover-placeholder-pattern"></div>
+<img alt="Prévia da capa da hamburgueria" id="studioBannerPreview"/>
+<div class="cover-gradient"></div>
+<button class="media-edit-btn" id="btnSelecionarBannerStudio" type="button">
+<i class="fa-solid fa-camera"></i>
+<span>Trocar capa</span>
+</button>
+<input accept="image/jpeg,image/png,image/webp" aria-label="Selecionar imagem de capa da loja" class="visually-hidden" id="studioBannerArquivo" type="file"/>
+<div class="studio-logo-wrap">
+<div class="studio-logo-preview" id="studioLogoPreview">
+<span id="studioLogoFallback">🍔</span>
+<img alt="Logo da hamburgueria" id="studioLogoImg"/>
+</div>
+<button aria-label="Trocar logo" class="logo-edit-btn" id="btnSelecionarLogoStudio" type="button">
+<i class="fa-solid fa-pen"></i>
+</button>
+<input accept="image/jpeg,image/png,image/webp" aria-label="Selecionar logotipo da loja" class="visually-hidden" id="studioLogoArquivo" type="file"/>
+</div>
+</div>
+<div class="media-guidelines">
+<div><i class="fa-solid fa-image"></i><span><strong>Capa recomendada</strong><small>1600 × 900 · JPG/PNG/WEBP</small></span></div>
+<div><i class="fa-solid fa-circle-user"></i><span><strong>Logo recomendada</strong><small>800 × 800 · fundo simples</small></span></div>
+<div><i class="fa-solid fa-wand-magic-sparkles"></i><span><strong>Dica visual</strong><small>Fotos claras e sem excesso de texto</small></span></div>
+</div>
+</div>
+</article>
+<article class="studio-card">
+<div class="studio-card-head">
+<div>
+<span class="eyebrow">MARCA</span>
+<h3>Como sua hamburgueria será apresentada</h3>
+<p>Use um nome claro e uma descrição curta que ajude o cliente a entender a proposta.</p>
+</div>
+</div>
+<div class="studio-form-grid">
+<label class="studio-field full">
+<span>Nome da hamburgueria <b>*</b></span>
+<div class="studio-input-wrap">
+<i class="fa-solid fa-store"></i>
+<input autocomplete="organization" id="studioNome" maxlength="80" name="nome" placeholder="Ex.: Brasa Burger"/>
+<em id="studioNomeCount">0/80</em>
+</div>
+</label>
+<label class="studio-field full">
+<span>Descrição pública</span>
+<div class="studio-textarea-wrap">
+<textarea id="studioDescricao" maxlength="280" name="descricao" placeholder="Conte em poucas palavras o que torna sua hamburgueria especial." rows="5"></textarea>
+<div class="studio-field-footer">
+<small><i class="fa-solid fa-lightbulb"></i> Fale de estilo, ingredientes e diferencial.</small>
+<em id="studioDescricaoCount">0/280</em>
+</div>
+</div>
+</label>
+</div>
+</article>
+<article class="studio-card marketplace-settings-card">
+<div class="studio-card-head">
+<div>
+<span class="eyebrow">IDENTIDADE NO MARKETPLACE</span>
+<h3>Estilo público da hamburgueria</h3>
+<p>Defina slogan, Instagram, tema e cores que serão usados na página pública e nos cards da Go-burger.</p>
+</div>
+<span class="studio-recommended"><i class="fa-solid fa-palette"></i> Marketplace</span>
+</div>
+<div class="studio-form-grid">
+<label class="studio-field full">
+<span>Slogan da loja</span>
+<div class="studio-input-wrap"><i class="fa-solid fa-quote-left"></i><input id="studioSlogan" maxlength="120" placeholder="Ex.: Smash artesanal, fogo alto e muito sabor"/></div>
+</label>
+<label class="studio-field">
+<span>Instagram</span>
+<div class="studio-input-wrap"><i class="fa-brands fa-instagram"></i><input id="studioInstagram" maxlength="100" placeholder="@sua_hamburgueria"/></div>
+</label>
+<label class="studio-field">
+<span>Tema da página pública</span>
+<div class="studio-input-wrap"><i class="fa-solid fa-circle-half-stroke"></i><select id="studioTemaPublico"><option value="claro">Claro</option><option value="escuro">Escuro</option><option value="automatico">Automático</option></select></div>
+</label>
+<label class="studio-field">
+<span>Cor principal</span>
+<div class="color-field"><input id="studioCorPrimaria" type="color" value="#ff6500"/><span>Botões e destaques</span></div>
+</label>
+<label class="studio-field">
+<span>Cor secundária</span>
+<div class="color-field"><input id="studioCorSecundaria" type="color" value="#17100c"/><span>Contraste da marca</span></div>
+</label>
+<label class="studio-field full">
+<span>Cor de destaque</span>
+<div class="color-field"><input id="studioCorDestaque" type="color" value="#ffc928"/><span>Selos, detalhes e chamadas</span></div>
+</label>
+</div>
+<div class="marketplace-category-editor">
+<div>
+<span class="eyebrow">CATEGORIAS DA GO-BURGER</span>
+<strong>Onde sua hamburgueria deve aparecer?</strong>
+<p>Marque as categorias que realmente representam a loja. Elas alimentam os filtros e a descoberta no marketplace.</p>
+</div>
+<div class="market-cat-grid" id="studioMarketplaceCategorias"></div>
+</div>
+</article>
+</div>
+<div class="studio-pane" data-studio-pane="informacoes">
+<article class="studio-card">
+<div class="studio-card-head">
+<div>
+<span class="eyebrow">CONTATO</span>
+<h3>Informações para seus clientes</h3>
+<p>Dados claros aumentam a confiança e facilitam o suporte antes e depois do pedido.</p>
+</div>
+<span class="studio-recommended"><i class="fa-solid fa-shield-heart"></i> Confiança</span>
+</div>
+<div class="studio-form-grid">
+<label class="studio-field">
+<span>Telefone</span>
+<div class="studio-input-wrap"><i class="fa-solid fa-phone"></i><input id="studioTelefone" inputmode="tel" name="telefone" placeholder="(32) 99999-9999"/></div>
+</label>
+<label class="studio-field">
+<span>WhatsApp</span>
+<div class="studio-input-wrap"><i class="fa-brands fa-whatsapp"></i><input id="studioWhatsapp" inputmode="tel" name="whatsapp" placeholder="(32) 99999-9999"/></div>
+</label>
+<label class="studio-field full">
+<span>E-mail comercial</span>
+<div class="studio-input-wrap"><i class="fa-regular fa-envelope"></i><input autocomplete="email" id="studioEmail" name="email" placeholder="contato@hamburgueria.com" type="email"/></div>
+</label>
+</div>
+</article>
+<article class="studio-card">
+<div class="studio-card-head">
+<div>
+<span class="eyebrow">ATENDIMENTO</span>
+<h3>Experiência do cliente</h3>
+<p>Essas opções são recomendações de produto e serão conectadas às funcionalidades nas próximas etapas.</p>
+</div>
+</div>
+<div class="studio-option-grid">
+<label class="premium-toggle-card">
+<input checked="" id="studioContatoWhatsapp" type="checkbox"/>
+<span class="toggle-ui"></span>
+<span class="option-icon"><i class="fa-brands fa-whatsapp"></i></span>
+<span><strong>Atalho para WhatsApp</strong><small>Contato rápido na página da loja.</small></span>
+</label>
+<label class="premium-toggle-card">
+<input checked="" id="studioMostrarTelefone" type="checkbox"/>
+<span class="toggle-ui"></span>
+<span class="option-icon"><i class="fa-solid fa-phone-volume"></i></span>
+<span><strong>Mostrar telefone</strong><small>Exibir número no perfil público.</small></span>
+</label>
+<label class="premium-toggle-card">
+<input checked="" id="studioMostrarEndereco" type="checkbox"/>
+<span class="toggle-ui"></span>
+<span class="option-icon"><i class="fa-solid fa-map-location-dot"></i></span>
+<span><strong>Mostrar endereço</strong><small>Ajuda clientes em retirada no local.</small></span>
+</label>
+<label class="premium-toggle-card">
+<input id="studioContatoEmail" type="checkbox"/>
+<span class="toggle-ui"></span>
+<span class="option-icon"><i class="fa-solid fa-at"></i></span>
+<span><strong>Mostrar e-mail</strong><small>Canal adicional para suporte.</small></span>
+</label>
+</div>
+</article>
+</div>
+<div class="studio-pane" data-studio-pane="localizacao">
+<article class="studio-card">
+<div class="studio-card-head">
+<div>
+<span class="eyebrow">LOCALIZAÇÃO</span>
+<h3>Onde encontrar sua hamburgueria</h3>
+<p>Uma localização completa será importante para retirada, área de entrega e descoberta de lojas próximas.</p>
+</div>
+</div>
+<div class="studio-form-grid">
+<label class="studio-field small-field">
+<span>CEP</span>
+<div class="studio-input-wrap"><i class="fa-solid fa-location-crosshairs"></i><input id="studioCep" inputmode="numeric" maxlength="9" name="cep" placeholder="00000-000"/></div>
+</label>
+<label class="studio-field wide-field">
+<span>Endereço</span>
+<div class="studio-input-wrap"><i class="fa-solid fa-road"></i><input id="studioEndereco" name="endereco" placeholder="Rua, número e complemento"/></div>
+</label>
+<label class="studio-field">
+<span>Cidade</span>
+<div class="studio-input-wrap"><i class="fa-solid fa-city"></i><input id="studioCidade" name="cidade" placeholder="Barroso"/></div>
+</label>
+<label class="studio-field">
+<span>Estado</span>
+<div class="studio-input-wrap"><i class="fa-solid fa-map"></i><select id="studioEstado" name="estado">
+<option value="">Selecione</option>
+<option>AC</option><option>AL</option><option>AP</option><option>AM</option><option>BA</option><option>CE</option><option>DF</option><option>ES</option><option>GO</option><option>MA</option><option>MT</option><option>MS</option><option selected="">MG</option><option>PA</option><option>PB</option><option>PR</option><option>PE</option><option>PI</option><option>RJ</option><option>RN</option><option>RS</option><option>RO</option><option>RR</option><option>SC</option><option>SP</option><option>SE</option><option>TO</option>
+</select></div>
+</label>
+</div>
+<div class="map-concept-card">
+<div class="map-concept-grid"></div>
+<span class="map-pin-pulse"><i class="fa-solid fa-location-dot"></i></span>
+<div class="map-concept-copy">
+<span>LOCALIZAÇÃO NO APP</span>
+<strong id="studioMapLabel">Sua hamburgueria aparecerá aqui</strong>
+<small>Mapa interativo será conectado futuramente.</small>
+</div>
+</div>
+</article>
+</div>
+<div class="studio-pane" data-studio-pane="presenca">
+<article class="studio-card">
+<div class="studio-card-head">
+<div>
+<span class="eyebrow">PRESENÇA DIGITAL</span>
+<h3>Endereço público e status</h3>
+<p>Defina como a loja será identificada dentro da Go-burger. O slug vira parte do link público.</p>
+</div>
+</div>
+<div class="studio-form-grid">
+<label class="studio-field full">
+<span>URL da hamburgueria <b>*</b></span>
+<div class="slug-composer">
+<span>go-burger.app/</span>
+<input id="studioSlug" maxlength="70" name="slug" placeholder="minha-hamburgueria" spellcheck="false"/>
+<i class="fa-solid fa-circle-check" id="studioSlugStatus"></i>
+</div>
+<small class="field-hint">Use letras minúsculas, números e hífens.</small>
+</label>
+<label class="studio-field">
+<span>Status visual</span>
+<div class="studio-input-wrap"><i class="fa-solid fa-signal"></i><select id="studioStatus" name="status">
+<option value="ativa">Ativa</option>
+<option value="pausada">Pausada</option>
+<option value="rascunho">Rascunho</option>
+<option disabled="" value="bloqueada">Bloqueada — somente Super Admin</option>
+<option disabled="" value="arquivada">Arquivada — ciclo de vida</option>
+</select></div>
+</label>
+<label class="studio-field">
+<span>Prioridade no marketplace</span>
+<div class="studio-input-wrap"><i class="fa-solid fa-arrow-up-wide-short"></i><select disabled="" id="studioPrioridade" name="prioridade">
+<option value="normal">Normal</option>
+<option value="destaque">Em destaque</option>
+<option value="lancamento">Lançamento</option>
+</select></div>
+<small class="field-hint">Definida pela plataforma em campanhas e destaques.</small>
+</label>
+</div>
+<div class="presence-status-board">
+<div class="presence-status-main">
+<span class="presence-live-dot"></span>
+<div><small>VISIBILIDADE</small><strong id="studioStatusLabel">Loja ativa</strong></div>
+</div>
+<div class="presence-url-preview">
+<i class="fa-solid fa-link"></i>
+<span id="studioUrlPreview">../cliente/cliente.html?loja=loja-principal</span>
+<button id="btnCopiarUrlStudio" title="Copiar link" type="button"><i class="fa-regular fa-copy"></i></button>
+</div>
+</div>
+</article>
+<article class="studio-card approval-card" id="studioApprovalCard">
+<div class="studio-card-head">
+<div><span class="eyebrow">APROVAÇÃO Go-burger</span><h3>Publicação e selo de confiança</h3><p>Antes de ficar ativa no marketplace, a hamburgueria passa pela análise da plataforma.</p></div>
+<span class="studio-coming-soon approval-pill" id="studioApprovalStatus">Rascunho</span>
+</div>
+<div class="verification-concept">
+<div class="verification-badge" id="studioVerificationBadge"><i class="fa-solid fa-badge-check"></i></div>
+<div>
+<strong id="studioVerificationTitle">Perfil aguardando envio</strong>
+<p id="studioVerificationText">Complete os dados da hamburgueria e envie para aprovação. Após aprovada, você poderá ativar a loja.</p>
+<small class="approval-reason hidden" id="studioApprovalReason"></small>
+</div>
+<button class="btn primary" id="btnSolicitarAprovacao" type="button"><i class="fa-solid fa-paper-plane"></i> Enviar para aprovação</button>
+</div>
+</article>
+</div>
+<div class="studio-pane" data-studio-pane="recomendados">
+<article class="studio-card recommendations-card">
+<div class="studio-card-head">
+<div>
+<span class="eyebrow">RECOMENDAÇÕES DE PRODUTO</span>
+<h3>Recursos que deixam o app mais competitivo</h3>
+<p>Já deixamos o espaço visual planejado para evoluir sem desmontar a interface depois.</p>
+</div>
+<span class="studio-recommended"><i class="fa-solid fa-gem"></i> Roadmap</span>
+</div>
+<div class="recommendation-grid">
+<article class="recommendation-item featured">
+<span><i class="fa-solid fa-badge-check"></i></span>
+<div><small>CONFIANÇA</small><strong>Selo verificado</strong><p>Identifica parceiros validados pela plataforma.</p></div>
+<em>Recomendado</em>
+</article>
+<article class="recommendation-item">
+<span><i class="fa-solid fa-ranking-star"></i></span>
+<div><small>DESCOBERTA</small><strong>Ranking inteligente</strong><p>Popularidade, avaliação e velocidade de entrega.</p></div>
+<em>Etapa 23</em>
+</article>
+<article class="recommendation-item">
+<span><i class="fa-solid fa-heart"></i></span>
+<div><small>RETENÇÃO</small><strong>Favoritar loja</strong><p>Cliente volta rapidamente às hamburguerias preferidas.</p></div>
+<em>Etapa 25</em>
+</article>
+<article class="recommendation-item">
+<span><i class="fa-solid fa-tags"></i></span>
+<div><small>DESCOBERTA</small><strong>Tags e categorias</strong><p>Artesanal, smash, bacon, vegetariano e combos.</p></div>
+<em>Etapa 24</em>
+</article>
+<article class="recommendation-item">
+<span><i class="fa-solid fa-stopwatch"></i></span>
+<div><small>CONVERSÃO</small><strong>Entrega estimada</strong><p>Tempo previsto diretamente no card da loja.</p></div>
+<em>Planejado</em>
+</article>
+<article class="recommendation-item">
+<span><i class="fa-solid fa-crown"></i></span>
+<div><small>MONETIZAÇÃO</small><strong>Destaques patrocinados</strong><p>Base visual pronta para planos futuros da plataforma.</p></div>
+<em>Etapa 33+</em>
+</article>
+</div>
+</article>
+<article class="studio-card app-readiness-card">
+<div class="app-readiness-copy">
+<span class="eyebrow">APP READY</span>
+<h3>Interface preparada para experiência de aplicativo</h3>
+<p>Componentes grandes para toque, estados claros, contraste, responsividade e transições suaves.</p>
+</div>
+<div class="app-readiness-list">
+<span><i class="fa-solid fa-check"></i> Mobile first</span>
+<span><i class="fa-solid fa-check"></i> Touch friendly</span>
+<span><i class="fa-solid fa-check"></i> Dark mode compatível</span>
+<span><i class="fa-solid fa-check"></i> Áreas seguras</span>
+<span><i class="fa-solid fa-check"></i> Microinterações</span>
+<span><i class="fa-solid fa-check"></i> Hierarquia visual</span>
+</div>
+</article>
+</div>
+<div class="studio-savebar">
+<div class="studio-save-status">
+<span class="save-status-dot"></span>
+<div><strong>Dados da hamburgueria</strong><small id="studioSaveHint">Alterações prontas para salvar no Go-burger.</small></div>
+</div>
+<div class="studio-save-actions">
+<button class="btn secondary" id="btnResetStudio" type="button"><i class="fa-solid fa-arrow-rotate-left"></i> Restaurar prévia</button>
+<button class="btn premium-btn" id="btnSalvarStudioVisual" type="submit"><i class="fa-solid fa-cloud-arrow-up"></i> Salvar hamburgueria</button>
+</div>
+</div>
+</form>
+</div>
+<aside class="studio-preview-column">
+<div class="preview-sticky">
+<div class="preview-toolbar">
+<div>
+<span class="preview-live"><i></i> PRÉVIA AO VIVO</span>
+<strong>Página da loja</strong>
+</div>
+<div aria-label="Tipo de prévia" class="preview-device-switch" role="group">
+<button class="active" data-preview-device="mobile" title="Celular" type="button"><i class="fa-solid fa-mobile-screen"></i></button>
+<button data-preview-device="desktop" title="Desktop" type="button"><i class="fa-solid fa-desktop"></i></button>
+</div>
+</div>
+<div class="device-preview mobile" id="studioDevicePreview">
+<div class="device-shell">
+<div class="device-topline"><span>9:41</span><i class="fa-solid fa-signal"></i><i class="fa-solid fa-wifi"></i><i class="fa-solid fa-battery-full"></i></div>
+<div class="store-public-preview">
+<div class="public-cover" id="publicCoverPreview">
+<div class="public-cover-pattern"></div>
+<img alt="" id="publicBannerImg"/>
+<div class="public-cover-shade"></div>
+<div class="public-top-actions"><button aria-label="Voltar na prévia" type="button"><i class="fa-solid fa-chevron-left"></i></button><button aria-label="Favoritar na prévia" type="button"><i class="fa-regular fa-heart"></i></button></div>
+</div>
+<div class="public-store-card">
+<div class="public-logo" id="publicLogoPreview"><span>🍔</span><img alt="" id="publicLogoImg"/></div>
+<div class="public-store-title">
+<div><h4 id="publicStoreName">Sua Hamburgueria</h4><i class="fa-solid fa-circle-check verified-demo" title="Selo futuro"></i></div>
+<p id="publicStoreDescription">Uma descrição atraente da sua loja aparecerá aqui.</p>
+</div>
+<div class="public-metrics">
+<span><i class="fa-solid fa-star"></i><strong>—</strong><small>Avaliações</small></span>
+<span><i class="fa-solid fa-clock"></i><strong>30–50</strong><small>min</small></span>
+<span><i class="fa-solid fa-motorcycle"></i><strong>R$ —</strong><small>Entrega</small></span>
+</div>
+<div class="public-status-row">
+<span class="public-status open" id="publicStatus"><i></i> Aberta</span>
+<span id="publicLocation"><i class="fa-solid fa-location-dot"></i> Localização da loja</span>
+</div>
+<div class="public-category-scroll">
+<span class="active">Destaques</span><span>Combos</span><span>Artesanais</span><span>Bebidas</span>
+</div>
+<div class="public-product-skeleton">
+<div class="public-product-copy"><strong>Seu cardápio aparece aqui</strong><span>Produtos da hamburgueria serão exibidos nesta área.</span><b>R$ --,--</b></div>
+<div class="public-product-image">🍔</div>
+</div>
+<div class="public-product-skeleton second"><div class="public-product-copy"><strong>Visual limpo e apetitoso</strong><span>Fotos grandes ajudam a converter mais pedidos.</span><b>R$ --,--</b></div><div class="public-product-image">🍟</div></div>
+</div>
+</div>
+<div class="device-home-indicator"></div>
+</div>
+</div>
+<div class="preview-quality-card">
+<div class="quality-score-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+<div><small>QUALIDADE VISUAL</small><strong id="studioQualityLabel">Complete seu perfil</strong><p id="studioQualityText">Adicione nome, descrição, logo e capa para melhorar a apresentação.</p></div>
+</div>
+</div>
+</aside>
+</div>
+</div>
+</section>
+<!-- =====================================================
+         EQUIPE DA HAMBURGUERIA
+    ====================================================== -->
+<section class="page" data-section="equipe">
+<div class="page-toolbar">
+<div><span class="eyebrow">ACESSOS DA LOJA</span><h2>Equipe da hamburgueria</h2><p>Gerencie quem pode operar a loja sem misturar dados de outras hamburguerias.</p></div>
+<span class="team-count-pill"><i class="fa-solid fa-user-group"></i> <b id="teamCount">0</b> ativo(s)</span>
+</div>
+<div class="team-page-grid">
+<article class="panel">
+<div class="panel-head"><div><span class="eyebrow">NOVO ACESSO</span><h3>Adicionar membro</h3><p>O e-mail precisa pertencer a uma conta já cadastrada na Go-burger.</p></div><span class="security-chip"><i class="fa-solid fa-shield-halved"></i> Multi-tenant</span></div>
+<form class="team-form" id="teamForm" novalidate="">
+<label><span>E-mail da conta</span><input autocomplete="email" name="email" placeholder="pessoa@email.com" required="" type="email"/></label>
+<label><span>Função</span><select name="papel" required=""><option value="admin">Admin</option><option value="gerente">Gerente</option><option value="cozinha">Cozinha</option><option value="atendente">Atendente</option><option value="entregador">Entregador</option></select></label>
+<button class="btn primary" type="submit"><i class="fa-solid fa-user-plus"></i> Adicionar</button>
+</form>
+<div class="role-guide">
+<div><i class="fa-solid fa-user-shield"></i><strong>Admin</strong><span>Gestão ampla da loja</span></div>
+<div><i class="fa-solid fa-briefcase"></i><strong>Gerente</strong><span>Operação e gestão</span></div>
+<div><i class="fa-solid fa-kitchen-set"></i><strong>Cozinha</strong><span>Produção dos pedidos</span></div>
+<div><i class="fa-solid fa-headset"></i><strong>Atendente</strong><span>Pedidos e clientes</span></div>
+<div><i class="fa-solid fa-motorcycle"></i><strong>Entregador</strong><span>Fluxo de entrega</span></div>
+</div>
+</article>
+<article class="panel">
+<div class="panel-head"><div><span class="eyebrow">MEMBROS</span><h3>Acessos vinculados</h3><p>Desative um acesso sem apagar o histórico do membro.</p></div></div>
+<div class="team-list" id="teamList"></div>
+</article>
+</div>
+</section>
+<!-- =====================================================
+         CONFIGURAÇÕES
+    ====================================================== -->
+
+<section class="page" data-section="confianca">
+  <div class="gb31-shell">
+    <article class="gb31-hero">
+      <div>
+        <span class="gb31-eyebrow"><i class="fa-solid fa-shield-halved"></i> TRUST &amp; SAFETY</span>
+        <h2>Suporte &amp; confiança</h2>
+        <p>Atenda clientes, responda disputas, revise sinais de risco e acompanhe alterações sensíveis da sua hamburgueria em um só lugar.</p>
+      </div>
+      <div class="gb31-hero-actions"><button class="gb31-btn ghost" id="gb31AdminRefresh" type="button"><i class="fa-solid fa-rotate"></i> Atualizar</button></div>
+    </article>
+    <div class="gb31-kpis" id="gb31AdminKpis"></div>
+    <div class="gb31-tabbar" aria-label="Central de confiança da hamburgueria">
+      <button class="active" data-gb31-admin-tab="support" type="button"><i class="fa-solid fa-headset"></i> Suporte</button>
+      <button data-gb31-admin-tab="disputes" type="button"><i class="fa-solid fa-scale-balanced"></i> Disputas</button>
+      <button data-gb31-admin-tab="fraud" type="button"><i class="fa-solid fa-shield-virus"></i> Risco</button>
+      <button data-gb31-admin-tab="audit" type="button"><i class="fa-solid fa-fingerprint"></i> Auditoria</button>
+    </div>
+    <div id="gb31AdminContent"></div>
+  </div>
+</section>
+<section class="page" data-section="ativacao"><div id="gb32ActivationRoot" class="gbp2-shell"><div class="gbp2-skeleton"></div></div></section>
+<section class="page" data-section="erp"><div id="gb33ErpRoot" class="gbp2-shell"><div class="gbp2-skeleton"></div></div></section>
+<section class="page" data-section="inteligencia"><div id="gb34IntelligenceRoot" class="gbp2-shell"><div class="gbp2-skeleton"></div></div></section>
+<section class="page" data-section="mensagens"><div id="gb35MessagesRoot" class="gbp2-shell"><div class="gbp2-skeleton"></div></div></section>
+<section class="page" data-section="salao"><div id="gb36TablesRoot" class="gbp2-shell"><div class="gbp2-skeleton"></div></div></section>
+<section class="page" data-section="configuracoes">
+<div class="settings-grid">
+<article class="panel">
+<div class="panel-head"><div><span class="eyebrow">LOJA</span><h3>Identidade e operação</h3><p>Configurações usadas pelo app Go-burger.</p></div></div>
+<form class="form-grid" id="formConfiguracoes" novalidate="">
+<label class="field full"><span>Nome da hamburgueria</span><input id="configNome" name="nome" required=""/></label>
+<label class="field"><span>Telefone da loja</span><input id="configTelefone" name="telefoneLoja"/></label>
+<label class="field"><span>Instagram</span><input id="configInstagram" name="instagram" placeholder="@hamburgueria"/></label>
+<label class="field full"><span>Endereço da loja</span><input id="configEnderecoLoja" name="enderecoLoja"/></label>
+<label class="field"><span>Taxa padrão</span><input id="configTaxa" min="0" name="taxaEntrega" step="0.01" type="number"/></label>
+<label class="field"><span>Pedido mínimo padrão</span><input id="configMinimo" min="0" name="pedidoMinimo" step="0.01" type="number"/></label>
+<div class="distance-settings full">
+<div class="distance-settings-head">
+<div><strong>Entrega por distância</strong><small>Use coordenadas para calcular raio e taxa por km.</small></div>
+<button class="btn secondary small" id="btnStoreLocation" type="button"><i class="fa-solid fa-location-crosshairs"></i> Usar localização atual</button>
+</div>
+<div class="form-grid">
+<label class="field"><span>Latitude da loja</span><input id="configLatitude" max="90" min="-90" name="latitude" step="0.0000001" type="number"/></label>
+<label class="field"><span>Longitude da loja</span><input id="configLongitude" max="180" min="-180" name="longitude" step="0.0000001" type="number"/></label>
+<label class="field"><span>Raio máximo (km)</span><input id="configRaioEntregaKm" min="0.5" name="raioEntregaKm" step="0.1" type="number"/></label>
+<label class="field"><span>Taxa base</span><input id="configTaxaBaseDistancia" min="0" name="taxaBaseDistancia" step="0.01" type="number"/></label>
+<label class="field"><span>Taxa por km</span><input id="configTaxaPorKm" min="0" name="taxaPorKm" step="0.01" type="number"/></label>
+<label class="switch-row"><input id="configUsaTaxaDistancia" name="usaTaxaDistancia" type="checkbox"/><span><strong>Calcular por distância</strong><small>Substitui a taxa padrão quando houver localização.</small></span></label>
+</div>
+</div>
+<label class="field"><span>Tempo mínimo (min)</span><input id="configTempoMin" min="0" name="tempoMin" step="1" type="number"/></label>
+<label class="field"><span>Tempo máximo (min)</span><input id="configTempoMax" min="0" name="tempoMax" step="1" type="number"/></label>
+<label class="field"><span>Modo da loja</span>
+<select id="configLojaModo" name="lojaModo">
+<option value="automatico">Automático pelo horário</option>
+<option value="aberta">Forçar aberta</option>
+<option value="fechada">Forçar fechada</option>
+</select>
+</label>
+<label class="field"><span>Cor principal</span><input id="configCorPrimaria" name="corPrimaria" type="color" value="#ff6500"/></label>
+<label class="field full"><span>Mensagem quando fechada</span><input id="configMensagemFechada" name="mensagemFechada"/></label>
+<div class="switch-grid full">
+<label class="switch-row"><input id="configAceitaEntrega" name="aceitaEntrega" type="checkbox"/><span><strong>Entrega</strong><small>Permitir pedidos para entrega</small></span></label>
+<label class="switch-row"><input id="configAceitaRetirada" name="aceitaRetirada" type="checkbox"/><span><strong>Retirada</strong><small>Permitir retirada no local</small></span></label>
+<label class="switch-row"><input id="configAceitaAgendamento" name="aceitaAgendamento" type="checkbox"/><span><strong>Agendamento</strong><small>Cliente escolhe horário futuro</small></span></label>
+<label class="switch-row"><input id="configFidelidadeAtiva" name="fidelidadeAtiva" type="checkbox"/><span><strong>Fidelidade</strong><small>Gerar pontos em pedidos concluídos</small></span></label>
+</div>
+<label class="field"><span>Antecedência do agendamento (min)</span><input id="configAntecedencia" min="0" name="antecedencia" step="1" type="number"/></label>
+<label class="field"><span>Pontos por R$ 1</span><input id="configPontosPorReal" min="0" name="pontosPorReal" step="0.1" type="number"/></label>
+<label class="field"><span>Agendar até quantos dias</span><input id="configAgendamentoMaxDias" min="1" name="agendamentoMaxDias" step="1" type="number" value="7"/></label>
+<label class="field"><span>Chave PIX</span><input id="configPixChave" name="pixChave"/></label>
+<label class="field full"><span>Nome do recebedor PIX</span><input id="configPixNome" name="pixNome"/></label>
+<label class="field full"><span>Fuso horário</span><input id="configTimezone" name="timezone" placeholder="America/Sao_Paulo" value="America/Sao_Paulo"/></label>
+<div class="field full">
+<span>Logo</span>
+<div class="upload-row">
+<img alt="Logo" class="upload-preview logo-preview" id="logoPreview" src="../assets/placeholder-burger.svg"/>
+<div>
+<input accept="image/jpeg,image/png,image/webp" aria-label="Selecionar logotipo nas configurações" id="configLogoArquivo" type="file"/>
+<small>JPG, PNG ou WEBP, até 5 MB.</small>
+</div>
+</div>
+</div>
+<button class="btn primary full" type="submit"><i class="fa-solid fa-floppy-disk"></i> Salvar configurações</button>
+</form>
+</article>
+<div class="settings-side">
+<article class="panel account-card">
+<span class="big-avatar">AD</span>
+<strong id="configAdminNome">Administrador</strong>
+<span id="configAdminEmail">-</span>
+<div class="role-chip"><i class="fa-solid fa-shield-halved"></i> Administrador</div>
+</article>
+<article class="panel store-lifecycle-card" id="storeLifecyclePanel">
+<div class="panel-head"><div><span class="eyebrow">CICLO DE VIDA</span><h3>Encerramento da hamburgueria</h3><p>Feche a operação sem apagar pedidos, pagamentos ou histórico.</p></div><span class="lifecycle-state" id="storeLifecycleBadge">Ativa</span></div>
+<div class="store-lifecycle-summary" id="storeLifecycleSummary">Somente o dono pode encerrar definitivamente a operação desta unidade.</div>
+<div class="store-lifecycle-actions">
+<button class="btn danger" id="btnEncerrarHamburgueria" type="button"><i class="fa-solid fa-store-slash"></i> Encerrar hamburgueria</button>
+<button class="btn secondary hidden" id="btnReabrirHamburgueria" type="button"><i class="fa-solid fa-store"></i> Reabrir hamburgueria</button>
+</div>
+<small class="store-lifecycle-footnote"><i class="fa-solid fa-shield-halved"></i> O encerramento remove a loja do marketplace, impede novos pedidos e preserva o histórico. A renovação automática da assinatura é desligada no encerramento voluntário.</small>
+</article>
+<article class="panel">
+<div class="panel-head"><div><span class="eyebrow">DADOS</span><h3>Backup e exportação</h3></div></div>
+<div class="stack-actions">
+<button class="btn secondary" id="btnExportarBackup" type="button"><i class="fa-solid fa-download"></i> Backup JSON</button>
+<button class="btn secondary" id="btnExportarPedidosConfig" type="button"><i class="fa-solid fa-file-csv"></i> Pedidos CSV</button>
+<button class="btn secondary" id="btnExportarProdutosConfig" type="button"><i class="fa-solid fa-file-csv"></i> Produtos CSV</button>
+</div>
+</article>
+<article class="panel">
+<div class="panel-head audit-panel-head">
+<div>
+<span class="eyebrow">AUDITORIA</span>
+<h3>Atividades administrativas</h3>
+<p>Últimas ações gravadas no banco.</p>
+</div>
+<button class="btn danger small audit-clear-btn" id="btnLimparAdminLogs" type="button">
+<i class="fa-solid fa-trash-can"></i>
+                Limpar atividades
+              </button>
+</div>
+<div class="management-list" id="listaAdminLogs"></div>
+</article>
+</div>
+</div>
+</section>
+<!-- =====================================================
+         DIAGNÓSTICO
+    ====================================================== -->
+<section class="page" data-section="diagnostico">
+<div class="page-toolbar">
+<div><span class="eyebrow">SAÚDE DO SISTEMA</span><h2>Diagnóstico 4.0</h2><p>Login, tabelas, Storage, Broadcast e módulos comerciais.</p></div>
+<button class="btn primary" id="btnRodarDiagnostico" type="button"><i class="fa-solid fa-stethoscope"></i> Testar agora</button>
+</div>
+<div class="diagnostic-grid" id="diagnosticGrid"></div>
+<article class="panel top-gap">
+<div class="panel-head"><div><span class="eyebrow">SESSÃO</span><h3>Informações técnicas</h3></div></div>
+<div class="session-info" id="sessionInfo"></div>
+</article>
+</section>
+</main>
+</div>
+<!-- =========================================================
+     MODAIS
+========================================================= -->
+<div aria-hidden="true" class="modal studio-mobile-modal" id="modalStudioMobile">
+<div class="modal-card studio-mobile-modal-card">
+<button aria-label="Fechar janela" class="modal-close" data-close="modalStudioMobile" type="button"><i class="fa-solid fa-xmark"></i></button>
+<div class="mobile-modal-head">
+<span class="eyebrow">PRÉVIA MOBILE</span>
+<h3>Sua hamburgueria no bolso do cliente</h3>
+<p>Simulação visual da experiência que será exibida no aplicativo.</p>
+</div>
+<div class="studio-modal-preview-mount" id="studioModalPreviewMount"></div>
+</div>
+</div>
+<div aria-hidden="true" class="modal" id="modalProduto">
+<div class="modal-card large">
+<div class="modal-head">
+<div><span class="eyebrow">CARDÁPIO</span><h3 id="modalProdutoTitulo">Novo produto</h3></div>
+<button aria-label="Fechar janela" class="icon-btn" data-close="modalProduto" type="button"><i class="fa-solid fa-xmark"></i></button>
+</div>
+<form class="form-grid" id="formProduto" novalidate="">
+<label class="field full"><span>Nome *</span><input maxlength="90" name="nome" required=""/></label>
+<label class="field"><span>Categoria *</span><input list="listaCategorias" maxlength="60" name="categoria" required=""/></label>
+<datalist id="listaCategorias"><option value="Hambúrguer"><option value="Combos"><option value="Bebidas"><option value="Batatas"><option value="Sobremesas"><option value="Acompanhamento"></option></option></option></option></option></option></datalist>
+<label class="field"><span>Preço *</span><input min="0.01" name="preco" required="" step="0.01" type="number"/></label>
+<label class="field"><span>Estoque *</span><input min="0" name="estoque" required="" step="1" type="number" value="0"/></label>
+<label class="field"><span>Estoque mínimo</span><input min="0" name="estoque_minimo" step="1" type="number" value="5"/></label>
+<label class="field"><span>Custo unitário</span><input min="0" name="custo_unitario" step="0.01" type="number" value="0"/></label>
+<label class="field"><span>Ordem no cardápio</span><input name="ordem" step="1" type="number" value="0"/></label>
+<label class="field"><span>Status</span><select name="status"><option>Disponível</option><option>Indisponível</option></select></label>
+<div class="switch-grid full">
+<label class="switch-row compact-switch"><input name="destaque" type="checkbox"/><span><strong>Destaque</strong><small>Aparece entre os principais</small></span></label>
+<label class="switch-row compact-switch"><input name="novidade" type="checkbox"/><span><strong>Novidade</strong><small>Selo de produto novo</small></span></label>
+<label class="switch-row compact-switch"><input checked="" name="ativo" type="checkbox"/><span><strong>Ativo</strong><small>Visível no cardápio</small></span></label>
+</div>
+<label class="field full"><span>Descrição</span><textarea maxlength="350" name="descricao" rows="4"></textarea></label>
+<div class="field full">
+<span>Imagem do produto</span>
+<div class="upload-row">
+<img alt="Prévia" class="upload-preview" id="produtoImagemPreview" src="../assets/placeholder-burger.svg"/>
+<div>
+<input accept="image/jpeg,image/png,image/webp" aria-label="Selecionar imagem do produto" id="produtoImagemArquivo" type="file"/>
+<input name="imagem" type="hidden"/>
+<input name="imagem_path" type="hidden"/>
+<small>Você pode enviar uma imagem. O Admin salva no Supabase Storage.</small>
+</div>
+</div>
+</div>
+<div class="modal-actions full">
+<button aria-label="Fechar janela" class="btn secondary" data-close="modalProduto" type="button">Cancelar</button>
+<button class="btn primary" type="submit"><i class="fa-solid fa-floppy-disk"></i> Salvar produto</button>
+</div>
+</form>
+</div>
+</div>
+<div aria-hidden="true" class="modal" id="modalGrupo">
+<div class="modal-card large">
+<div class="modal-head">
+<div><span class="eyebrow">PERSONALIZAÇÃO</span><h3 id="modalGrupoTitulo">Novo grupo</h3></div>
+<button aria-label="Fechar janela" class="icon-btn" data-close="modalGrupo" type="button"><i class="fa-solid fa-xmark"></i></button>
+</div>
+<form class="form-grid" id="formGrupo" novalidate="">
+<label class="field full"><span>Nome do grupo *</span><input name="nome" placeholder="Ex.: Adicionais" required=""/></label>
+<label class="field full"><span>Descrição</span><input name="descricao" placeholder="Ex.: Escolha até 3 adicionais"/></label>
+<label class="field"><span>Mínimo</span><input min="0" name="minimo" type="number" value="0"/></label>
+<label class="field"><span>Máximo</span><input min="1" name="maximo" type="number" value="1"/></label>
+<label class="field"><span>Ordem</span><input name="ordem" type="number" value="0"/></label>
+<label class="switch-row"><input name="obrigatorio" type="checkbox"/><span><strong>Obrigatório</strong><small>Cliente precisa escolher</small></span></label>
+<div class="full">
+<div class="subsection-head">
+<div><span class="eyebrow">OPÇÕES</span><h4>Itens do grupo</h4></div>
+<button class="btn secondary small" id="btnAdicionarOpcaoGrupo" type="button"><i class="fa-solid fa-plus"></i> Adicionar opção</button>
+</div>
+<div class="options-editor" id="grupoOpcoesEditor"></div>
+</div>
+<div class="modal-actions full">
+<button aria-label="Fechar janela" class="btn secondary" data-close="modalGrupo" type="button">Cancelar</button>
+<button class="btn primary" type="submit"><i class="fa-solid fa-floppy-disk"></i> Salvar grupo</button>
+</div>
+</form>
+</div>
+</div>
+<div aria-hidden="true" class="modal" id="modalPersonalizarProduto">
+<div class="modal-card xlarge">
+<div class="modal-head">
+<div><span class="eyebrow">PRODUTO</span><h3 id="modalPersonalizarProdutoTitulo">Personalização</h3></div>
+<button aria-label="Fechar janela" class="icon-btn" data-close="modalPersonalizarProduto" type="button"><i class="fa-solid fa-xmark"></i></button>
+</div>
+<div class="split-grid modal-split">
+<section>
+<div class="subsection-head"><div><span class="eyebrow">GRUPOS VINCULADOS</span><h4>Adicionais disponíveis</h4></div></div>
+<div class="check-list" id="produtoGruposEditor"></div>
+</section>
+<section>
+<div class="subsection-head">
+<div><span class="eyebrow">INGREDIENTES</span><h4>Itens removíveis</h4></div>
+<button class="btn secondary small" id="btnAdicionarIngrediente" type="button"><i class="fa-solid fa-plus"></i> Ingrediente</button>
+</div>
+<div class="options-editor" id="produtoIngredientesEditor"></div>
+</section>
+</div>
+<div class="modal-actions">
+<button aria-label="Fechar janela" class="btn secondary" data-close="modalPersonalizarProduto" type="button">Cancelar</button>
+<button class="btn primary" id="btnSalvarPersonalizacaoProduto" type="button"><i class="fa-solid fa-floppy-disk"></i> Salvar personalização</button>
+</div>
+</div>
+</div>
+<div aria-hidden="true" class="modal" id="modalEstoque">
+<div class="modal-card small">
+<div class="modal-head">
+<div><span class="eyebrow">ESTOQUE</span><h3 id="modalEstoqueTitulo">Ajustar estoque</h3></div>
+<button aria-label="Fechar janela" class="icon-btn" data-close="modalEstoque" type="button"><i class="fa-solid fa-xmark"></i></button>
+</div>
+<form class="form-grid" id="formEstoque" novalidate="">
+<label class="field full"><span>Nova quantidade</span><input min="0" name="estoque" required="" step="1" type="number"/></label>
+<label class="field full"><span>Estoque mínimo</span><input min="0" name="estoque_minimo" required="" step="1" type="number"/></label>
+<label class="field full"><span>Motivo</span><textarea name="motivo" placeholder="Ex.: Reposição do fornecedor" rows="3"></textarea></label>
+<div class="modal-actions full">
+<button aria-label="Fechar janela" class="btn secondary" data-close="modalEstoque" type="button">Cancelar</button>
+<button class="btn primary" type="submit"><i class="fa-solid fa-floppy-disk"></i> Salvar ajuste</button>
+</div>
+</form>
+</div>
+</div>
+<div aria-hidden="true" class="modal" id="modalPedido">
+<div class="modal-card xlarge">
+<div class="modal-head">
+<div><span class="eyebrow">PEDIDO</span><h3 id="modalPedidoTitulo">Detalhes</h3></div>
+<button aria-label="Fechar janela" class="icon-btn" data-close="modalPedido" type="button"><i class="fa-solid fa-xmark"></i></button>
+</div>
+<div id="modalPedidoConteudo"></div>
+</div>
+</div>
+<div aria-hidden="true" class="modal" id="modalBanner">
+<div class="modal-card large">
+<div class="modal-head">
+<div><span class="eyebrow">MARKETING</span><h3 id="modalBannerTitulo">Novo banner</h3></div>
+<button aria-label="Fechar janela" class="icon-btn" data-close="modalBanner" type="button"><i class="fa-solid fa-xmark"></i></button>
+</div>
+<form class="form-grid" id="formBanner" novalidate="">
+<label class="field full"><span>Título *</span><input maxlength="100" name="titulo" required=""/></label>
+<label class="field full"><span>Subtítulo</span><textarea name="subtitulo" rows="3"></textarea></label>
+<label class="field"><span>Texto do botão</span><input name="texto_botao" placeholder="Ver oferta"/></label>
+<label class="field"><span>Destino</span><select name="link_tipo"><option value="nenhum">Sem ação</option><option value="cardapio">Cardápio</option><option value="produto">Produto</option><option value="categoria">Categoria</option></select></label>
+<label class="field"><span>Produto</span><select id="bannerProdutoSelect" name="produto_id"><option value="">Nenhum</option></select></label>
+<label class="field"><span>Categoria</span><input name="categoria"/></label>
+<label class="field"><span>Válido de</span><input name="valido_de" type="datetime-local"/></label>
+<label class="field"><span>Válido até</span><input name="valido_ate" type="datetime-local"/></label>
+<label class="field"><span>Ordem</span><input name="ordem" type="number" value="0"/></label>
+<label class="switch-row"><input checked="" name="ativo" type="checkbox"/><span><strong>Ativo</strong><small>Exibir campanha</small></span></label>
+<div class="field full">
+<span>Imagem</span>
+<div class="upload-row">
+<img alt="Banner" class="upload-preview banner-preview" id="bannerImagemPreview" src="../assets/placeholder-burger.svg"/>
+<div>
+<input accept="image/jpeg,image/png,image/webp" aria-label="Selecionar imagem do banner" id="bannerImagemArquivo" type="file"/>
+<input name="imagem_url" type="hidden"/>
+<input name="imagem_path" type="hidden"/>
+</div>
+</div>
+</div>
+<div class="modal-actions full">
+<button aria-label="Fechar janela" class="btn secondary" data-close="modalBanner" type="button">Cancelar</button>
+<button class="btn primary" type="submit"><i class="fa-solid fa-floppy-disk"></i> Salvar banner</button>
+</div>
+</form>
+</div>
+</div>
+<div aria-hidden="true" class="modal" id="modalUpsell">
+<div class="modal-card small">
+<div class="modal-head">
+<div><span class="eyebrow">UPSELL</span><h3 id="modalUpsellTitulo">Nova oferta</h3></div>
+<button aria-label="Fechar janela" class="icon-btn" data-close="modalUpsell" type="button"><i class="fa-solid fa-xmark"></i></button>
+</div>
+<form class="form-grid" id="formUpsell" novalidate="">
+<label class="field full"><span>Nome *</span><input name="nome" required=""/></label>
+<label class="field full"><span>Produto gatilho</span><select id="upsellGatilhoSelect" name="produto_gatilho_id"><option value="">Nenhum</option></select></label>
+<label class="field full"><span>Ou categoria gatilho</span><input name="categoria_gatilho" placeholder="Ex.: Hambúrguer"/></label>
+<label class="field full"><span>Produto ofertado *</span><select id="upsellProdutoSelect" name="produto_ofertado_id" required=""></select></label>
+<label class="field"><span>Preço promocional</span><input min="0" name="preco_promocional" step="0.01" type="number"/></label>
+<label class="field"><span>Ordem</span><input name="ordem" type="number" value="0"/></label>
+<label class="switch-row full"><input checked="" name="ativo" type="checkbox"/><span><strong>Ativo</strong><small>Mostrar sugestão no app Go-burger</small></span></label>
+<div class="modal-actions full">
+<button aria-label="Fechar janela" class="btn secondary" data-close="modalUpsell" type="button">Cancelar</button>
+<button class="btn primary" type="submit"><i class="fa-solid fa-floppy-disk"></i> Salvar oferta</button>
+</div>
+</form>
+</div>
+</div>
+<div aria-hidden="true" class="modal" id="modalCupom">
+<div class="modal-card large">
+<div class="modal-head">
+<div><span class="eyebrow">PROMOÇÃO</span><h3 id="modalCupomTitulo">Novo cupom</h3></div>
+<button aria-label="Fechar janela" class="icon-btn" data-close="modalCupom" type="button"><i class="fa-solid fa-xmark"></i></button>
+</div>
+<form class="form-grid" id="formCupom" novalidate="">
+<label class="field"><span>Código *</span><input maxlength="24" name="codigo" placeholder="BURGER10" required=""/></label>
+<label class="field"><span>Tipo</span><select id="cupomTipo" name="tipo"><option value="percentual">Percentual</option><option value="fixo">Valor fixo</option><option value="frete_gratis">Frete grátis</option></select></label>
+<label class="field" id="cupomPercentualField"><span>Desconto (%)</span><input max="100" min="0" name="desconto" step="1" type="number" value="10"/></label>
+<label class="field hidden" id="cupomFixoField"><span>Valor do desconto</span><input min="0" name="valor_desconto" step="0.01" type="number" value="0"/></label>
+<label class="field"><span>Pedido mínimo</span><input min="0" name="pedido_minimo" step="0.01" type="number" value="0"/></label>
+<label class="field"><span>Limite total</span><input min="1" name="limite_total" placeholder="Sem limite" step="1" type="number"/></label>
+<label class="field"><span>Limite por cliente</span><input min="1" name="limite_por_cliente" step="1" type="number" value="1"/></label>
+<label class="field"><span>Válido de</span><input name="valido_de" type="datetime-local"/></label>
+<label class="field"><span>Válido até</span><input name="valido_ate" type="datetime-local"/></label>
+<label class="field"><span>Categoria específica</span><input name="categoria"/></label>
+<label class="field"><span>Produto específico</span><select id="cupomProdutoSelect" name="produto_id"><option value="">Todos</option></select></label>
+<div class="switch-grid full">
+<label class="switch-row compact-switch"><input name="primeira_compra" type="checkbox"/><span><strong>Primeira compra</strong><small>Somente clientes sem pedidos</small></span></label>
+<label class="switch-row compact-switch"><input checked="" name="ativo" type="checkbox"/><span><strong>Ativo</strong><small>Liberado para uso</small></span></label>
+</div>
+<div class="modal-actions full">
+<button aria-label="Fechar janela" class="btn secondary" data-close="modalCupom" type="button">Cancelar</button>
+<button class="btn primary" type="submit"><i class="fa-solid fa-floppy-disk"></i> Salvar cupom</button>
+</div>
+</form>
+</div>
+</div>
+<div aria-hidden="true" class="modal" id="modalBairro">
+<div class="modal-card small">
+<div class="modal-head">
+<div><span class="eyebrow">ENTREGA</span><h3 id="modalBairroTitulo">Novo bairro</h3></div>
+<button aria-label="Fechar janela" class="icon-btn" data-close="modalBairro" type="button"><i class="fa-solid fa-xmark"></i></button>
+</div>
+<form class="form-grid" id="formBairro" novalidate="">
+<label class="field full"><span>Nome *</span><input name="nome" required=""/></label>
+<label class="field"><span>Taxa</span><input min="0" name="taxa" step="0.01" type="number" value="0"/></label>
+<label class="field"><span>Pedido mínimo</span><input min="0" name="pedido_minimo" step="0.01" type="number" value="0"/></label>
+<label class="field"><span>Minutos extras</span><input min="0" name="tempo_extra_min" step="1" type="number" value="0"/></label>
+<label class="field"><span>Ordem</span><input name="ordem" type="number" value="0"/></label>
+<label class="switch-row full"><input checked="" name="ativo" type="checkbox"/><span><strong>Ativo</strong><small>Disponível para entrega</small></span></label>
+<div class="modal-actions full">
+<button aria-label="Fechar janela" class="btn secondary" data-close="modalBairro" type="button">Cancelar</button>
+<button class="btn primary" type="submit"><i class="fa-solid fa-floppy-disk"></i> Salvar bairro</button>
+</div>
+</form>
+</div>
+</div>
+<div aria-hidden="true" class="modal" id="modalRecompensa">
+<div class="modal-card small">
+<div class="modal-head">
+<div><span class="eyebrow">FIDELIDADE</span><h3 id="modalRecompensaTitulo">Nova recompensa</h3></div>
+<button aria-label="Fechar janela" class="icon-btn" data-close="modalRecompensa" type="button"><i class="fa-solid fa-xmark"></i></button>
+</div>
+<form class="form-grid" id="formRecompensa" novalidate="">
+<label class="field full"><span>Nome *</span><input name="nome" required=""/></label>
+<label class="field full"><span>Descrição</span><textarea name="descricao" rows="3"></textarea></label>
+<label class="field"><span>Pontos necessários</span><input min="1" name="pontos_necessarios" required="" step="1" type="number"/></label>
+<label class="field"><span>Tipo</span><select name="tipo"><option value="desconto_fixo">Desconto fixo</option><option value="desconto_percentual">Desconto percentual</option><option value="frete_gratis">Frete grátis</option><option value="produto">Produto</option></select></label>
+<label class="field"><span>Valor</span><input min="0" name="valor" step="0.01" type="number" value="0"/></label>
+<label class="field"><span>Produto</span><select id="recompensaProdutoSelect" name="produto_id"><option value="">Nenhum</option></select></label>
+<label class="switch-row full"><input checked="" name="ativo" type="checkbox"/><span><strong>Ativa</strong><small>Disponível no programa</small></span></label>
+<div class="modal-actions full">
+<button aria-label="Fechar janela" class="btn secondary" data-close="modalRecompensa" type="button">Cancelar</button>
+<button class="btn primary" type="submit"><i class="fa-solid fa-floppy-disk"></i> Salvar recompensa</button>
+</div>
+</form>
+</div>
+</div>
+<div aria-hidden="true" class="modal" id="modalCliente">
+<div class="modal-card large">
+<div class="modal-head">
+<div><span class="eyebrow">CRM</span><h3 id="modalClienteTitulo">Cliente</h3></div>
+<button aria-label="Fechar janela" class="icon-btn" data-close="modalCliente" type="button"><i class="fa-solid fa-xmark"></i></button>
+</div>
+<div id="modalClienteConteudo"></div>
+</div>
+</div>
+<!-- =========================================================
+     ETAPA 8 - NOVA HAMBURGUERIA
+========================================================= -->
+<div aria-hidden="true" class="modal" id="modalConviteEntregador">
+<div class="modal-card small">
+<div class="modal-head"><div><span class="eyebrow">GO-BURGER ENTREGAS</span><h2>Convidar entregador</h2><p>O convite expira em 14 dias e não ativa ninguém sem aprovação.</p></div><button aria-label="Fechar janela" class="icon-btn" data-close="modalConviteEntregador" type="button"><i class="fa-solid fa-xmark"></i></button></div>
+<form class="form-grid" id="driverInviteForm"><label class="field full"><span>E-mail</span><input name="email" type="email" placeholder="entregador@email.com"></label><label class="field full"><span>Celular</span><input name="telefone" type="tel" placeholder="(32) 99999-9999"></label><div class="modal-actions full"><button class="btn secondary" data-close="modalConviteEntregador" type="button">Cancelar</button><button class="btn primary" type="submit"><i class="fa-solid fa-paper-plane"></i> Gerar convite</button></div></form>
+</div></div>
+<div aria-hidden="true" class="modal" id="modalNovaHamburgueria">
+<div class="modal-card store-create-modal">
+<div class="modal-head">
+<div>
+<span class="eyebrow">Go-burger · SEJA PARCEIRO</span>
+<h3 id="partnerRequestModalTitle">Solicitar entrada de hamburgueria</h3>
+<p>Envie os dados para análise. Esta etapa <strong>não cria a loja</strong>; somente o Super Admin pode autorizar a criação.</p>
+</div>
+<button aria-label="Fechar janela" class="icon-btn" data-close="modalNovaHamburgueria" type="button"><i class="fa-solid fa-xmark"></i></button>
+</div>
+<form class="form-grid store-create-form" id="formNovaHamburgueria" novalidate="">
+<label class="field store-create-field store-create-field--name"><span>Nome da hamburgueria *</span><input autocomplete="organization" id="novaLojaNome" maxlength="80" name="nome" placeholder="Ex.: Brasa Burger" required=""/></label>
+<label class="field store-create-field store-create-field--slug"><span>URL desejada *</span><div class="store-create-slug"><span>go-burger.app/</span><input id="novaLojaSlug" maxlength="70" name="slug" placeholder="brasa-burger" required="" spellcheck="false"/></div><small>A URL fica reservada enquanto a solicitação estiver em análise.</small></label>
+<label class="field store-create-field store-create-field--responsible"><span>Nome do responsável *</span><input autocomplete="name" maxlength="100" name="nome_responsavel" placeholder="Responsável legal" required=""/></label>
+<label class="field store-create-field store-create-field--type"><span>Tipo de cadastro *</span><select name="tipo_pessoa" required=""><option value="pj">Pessoa jurídica</option><option value="pf">Pessoa física</option></select></label>
+<label class="field store-create-field store-create-field--document"><span>CPF / CNPJ *</span><input inputmode="numeric" maxlength="18" name="documento" placeholder="Somente para validação do cadastro" required=""/></label>
+<label class="field store-create-field store-create-field--company"><span>Razão social</span><input maxlength="120" name="razao_social" placeholder="Opcional para pessoa jurídica"/></label>
+<label class="field store-create-field store-create-field--description"><span>Descrição</span><textarea maxlength="280" name="descricao" placeholder="O que torna esta hamburgueria especial?" rows="2"></textarea></label>
+<label class="field store-create-field store-create-field--phone"><span>Telefone</span><input inputmode="tel" name="telefone" placeholder="(32) 99999-9999"/></label>
+<label class="field store-create-field store-create-field--whatsapp"><span>WhatsApp</span><input inputmode="tel" name="whatsapp" placeholder="(32) 99999-9999"/></label>
+<label class="field store-create-field store-create-field--email"><span>E-mail de contato</span><input autocomplete="email" name="email_contato" placeholder="contato@hamburgueria.com" type="email"/></label>
+<label class="field store-create-field store-create-field--address"><span>Endereço *</span><input autocomplete="street-address" name="endereco" placeholder="Rua, número e bairro" required=""/></label>
+<label class="field store-create-field store-create-field--city"><span>Cidade *</span><input autocomplete="address-level2" name="cidade" placeholder="Barroso" required=""/></label>
+<label class="field store-create-field store-create-field--state"><span>Estado *</span><input autocomplete="address-level1" maxlength="2" name="estado" placeholder="MG" required=""/></label>
+<label class="field store-create-field store-create-field--postal-code"><span>CEP</span><input autocomplete="postal-code" inputmode="numeric" name="cep" placeholder="00000-000"/></label>
+<label class="field store-create-field store-create-field--instagram"><span>Instagram</span><input name="instagram" placeholder="@hamburgueria"/></label>
+<label class="field store-create-field store-create-field--link"><span>Site / cardápio atual</span><input name="link_atual" placeholder="https://..." type="url"/></label>
+<label class="field store-create-field store-create-field--hours"><span>Horário de funcionamento</span><input name="horario_funcionamento" placeholder="Ex.: Ter–Dom, 18h às 23h"/></label>
+<label class="field store-create-field store-create-field--products"><span>Quantidade aproximada de produtos</span><input min="0" name="quantidade_produtos" placeholder="Ex.: 25" step="1" type="number"/></label>
+<label class="field store-create-field store-create-field--digital"><span>Já possui cardápio digital?</span><select name="cardapio_digital"><option value="">Não informar</option><option value="sim">Sim</option><option value="nao">Não</option></select></label>
+<div class="partner-service-options full"><strong>Como a hamburgueria atende? *</strong><label><input checked="" name="entrega_propria" type="checkbox"/> Entrega</label><label><input checked="" name="retirada_local" type="checkbox"/> Retirada</label><label><input name="consumo_local" type="checkbox"/> Consumo no local</label></div>
+<label class="field full"><span>Região / área de entrega</span><input name="regiao_entrega" placeholder="Bairros, cidades ou raio aproximado"/></label>
+<label class="field full"><span>Observações</span><textarea maxlength="500" name="observacoes" placeholder="Informações adicionais para a análise do Super Admin" rows="2"></textarea></label>
+<label class="terms-check-admin full"><input name="declaracao_veracidade" required="" type="checkbox"/><span>Declaro que as informações fornecidas são verdadeiras e solicito a análise para ingresso na plataforma Go-burger.</span></label>
+<label class="terms-check-admin full"><input name="aceite_parceiro" required="" type="checkbox"/><span>Li e aceito os <a href="../legal/termos-parceiros.html" rel="noopener" target="_blank">Termos dos Parceiros</a> e a <a href="../legal/privacidade.html" rel="noopener" target="_blank">Política de Privacidade</a>.</span></label>
+<div class="store-create-info full"><i class="fa-solid fa-user-shield"></i><div><strong>A hamburgueria ainda não será criada.</strong><span>Primeiro o Super Admin aprova a entrada. Depois você completa a loja em rascunho e solicita uma segunda autorização para publicação.</span></div></div>
+<div class="modal-actions full"><button aria-label="Fechar janela" class="btn secondary" data-close="modalNovaHamburgueria" type="button">Cancelar</button><button class="btn primary" id="btnCriarHamburgueria" type="submit"><i class="fa-solid fa-paper-plane"></i> Enviar solicitação</button></div>
+</form>
+</div>
+</div>
+<!-- =========================================================
+     CONFIRMAÇÃO - LIMPAR ATIVIDADES ADMINISTRATIVAS
+========================================================= -->
+<div aria-hidden="true" class="log-confirm-overlay" hidden="" id="confirmarExclusaoLogs">
+<div aria-describedby="logConfirmText" aria-labelledby="logConfirmTitle" aria-modal="true" class="log-confirm-card" role="dialog">
+<button aria-label="Fechar confirmação" class="log-confirm-close" id="btnFecharConfirmacaoLogs" type="button">
+<i class="fa-solid fa-xmark"></i>
+</button>
+<div aria-hidden="true" class="log-confirm-icon">
+<i class="fa-solid fa-trash-can"></i>
+</div>
+<span class="log-confirm-eyebrow">AÇÃO IRREVERSÍVEL</span>
+<h3 id="logConfirmTitle">Excluir atividades administrativas?</h3>
+<p class="log-confirm-text" id="logConfirmText">
+      Você está prestes a apagar <strong id="logConfirmCount">0</strong> atividade(s) do histórico administrativo.
+    </p>
+<div class="log-confirm-warning">
+<i class="fa-solid fa-triangle-exclamation"></i>
+<div>
+<strong>Esta ação não pode ser desfeita.</strong>
+<span>Somente o histórico de atividades será apagado. Pedidos, produtos, clientes, estoque, cupons e configurações permanecerão intactos.</span>
+</div>
+</div>
+<div class="log-confirm-actions">
+<button class="btn secondary" id="btnCancelarExclusaoLogs" type="button">
+<i class="fa-solid fa-xmark"></i>
+        Não
+      </button>
+<button class="btn danger log-confirm-delete" id="btnConfirmarExclusaoLogs" type="button">
+<i class="fa-solid fa-check"></i>
+        Sim, excluir
+      </button>
+</div>
+</div>
+</div>
+<div aria-live="polite" id="toastContainer"></div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.111.0"></script>
+<script src="admin.js?v=700"></script>
+<script src="admin-growth.js?v=88"></script>
+<script src="admin-cases.js?v=88"></script>
+<script src="admin-phase2.js?v=88"></script>
+<script defer="" src="../shared/app-ui.js?v=88"></script>
+  <script src="../shared/release-88.js?v=88" defer></script>
+  <script src="../shared/redesign-89.js?v=89" defer></script>
+  <script src="../shared/css-master-90-108.js?v=108" defer></script>
+  <script src="../shared/final-109-600.js?v=600" defer></script>
+  <script src="../shared/final-runtime-611.js?v=611"></script>
+</body>
+</html>

@@ -1,0 +1,241 @@
+/* ========================================================================
+   GO BURGER WEB 2.0 · P611 · FINAL UI/UX STABILITY LAYER
+   ------------------------------------------------------------------------
+   Objetivo: camada final, pequena e previsível, carregada depois de todos os
+   estilos históricos. Não substitui a identidade de cada módulo; consolida
+   contratos globais de layout, acessibilidade, tema, modais, formulários,
+   responsividade, safe-area e estados de interação.
+   ======================================================================== */
+
+/* 01. TOKENS DE ESTABILIDADE ------------------------------------------------ */
+:root{
+  --gb611-focus:#ff6500;
+  --gb611-focus-ring:rgba(255,101,0,.22);
+  --gb611-radius-sm:12px;
+  --gb611-radius-md:16px;
+  --gb611-tap:44px;
+  --gb611-safe-top:max(0px,env(safe-area-inset-top));
+  --gb611-safe-right:max(0px,env(safe-area-inset-right));
+  --gb611-safe-bottom:max(0px,env(safe-area-inset-bottom));
+  --gb611-safe-left:max(0px,env(safe-area-inset-left));
+}
+
+/* 02. RESET FINAL E CONTENÇÃO ----------------------------------------------- */
+html{
+  width:100%;
+  min-width:320px;
+  min-height:100%;
+  overflow-x:clip;
+  -webkit-text-size-adjust:100%;
+  text-size-adjust:100%;
+  scroll-behavior:smooth;
+}
+body{
+  width:100%;
+  min-width:0;
+  min-height:100dvh;
+  max-width:100%;
+  overflow-x:clip;
+  text-rendering:optimizeLegibility;
+  -webkit-font-smoothing:antialiased;
+}
+*,*::before,*::after{box-sizing:border-box}
+:where(main,section,article,aside,header,footer,nav,form,fieldset,div){min-width:0}
+:where(img,svg,video,canvas,picture){max-width:100%}
+:where(img,video){object-position:center}
+:where(iframe){max-width:100%;border:0}
+:where(table){max-width:100%}
+:where(input,select,textarea,button){font:inherit}
+:where(input,select,textarea){min-width:0;max-width:100%}
+:where(button,a,[role="button"]){touch-action:manipulation}
+[hidden]{display:none!important}
+
+/* 03. TEXTO: NÃO QUEBRAR PALAVRAS DE FORMA AGRESSIVA ------------------------ */
+:where(h1,h2,h3,h4,h5,h6){
+  max-width:100%;
+  overflow-wrap:normal;
+  word-break:normal;
+  hyphens:auto;
+  text-wrap:balance;
+}
+:where(p,li,dd,dt,label,small){
+  max-width:100%;
+  overflow-wrap:break-word;
+  word-break:normal;
+}
+:where(code,kbd,pre,.sa-mfa-secret,.gbp2-code){overflow-wrap:anywhere}
+
+/* 04. FOCO, TECLADO E CONTROLES --------------------------------------------- */
+:where(a,button,input,select,textarea,summary,[role="button"],[tabindex]):focus-visible{
+  outline:3px solid var(--gb611-focus)!important;
+  outline-offset:3px!important;
+  box-shadow:0 0 0 6px var(--gb611-focus-ring)!important;
+}
+:where(button,input,select,textarea):disabled,
+:where(button,[role="button"])[aria-disabled="true"]{
+  cursor:not-allowed!important;
+  opacity:.58;
+}
+:where(button,input[type="button"],input[type="submit"],input[type="reset"],select){
+  min-height:var(--gb611-tap);
+}
+:where(input,select,textarea){
+  accent-color:var(--gb611-focus);
+}
+textarea{resize:vertical}
+
+/* 05. DARK MODE NATIVO / AUTOFILL / SELECT ---------------------------------- */
+body.dark,body[data-theme="dark"]{color-scheme:dark}
+body:not(.dark):not([data-theme="dark"]){color-scheme:light}
+body.dark :where(select option),
+body[data-theme="dark"] :where(select option){background:#191512;color:#fff9f5}
+body.dark :where(input,textarea,select):-webkit-autofill,
+body.dark :where(input,textarea,select):-webkit-autofill:hover,
+body.dark :where(input,textarea,select):-webkit-autofill:focus,
+body[data-theme="dark"] :where(input,textarea,select):-webkit-autofill{
+  -webkit-text-fill-color:#fff9f5!important;
+  box-shadow:0 0 0 1000px #211b17 inset!important;
+  transition:background-color 9999s ease-out 0s;
+}
+
+/* 06. MODAIS, DRAWERS E OVERLAYS -------------------------------------------- */
+:where(.modal,.sa-modal,.auth-modal,.gbp2-modal,.mobile-overlay){
+  overscroll-behavior:contain;
+}
+:where(.modal-card,.sa-modal-card,.auth-modal-card,.gbp2-modal-card,.sheet-card,.drawer-card){
+  max-width:calc(100vw - 24px);
+  max-height:calc(100dvh - 24px);
+  overflow:auto;
+  overscroll-behavior:contain;
+  scrollbar-gutter:stable;
+}
+body.gb-superadmin-page .sa-gate{
+  overflow-x:hidden!important;
+  overflow-y:auto!important;
+  overscroll-behavior:contain;
+  padding-top:max(18px,var(--gb611-safe-top))!important;
+  padding-bottom:max(18px,var(--gb611-safe-bottom))!important;
+}
+:where(.modal-close,.sa-modal-close,.gbp2-modal-close){
+  z-index:4;
+  touch-action:manipulation;
+}
+
+/* 07. TABELAS / LISTAS / GRIDS --------------------------------------------- */
+:where(.table-wrap,.sa-table-wrap,.gbp2-table-wrap){
+  max-width:100%;
+  overflow:auto;
+  overscroll-behavior-inline:contain;
+  -webkit-overflow-scrolling:touch;
+}
+:where(.table-wrap,.sa-table-wrap,.gbp2-table-wrap) table{width:100%}
+:where(.grid,[class$="-grid"],[class*="-grid "])>*{min-width:0}
+
+/* 08. SAFE AREA E ELEMENTOS FIXOS ------------------------------------------ */
+:where(.bottom-nav,.mobile-nav){
+  padding-bottom:max(0px,var(--gb611-safe-bottom));
+}
+:where(.toast-container){
+  right:max(12px,var(--gb611-safe-right))!important;
+  bottom:max(12px,var(--gb611-safe-bottom))!important;
+  max-width:min(420px,calc(100vw - 24px));
+}
+
+/* 09. TRANSIÇÕES: NUNCA ESCONDER/EMBAÇAR CONTEÚDO FUNCIONAL ---------------- */
+:where(.gb-page-enter,.gb-reveal,.gb-cinematic-reveal,.gb-cinematic-item,.gb-load-reveal){
+  filter:none!important;
+}
+:where(.gb-page-enter,.gb-reveal,.gb-cinematic-reveal,.gb-cinematic-item,.gb-load-reveal):not([hidden]){
+  visibility:visible;
+}
+
+/* 10. SHELL / IFRAMES ------------------------------------------------------- */
+body.gb-shell-page .gb-stage{
+  min-width:0;
+  max-width:100%;
+  overflow:hidden;
+}
+body.gb-shell-page .gb-frame{
+  display:block;
+  width:100%;
+  min-width:0;
+  max-width:100%;
+}
+
+/* 11. SUPER ADMIN ----------------------------------------------------------- */
+body.gb-superadmin-page :where(.sa-workspace,.sa-main,.sa-page,.sa-panel){min-width:0}
+body.gb-superadmin-page .sa-table-wrap{scrollbar-gutter:stable}
+body.gb-superadmin-page .sa-mfa-card{max-width:min(560px,calc(100vw - 24px))}
+body.gb-superadmin-page .sa-mfa-qr img{display:block;margin-inline:auto;max-width:min(240px,70vw)}
+body.gb-superadmin-page .sa-mfa-code-input{
+  width:min(100%,320px)!important;
+  min-height:52px!important;
+  text-align:center;
+  letter-spacing:.22em;
+  font-variant-numeric:tabular-nums;
+}
+
+/* 12. ADMIN / ESTÚDIO ------------------------------------------------------- */
+body.gb-admin-page :where(.page,.panel,.studio-card,.studio-grid,.management-list){min-width:0}
+body.gb-admin-page .studio-savebar{
+  max-width:100%;
+  margin-inline:auto;
+  bottom:max(12px,var(--gb611-safe-bottom));
+}
+body.gb-admin-page .store-create-form{padding-bottom:max(20px,var(--gb611-safe-bottom))}
+
+/* 13. CLIENTE / MARKETPLACE ------------------------------------------------- */
+body.gb-client-page :where(.content-section,.product-grid,.product-card,.checkout-block){min-width:0}
+body.gb-market-page :where(.hero,.filters-shell,.store-grid,.store-carousel,.partner-cta,.driver-cta){min-width:0}
+body.gb-market-page :where(.top-search,.select-control,.open-toggle){max-width:100%}
+
+/* 14. ENTREGADOR ------------------------------------------------------------ */
+body.gb-driver-page :where(.driver-shell,.driver-main,.driver-grid,.driver-section,.driver-hero),
+body.gb-driver-signup-page :where(.driver-signup-shell,.driver-signup-grid,.driver-form-card,.driver-auth-card){
+  min-width:0;
+}
+body.gb-driver-signup-page :where(h1,h2,h3){overflow-wrap:normal!important;word-break:normal!important;hyphens:none!important}
+
+/* 15. LEGAL / AJUDA / STATUS / ERRO ---------------------------------------- */
+body.gb-legal-page :where(.legal-shell,.legal-card,.legal-links),
+body.gb-help-page :where(.help-shell,.help-card),
+body.gb-status-page :where(.status-shell,.status-card),
+body.gb-error-page :where(.error-shell,.error-card),
+body.gb-offline-page :where(.offline-shell,.offline-card){min-width:0;max-width:100%}
+
+/* 16. RESPONSIVIDADE FINAL -------------------------------------------------- */
+@media (max-width:760px){
+  :where(.modal,.sa-modal){padding:12px max(12px,var(--gb611-safe-right)) max(12px,var(--gb611-safe-bottom)) max(12px,var(--gb611-safe-left))!important}
+  :where(.modal-card,.sa-modal-card,.auth-modal-card,.gbp2-modal-card){
+    width:min(100%,calc(100vw - 24px))!important;
+    max-height:calc(100dvh - 24px)!important;
+    border-radius:20px!important;
+  }
+  body.gb-admin-page .studio-savebar{bottom:max(8px,var(--gb611-safe-bottom))}
+  body.gb-superadmin-page .sa-main{padding-bottom:max(72px,calc(32px + var(--gb611-safe-bottom)))}
+}
+
+@media (max-width:380px){
+  html{min-width:300px}
+  :where(button,input,select,textarea){max-width:100%}
+  :where(.modal,.sa-modal){padding-inline:8px!important}
+  :where(.modal-card,.sa-modal-card,.auth-modal-card,.gbp2-modal-card){width:calc(100vw - 16px)!important;max-width:calc(100vw - 16px)!important}
+}
+
+/* 17. MOVIMENTO REDUZIDO ---------------------------------------------------- */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto!important}
+  *,*::before,*::after{
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.01ms!important;
+    scroll-behavior:auto!important;
+  }
+}
+
+/* 18. IMPRESSÃO ------------------------------------------------------------- */
+@media print{
+  :where(.bottom-nav,.mobile-nav,.toast-container,.modal,.sa-modal,.sa-sidebar,.sa-topbar,.gb-global-nav){display:none!important}
+  body{background:#fff!important;color:#000!important;overflow:visible!important}
+  :where(main,.page,.sa-main,.legal-shell){width:100%!important;max-width:none!important;margin:0!important;padding:0!important}
+}
